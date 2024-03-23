@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lonely Mountain</title>
+    <link rel="stylesheet" href="HW1.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.css" rel="stylesheet" type="text/css">
+    <link rel="icon" href="img/logo.ico">
+</head>
+<body>
+    <div class="page">
+        <div class="page1">
+            <img src="img/background.png" alt="background" id="back">
+            <div class="top">
+                <img src="img/lonely  mountain.png" id="title" width="175px" height="42px">
+            </div>
+            
+            <div class="slide__item container">
+                <div class="slide__pagenumber"></div>
+                <img src="img/1.png" id="IMG_5" class="Image show">
+                <div class="slide__content"></div>
+
+                <div class="slide__pagenumber"></div>
+                <img src="img/2.png" id="IMG_5" class="Image">
+                <div class="slide__content"></div>
+
+                <div class="slide__pagenumber"></div>
+                <img src="img/3.png" id="IMG_5" class="Image">
+                <div class="slide__content"></div>
+
+                <div class="slide__pagenumber"></div>
+                <img src="img/4.png" id="IMG_5" class="Image">
+                <div class="slide__content"></div>
+
+                <div class="slide__pagenumber"></div>
+                <img src="img/5.png" id="IMG_5" class="Image">
+                <div class="slide__content"></div>
+
+                <div class="slide__pagenumber"></div>
+                <img src="img/6.png" id="IMG_5" class="Image">
+                <div class="slide__content"></div>
+
+                <div class="side_control">
+                    <a id="prev" class="slide__arraw slide__arraw--prev"> ❮ </a>
+                    <div class="back left"></div>
+                    <a id="next" class="slide__arraw slide__arraw--next"> ❯ </a>
+                    <div class="back right"></div>
+                </div>
+               
+                
+
+                <div class="slide__dot">
+                    <div class="dot active" data-value="1"></div>
+                    <div class="dot" data-value="2"></div>
+                    <div class="dot" data-value="3"></div>
+                    <div class="dot" data-value="4"></div>
+                    <div class="dot" data-value="5"></div>
+                    <div class="dot" data-value="6"></div>
+                  </div>
+              </div>               
+                
+                
+            </div>
+            
+            <div class="top-left">
+                <section class="tools">
+                    <h3 class="text_block title"></h3>
+                    <h3 class="text_block Home">Home</h3>
+                    <h3 class="text_block" id="Expolore">Expolore</h3>
+                    <h3 class="text_block" id="Story">Story</h3>
+                    <h3 class="text_block" id="Plan">Plan</h3>
+                    <h3 class="text_block">Search</h3>
+                    <h3 class="text_block title"></h3>
+                </section>
+
+                <section class="detail Explore">
+                    <h3 class="text_block">- Asia</h3>
+                    <h3 class="text_block">- Europe</h3>
+                    <h3 class="text_block">- North America</h3>
+                    <h3 class="text_block">- South America</h3>
+                    <h3 class="text_block">- Oceania</h3>
+                    <h3 class="text_block">- Africa</h3>
+                </section>
+
+                <section class="detail Story">
+                    <h3 class="text_block">- Adventure Travel</h3>
+                    <h3 class="text_block">- Art and Culture</h3>
+                    <h3 class="text_block">- Family Holidays</h3>
+                    <h3 class="text_block">- Festivals</h3>
+                    <h3 class="text_block">- Food and Drink</h3>
+                    <h3 class="text_block">- Honeymoon and Romance</h3>
+                </section>
+
+                <section class="detail Plan">
+                    <h3 class="text_block"> - Plan with local experts</h3>
+                    <h3 class="text_block">- Budget your trip</h3>
+                    <h3 class="text_block">- Book tours and activities</h3>
+                </section>
+            </div>
+        
+            <div>
+                <div class="sign_in">
+                    <img src="img/sign_in.png" alt="background picture" style="width:250px" class="top-right icon fixed">
+                </div>
+            </div>
+        
+            <div>
+                <img src="img/left.png" alt="cute slime in left side" class="bottom_left fixed">
+                <div class="ellipses fixed eye">
+                    <img src="img/eyeball.png" alt="eye ball left" class="eye_ball">
+                </div>
+                <div class="ellipses2 fixed eye">
+                    <img src="img/eyeball.png" alt="eye ball right" class="eye_ball">
+                </div>
+                <img src="img/right.png" alt="cute slime in right side" class="bottom_right fixed">
+            </div>
+        
+            <div class="sign_in_panel fixed">
+        
+                <div>
+                    <button style="border:1px solid black; background-color: transparent; border-radius: 30px;" class="close_botton">X</button>
+                </div>
+        
+                <div class="sign_in_title">
+                    <h4>The trip of your dreams</h4>
+                    <h4> starts with lonely mountain</h4>
+                </div>
+        
+                <div>
+                    <p>Sign Up to continue</p>
+                </div>
+                
+                <div class="A">
+                    <button class="sign_in_block">continue with Google</button>
+                    <button class="sign_in_block">continue with Facebook</button>
+                </div>
+        
+                <div class="line">
+                    <div class="sep"></div>
+                    <p class="OR">or</p>
+                    <div class="sep"></div>
+                </div>
+        
+                <form class="sign_in_table hidden">
+                    <input type="text" id="UserName" name="UserName" class="UserInput" placeholder="Username">
+                    <input type="email" id="Email" name="Email" class="UserInput" placeholder="Email">
+                    <input type="password" name="PW" id="PW" class="UserInput" placeholder="PassWord">
+                    <input type="submit" value="comtinue" style="margin: 40px auto 20px;" class="submit_button">
+                </form>
+                
+            </div>
+
+            <div class="page2">
+                <img src="img/background.png" alt="background" id="back">
+
+                <img src="img/Explore_head.png" alt="Explore_head" class="page2_title">
+
+                <div class="pics">
+                    <img src="img/Asia.png" alt="" style="grid-column: 1; grid-row: 1;">
+                    <img src="img/Asia name.png" alt="" class="name" style="grid-column: 1; grid-row: 1;">
+
+                    <img src="img/Europe.png" alt="" style="grid-column: 2; grid-row: 1;">
+                    <img src="img/Europe name.png" alt="" class="name" style="grid-column: 2; grid-row: 1;">
+
+                    <img src="img/North America.png" alt="" style="grid-column: 3; grid-row: 1;">
+                    <img src="img/North America name.png" alt="" class="name" style="grid-column: 3; grid-row: 1;">
+
+                    <img src="img/South America.png" alt=""style="grid-column: 4; grid-row: 1;">
+                    <img src="img/South America name.png" alt=""class="name" style="grid-column: 4; grid-row: 1;">
+
+                    <img src="img/Africa.png" alt="" style="grid-column: 5; grid-row: 1;">
+                    <img src="img/African name.png" alt="" style="grid-column: 5; grid-row: 1; position: relative; top: 50%; left: 50%; transform: translate(-50%, -50%);" >
+
+                    <img src="img/Oceania.png" alt="" style="grid-column: 5; grid-row: 2;" >
+                    <img src="img/Oceania name.png" alt="" style="grid-column: 5; grid-row: 2; position: relative; top: 50%; left: 50%; transform: translate(-50%, -50%);" >
+
+                </div>
+            </div>
+
+            <div class="page3">
+                <img src="img/background.png" alt="background" id="back">
+            </div>
+        </div>
+        
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/components/transition.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css">
+    <script src="HW1.js"></script>
+
+    <!-- <meta http-equiv="refresh" content="60" /> -->
+</body>
+
+</html>
