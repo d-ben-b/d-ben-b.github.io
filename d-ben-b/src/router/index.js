@@ -53,7 +53,7 @@ const routes = [
     path: "/journey",
     name: "Journey",
     component: Journey,
-    menta: {
+    meta: {
       routeName: "Journey",
     },
   },
@@ -61,7 +61,7 @@ const routes = [
     path: "/anniversary",
     name: "Anniversary",
     component: Anniversary,
-    menta: {
+    meta: {
       routeName: "Anniversary",
     },
   },
