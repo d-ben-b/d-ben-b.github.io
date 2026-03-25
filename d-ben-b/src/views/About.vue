@@ -1,8 +1,8 @@
 <template>
   <section class="min-h-screen p-10 rounded-lg shadow-md about bg-content">
     <h1 class="mb-10 text-4xl font-bold text-gray-800">About Myself</h1>
-    <div class="flex items-center">
-      <img :src="image(0)" alt="my profile" class="w-1/4 mr-4" />
+    <div class="flex items-center gap-6 mb-8">
+      <img :src="image(0)" alt="my profile" class="flex-shrink-0 object-cover w-1/4 rounded-lg" />
       <div class="text-left">
         <p class="text-lg text-gray-600">
           My name is RUAN, SHAO-MING , and I am currently a student at National
@@ -20,7 +20,7 @@
         </p>
       </div>
     </div>
-    <div class="flex items-center">
+    <div class="flex items-center gap-6 mb-8">
       <div class="text-left">
         <p class="text-lg text-gray-600">
           Beyond academics, I actively engage in cross-disciplinary practices
@@ -31,10 +31,10 @@
           problem-solving skills
         </p>
       </div>
-      <img :src="image(1)" alt="Volunteer picture" class="w-1/4 mr-4" />
+      <img :src="image(1)" alt="Volunteer picture" class="flex-shrink-0 object-cover w-1/4 rounded-lg" />
     </div>
-    <div class="flex items-center">
-      <img :src="image(2)" alt="my profile" class="w-1/4 mr-4" />
+    <div class="flex items-center gap-6 mb-8">
+      <img :src="image(2)" alt="my profile" class="flex-shrink-0 object-cover w-1/4 rounded-lg" />
       <div class="text-left">
         <p class="text-lg text-gray-600">
           My goal is to combine my expertise and innovative thinking to work in
@@ -59,7 +59,7 @@
       </div>
     </div>
     <h2 class="mt-4 text-xl font-semibold text-gray-700">Hobbies</h2>
-    <div class="flex items-center">
+    <div class="flex items-center gap-6 mb-8">
       <p class="pb-20 mt-2 text-lg text-gray-600">
         In my free time, I enjoy cycling, playing the violin, and exploring new
         technologies. One of my most memorable achievements was cycling from
@@ -76,7 +76,7 @@
         offered me a fresh perspective and helped me reflect on various aspects
         of my life and personal relationships.
       </p>
-      <img :src="image(3)" alt="Volunteer picture" class="w-1/4 mr-4" />
+      <img :src="image(3)" alt="Volunteer picture" class="flex-shrink-0 object-cover w-1/4 rounded-lg" />
     </div>
   </section>
 </template>
