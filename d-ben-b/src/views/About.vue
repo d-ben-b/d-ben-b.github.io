@@ -2,7 +2,8 @@
   <section class="min-h-screen p-10 rounded-lg shadow-md about bg-content">
     <h1 class="mb-10 text-4xl font-bold text-gray-800">About Myself</h1>
     <div class="flex items-center gap-6 mb-8">
-      <img :src="image(0)" alt="my profile" class="flex-shrink-0 object-cover w-1/4 rounded-lg" />
+      <img loading="lazy" decoding="async" :src="image(0)" alt="my profile"
+        class="flex-shrink-0 object-cover w-1/4 rounded-lg" />
       <div class="text-left">
         <p class="text-lg text-gray-600">
           My name is RUAN, SHAO-MING , and I am currently a student at National
@@ -31,10 +32,12 @@
           problem-solving skills
         </p>
       </div>
-      <img :src="image(1)" alt="Volunteer picture" class="flex-shrink-0 object-cover w-1/4 rounded-lg" />
+      <img loading="lazy" decoding="async" :src="image(1)" alt="Volunteer picture"
+        class="flex-shrink-0 object-cover w-1/4 rounded-lg" />
     </div>
     <div class="flex items-center gap-6 mb-8">
-      <img :src="image(2)" alt="my profile" class="flex-shrink-0 object-cover w-1/4 rounded-lg" />
+      <img loading="lazy" decoding="async" :src="image(2)" alt="my profile"
+        class="flex-shrink-0 object-cover w-1/4 rounded-lg" />
       <div class="text-left">
         <p class="text-lg text-gray-600">
           My goal is to combine my expertise and innovative thinking to work in
@@ -53,7 +56,7 @@
       <div v-for="(skill, index) in skills" :key="skill" class="skill-item" :class="{ visible: skillsVisible }"
         :style="{ animationDelay: `${index * 0.1}s` }">
         <div class="skill-icon">
-          <img :src="getSkillIcon(skill)" :alt="skill + ' icon'" class="w-6 h-6" />
+          <img loading="lazy" decoding="async" :src="getSkillIcon(skill)" :alt="skill + ' icon'" class="w-6 h-6" />
         </div>
         <span>{{ skill }}</span>
       </div>
@@ -76,7 +79,8 @@
         offered me a fresh perspective and helped me reflect on various aspects
         of my life and personal relationships.
       </p>
-      <img :src="image(3)" alt="Volunteer picture" class="flex-shrink-0 object-cover w-1/4 rounded-lg" />
+      <img loading="lazy" decoding="async" :src="image(3)" alt="Volunteer picture"
+        class="flex-shrink-0 object-cover w-1/4 rounded-lg" />
     </div>
   </section>
 </template>

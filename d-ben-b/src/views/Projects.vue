@@ -5,7 +5,7 @@
       <div v-for="project in projects" :key="project.id" class="p-6 bg-white rounded-lg shadow-md card"
         v-show="project.id != -1">
         <h2 class="text-xl font-semibold text-gray-800">{{ project.title }}</h2>
-        <img :src="project.img" alt="" class="w-auto p-6" />
+        <img loading="lazy" decoding="async" :src="project.img" alt="" class="w-auto p-6" />
         <p class="mt-2 text-gray-600">{{ project.short_description }}</p>
         <button @click="
           selectedProject = project;
