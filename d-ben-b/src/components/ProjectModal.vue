@@ -1,6 +1,6 @@
 <template>
   <div class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z--1" v-show="isVisible">
-    <div class="relative w-11/12 max-w-2xl p-6 bg-white rounded-lg shadow-lg justify-items-center">
+    <div class="relative flex flex-col items-center w-11/12 max-w-2xl p-6 text-center bg-white rounded-lg shadow-lg">
       <!-- Close Button -->
       <button @click="closeModal"
         class="absolute text-3xl text-gray-500 transition duration-300 top-4 right-4 hover:text-red-500">
