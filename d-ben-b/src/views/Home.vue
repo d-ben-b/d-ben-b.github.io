@@ -21,7 +21,8 @@
           class="px-6 py-2 text-white transition bg-primary rounded-xl hover:bg-primary-dark">
           Explore My Work
         </button>
-        <button class="px-6 py-2 transition border border-primary text-primary rounded-xl hover:bg-primary-light">
+        <button @click="isContactModalOpen = true"
+          class="px-6 py-2 transition border border-primary text-primary rounded-xl hover:bg-primary-light">
           Contact
         </button>
       </div>
@@ -43,12 +44,14 @@
         link="/journey" />
       <HomeCard title="About" subtitle="Learn who I am and what drives my passion." :image="image(3)" link="/about" />
     </div>
+    <ContactModal :isOpen="isContactModalOpen" @close="isContactModalOpen = false" />
   </section>
 </template>
 
 <script setup>
 import { ref, computed, onMounted, onBeforeUnmount } from "vue";
 import HomeCard from "../components/HomeCard.vue";
+import ContactModal from "../components/ContactModal.vue";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -61,6 +64,7 @@ const image_files = [
 
 const imageIndex = ref(0);
 const parallaxOffset = ref(0);
+const isContactModalOpen = ref(false);
 
 const image = computed(() => {
   return (index) => {
