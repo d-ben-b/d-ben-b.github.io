@@ -122,7 +122,7 @@ const projects = ref([
       Moving beyond pure analysis, I collaborated with the team to turn these insights into a tangible product: an Alternative Reality Game (ARG) board game titled "Wandering in Yuguang" (〈洄遊漁光中〉). I co-designed the story scripts, mission pacing, and puzzle mechanics, ensuring each stage directly aligned with our traffic redirection goals and local consumption scenarios. This allowed players to naturally visit different attractions and local shops while completing tasks, forming a verifiable behavioral path.
       
       Finally, we successfully executed field validation. With the support of our sponsor, Lin Ji Fishball, we conducted real-world testing. We also gathered feedback through interviews with local residents and players, validating the game's story, playability, and potential to drive local tourism. This project demonstrated my ability to transform data analysis into product strategy and execute real-world validation.`,
-    link: "",
+    link: "https://hsh-mu.vercel.app/",
   },
   {
     id: 7,
