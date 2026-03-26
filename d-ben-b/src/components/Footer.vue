@@ -1,7 +1,7 @@
 <template>
   <footer class="bottom-0 w-full py-2 bg-navBg h-[10vh]">
     <div class="text-center text-text">
-      <p>&copy; 2024 d-ben-b. All rights reserved.</p>
+      <p>&copy; 2024 SHAO-MING, RUAN. All rights reserved.</p>
       <p>
         Contact me at:
         <a :href="`mailto:${emailData}`" class="text-blue-500">{{

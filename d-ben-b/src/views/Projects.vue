@@ -43,7 +43,7 @@ const selectedProject = ref([
 const projects = ref([
   {
     id: 1,
-    title: "元太eNote電子紙專案",
+    title: "NCKU vs E Ink: Future Dynamic Program",
     img: "Project/_MG_4683.jpg",
     inner_img: "Project/_MG_4994.jpg",
     short_description:
@@ -55,7 +55,7 @@ const projects = ref([
   },
   {
     id: 2,
-    title: "2024年AI台南數位城市治理黑客松",
+    title: "AI++ Tainan: Innovating Tomorrow's Digital City 2024 AI Governance Tainan Hackathon",
     img: "Project/IMG_0959.png",
     inner_img: "Project/IMG_5126.png",
     short_description:
@@ -67,7 +67,7 @@ const projects = ref([
   },
   {
     id: 3,
-    title: "Sparkful Hack to the Top AI 金融創新黑客松",
+    title: "Sparkful Hack to the Top AI Hackathon",
     img: "Project/LINE_ALBUM_SPARKFUL AI金融黑客松_250430_1.jpg",
     inner_img: "Project/LINE_ALBUM_SPARKFUL AI金融黑客松_250430_2.jpg",
     short_description:
@@ -81,7 +81,7 @@ const projects = ref([
   },
   {
     id: 4,
-    title: "裕珍馨員工訓練平台",
+    title: "Yu Jan Shin Employee Training Platform",
     img: "Project/YJS.png",
     inner_img: "Project/YJS2.png",
     short_description:
@@ -112,7 +112,7 @@ const projects = ref([
   },
   {
     id: 6,
-    title: "2025 花蓮黑客松 (Hualien Hackathon)",
+    title: "2025 Hualien Hackathon",
     img: "Project/hualien_hackathon.png", // 請替換為實際圖片路徑
     inner_img: "Project/hualien_hackathon_inner.png", // 請替換為實際圖片路徑
     short_description:
