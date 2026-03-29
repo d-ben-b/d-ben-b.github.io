@@ -113,7 +113,7 @@ const projects = ref([
   {
     id: 6,
     title: "2025 Hualien Hackathon",
-    img: "Project/hualien_hackathon.png", // 請替換為實際圖片路徑
+    img: "Project/hualien_hackathon.jpg", // 請替換為實際圖片路徑
     inner_img: "Project/hualien_hackathon_inner.png", // 請替換為實際圖片路徑
     short_description:
       "2025 Hualien Hackathon – Finalist. Acted as a Data Analyst to tackle uneven tourist distribution. Analyzed open data to identify spatial imbalances and translated these insights into an Alternative Reality Game (ARG) board game, 'Wandering in Yuguang.' Designed mechanics to guide players to lesser-known spots and successfully conducted field testing with local sponsors.",
