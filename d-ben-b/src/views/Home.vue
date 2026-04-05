@@ -1,42 +1,43 @@
 <template>
   <section class="relative min-h-screen overflow-hidden font-sans text-gray-800 bg-cream">
-    <!-- Hero Background with Parallax -->
     <div class="absolute inset-0 z-0 will-change-transform"
-      :style="{ transform: `translateY(${parallaxOffset.value * 0.5}px)` }">
+      :style="{ transform: `translateY(${parallaxOffset * 0.5}px)` }">
       <img :src="image(imageIndex)" alt="Hero Background" class="object-cover w-full h-full opacity-30" />
       <div class="absolute inset-0 bg-gradient-to-b from-black/30 to-transparent"></div>
     </div>
 
-    <!-- Hero Section -->
-    <div class="relative z-10 flex flex-col items-start justify-center h-screen px-6 md:px-16 scroll-fade"
+    <div
+      class="relative z-10 flex flex-col items-center justify-center h-screen px-6 text-center md:items-start md:text-left md:px-16 scroll-fade"
       data-aos="fade-up" data-aos-duration="1000">
-      <h1 class="mb-4 text-5xl font-extrabold tracking-tight text-gray-900">
+
+      <h1 class="mb-4 text-4xl font-extrabold tracking-tight text-gray-900 md:text-5xl lg:text-6xl">
         Hi, I'm <span class="text-primary">RUAN, SHAO-MING</span>.
       </h1>
-      <p class="max-w-2xl mb-6 text-xl text-gray-700">
+      <p class="max-w-2xl mb-6 text-lg text-gray-700 md:text-xl">
         A passionate web developer crafting elegant and interactive solutions.
       </p>
-      <div class="flex gap-4">
+
+      <div class="flex flex-col w-full gap-4 sm:flex-row sm:w-auto">
         <button @click="scrollToCardSection"
-          class="px-6 py-2 text-white transition bg-primary rounded-xl hover:bg-primary-dark">
+          class="w-full px-6 py-3 text-white transition sm:py-2 sm:w-auto bg-primary rounded-xl hover:bg-primary-dark">
           Explore My Work
         </button>
         <button @click="isContactModalOpen = true"
-          class="px-6 py-2 transition border border-primary text-primary rounded-xl hover:bg-primary-light">
+          class="w-full px-6 py-3 transition border sm:py-2 sm:w-auto border-primary text-primary rounded-xl hover:bg-primary-light">
           Contact
         </button>
       </div>
-      <div class="absolute top-[80vh] z-20 -translate-x-1/2 left-1/2 animate-bounce">
-        <svg class="w-6 h-6 text-gray-600 opacity-70" fill="none" stroke="currentColor" stroke-width="2"
+
+      <div class="absolute z-20 -translate-x-1/2 bottom-10 left-1/2 animate-bounce">
+        <svg class="w-8 h-8 text-gray-600 opacity-70 md:w-6 md:h-6" fill="none" stroke="currentColor" stroke-width="2"
           viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
           <path d="M19 9l-7 7-7-7" />
         </svg>
       </div>
     </div>
 
-    <!-- Card Section -->
     <div id="card-section"
-      class="scroll-mt-[100px] relative z-10 grid grid-cols-1 gap-8 px-6 pt-32 pb-20 md:px-16 md:grid-cols-3 bg-cream"
+      class="scroll-mt-[100px] relative z-10 grid grid-cols-1 gap-8 px-6 pt-20 pb-20 md:pt-32 md:px-16 md:grid-cols-3 bg-cream"
       data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
       <HomeCard title="Projects" subtitle="Explore my latest works and applications." :image="image(1)"
         link="/projects" />
@@ -72,25 +73,30 @@ const image = computed(() => {
       console.error(`Invalid index: ${index}`);
       return null;
     }
-    return new URL(`../assets/images/${image_files[index]}`, import.meta.url);
+    return new URL(`../assets/images/${image_files[index]}`, import.meta.url).href;
   };
 });
-setInterval(() => {
-  imageIndex.value = (imageIndex.value + 1) % image_files.length;
-}, 5000);
 
-const handleScroll = () => {
-  parallaxOffset.value = window.scrollY;
-};
-
+// 注意：原程式碼中 setInterval 沒被清除，建議在 onBeforeUnmount 裡加上 clearInterval
+let intervalId;
 onMounted(() => {
   AOS.init({ once: true });
   window.addEventListener("scroll", handleScroll);
+
+  intervalId = setInterval(() => {
+    imageIndex.value = (imageIndex.value + 1) % image_files.length;
+  }, 5000);
 });
 
 onBeforeUnmount(() => {
   window.removeEventListener("scroll", handleScroll);
+  if (intervalId) clearInterval(intervalId);
 });
+
+const handleScroll = () => {
+  // 加上 null 判斷與範圍限制，避免過度計算
+  parallaxOffset.value = window.scrollY;
+};
 
 const scrollToCardSection = () => {
   const el = document.getElementById("card-section");

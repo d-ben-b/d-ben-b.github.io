@@ -1,6 +1,6 @@
 <template>
   <!-- 右側固定於畫面中間 -->
-  <div class="fixed right-0 z-50 transform -translate-y-1/2 top-1/2 group">
+  <div class="fixed right-0 z-50 hidden transform -translate-y-1/2 top-1/2 group md:block">
     <!-- 預設寬度 w-12，hover 時展開到 w-40 -->
     <div class="flex flex-col w-12 overflow-hidden transition-all duration-300 rounded-l-lg bg-navBg group-hover:w-40">
       <!-- GitHub -->

@@ -5,14 +5,11 @@
       <div v-for="project in projects" :key="project.id"
         class="relative p-6 overflow-hidden bg-white rounded-lg shadow-md card" v-show="project.id != -1">
         <!-- Badge for Coming Soon -->
-        <!-- <div
-            v-if="project.title === 'Coming Soon'"
-            class="absolute top-4 right-4">
-            <span
-              class="px-2 py-1 text-xs font-semibold text-white bg-yellow-500 rounded-full animate-pulse">
-              📅 Coming Soon
-            </span>
-          </div> -->
+        <!-- <div v-if="project.title === 'Coming Soon'" class="absolute top-4 right-4">
+          <span class="px-2 py-1 text-xs font-semibold text-white bg-yellow-500 rounded-full animate-pulse">
+            📅 Coming Soon
+          </span>
+        </div> -->
 
         <h2 class="text-xl font-semibold text-gray-800">{{ project.title }}</h2>
         <img :src="project.img" alt="" class="w-auto p-6" />

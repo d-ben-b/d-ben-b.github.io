@@ -1,11 +1,12 @@
 <template>
-  <section class="min-h-screen p-10 rounded-lg shadow-md about bg-content">
-    <h1 class="mb-10 text-4xl font-bold text-gray-800">About Myself</h1>
-    <div class="flex items-center gap-6 mb-8">
+  <section class="min-h-screen p-5 rounded-lg shadow-md md:p-10 about bg-content">
+    <h1 class="mb-8 text-3xl font-bold text-center text-gray-800 md:mb-10 md:text-4xl">About Myself</h1>
+
+    <div class="flex flex-col items-center gap-6 mb-8 md:flex-row">
       <img loading="lazy" decoding="async" :src="image(0)" alt="my profile"
-        class="flex-shrink-0 object-cover w-1/4 rounded-lg" />
+        class="flex-shrink-0 object-cover w-full rounded-lg sm:w-1/2 md:w-1/4" />
       <div class="text-left">
-        <p class="text-lg text-gray-600">
+        <p class="text-base text-gray-600 md:text-lg">
           My name is RUAN, SHAO-MING , and I am currently a student at National
           Cheng Kung University(NCKU) majoring in Electrical Engineering. I have
           a strong passion for artificial intelligence, programming, and
@@ -21,9 +22,10 @@
         </p>
       </div>
     </div>
-    <div class="flex items-center gap-6 mb-8">
+
+    <div class="flex flex-col-reverse items-center gap-6 mb-8 md:flex-row">
       <div class="text-left">
-        <p class="text-lg text-gray-600">
+        <p class="text-base text-gray-600 md:text-lg">
           Beyond academics, I actively engage in cross-disciplinary practices
           and community services, such as promoting STEM education in rural
           schools by teaching programming courses. I have also participated in
@@ -33,13 +35,14 @@
         </p>
       </div>
       <img loading="lazy" decoding="async" :src="image(1)" alt="Volunteer picture"
-        class="flex-shrink-0 object-cover w-1/4 rounded-lg" />
+        class="flex-shrink-0 object-cover w-full rounded-lg sm:w-1/2 md:w-1/4" />
     </div>
-    <div class="flex items-center gap-6 mb-8">
+
+    <div class="flex flex-col items-center gap-6 mb-8 md:flex-row">
       <img loading="lazy" decoding="async" :src="image(2)" alt="my profile"
-        class="flex-shrink-0 object-cover w-1/4 rounded-lg" />
+        class="flex-shrink-0 object-cover w-full rounded-lg sm:w-1/2 md:w-1/4" />
       <div class="text-left">
-        <p class="text-lg text-gray-600">
+        <p class="text-base text-gray-600 md:text-lg">
           My goal is to combine my expertise and innovative thinking to work in
           leading technology companies like Google or NVIDIA, contributing to
           cutting-edge developments in AI and IoT. Additionally, I aspire to
@@ -51,8 +54,9 @@
         </p>
       </div>
     </div>
+
     <h2 class="mt-4 text-xl font-semibold text-gray-700">Skills</h2>
-    <div ref="skillsContainer" class="mt-3 skills-container">
+    <div ref="skillsContainer" class="grid grid-cols-1 gap-4 mt-3 sm:grid-cols-2 md:grid-cols-3 md:ml-5">
       <div v-for="(skill, index) in skills" :key="skill" class="skill-item" :class="{ visible: skillsVisible }"
         :style="{ animationDelay: `${index * 0.1}s` }">
         <div class="skill-icon">
@@ -61,9 +65,10 @@
         <span>{{ skill }}</span>
       </div>
     </div>
-    <h2 class="mt-4 text-xl font-semibold text-gray-700">Hobbies</h2>
-    <div class="flex items-center gap-6 mb-8">
-      <p class="pb-20 mt-2 text-lg text-gray-600">
+
+    <h2 class="mt-8 text-xl font-semibold text-gray-700 md:mt-4">Hobbies</h2>
+    <div class="flex flex-col items-center gap-6 mb-8 md:flex-row">
+      <p class="pb-10 mt-2 text-base text-gray-600 md:pb-20 md:text-lg">
         In my free time, I enjoy cycling, playing the violin, and exploring new
         technologies. One of my most memorable achievements was cycling from
         National Cheng Kung University to Guoshenggang Lighthouse—the
@@ -80,7 +85,7 @@
         of my life and personal relationships.
       </p>
       <img loading="lazy" decoding="async" :src="image(3)" alt="Volunteer picture"
-        class="flex-shrink-0 object-cover w-1/4 rounded-lg" />
+        class="flex-shrink-0 object-cover w-full rounded-lg sm:w-1/2 md:w-1/4" />
     </div>
   </section>
 </template>
@@ -154,12 +159,7 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.skills-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  margin-left: 1.25rem;
-}
+/* 移除原本寫死的 skills-container 網格，已移至 template 透過 Tailwind 處理 */
 
 .skill-item {
   display: flex;
