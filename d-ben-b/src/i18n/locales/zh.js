@@ -9,23 +9,24 @@ export default {
   },
 
   home: {
-    greeting: "你好，我是",
+    greeting: "嗨，我是",
+    greetingEnd: "！",
     name: "阮紹銘",
-    tagline: "熱愛網頁開發，打造優雅且富互動性的解決方案。",
+    tagline: "專注網頁開發，喜歡把作品做得簡潔、流暢又有互動感。",
     explore: "看看我的作品",
     contact: "聯絡我",
     cards: {
       projects: {
         title: "作品",
-        subtitle: "探索我最新的專案與應用。",
+        subtitle: "看看我最近做的專案與應用。",
       },
       journey: {
         title: "歷程",
-        subtitle: "一條關於成長、學習與寫程式冒險的時間軸。",
+        subtitle: "我一路成長、學習與寫程式的點點滴滴。",
       },
       about: {
         title: "關於我",
-        subtitle: "認識我是誰，以及驅動我熱情的事物。",
+        subtitle: "認識我這個人，還有我熱衷的事。",
       },
     },
   },
@@ -39,7 +40,7 @@ export default {
       gpa: "學士 GPA",
       toeic: "多益 TOEIC",
       degree: "成大碩士在學",
-      ride: "最長單車",
+      certs: "專業證照",
     },
     education: "教育背景",
     edu: {
@@ -66,7 +67,7 @@ export default {
 
   contact: {
     heading: "聯絡我",
-    intro: "如果你想與我聯繫，歡迎透過以下方式找到我：",
+    intro: "想找我聊聊嗎？歡迎透過以下任一方式：",
     email: "電子郵件",
     linkedin: "LinkedIn",
     github: "GitHub",
@@ -78,11 +79,11 @@ export default {
   },
 
   contactModal: {
-    title: "一起打造些什麼吧！",
-    subtitle: "我隨時樂於討論新專案、創意點子，或任何能參與你願景的機會。",
+    title: "一起做點什麼吧！",
+    subtitle: "我隨時歡迎聊聊新專案、新點子，或任何能一起合作的機會。",
     email: "電子郵件",
     linkedin: "LinkedIn",
-    linkedinText: "與我連結",
+    linkedinText: "和我交流",
     github: "GitHub",
     githubText: "瀏覽我的程式碼",
     downloadCv: "下載履歷",
@@ -106,7 +107,7 @@ export default {
 
   timeline: {
     heading: "我的歷程",
-    intro: "往下滑，瀏覽一路走來的里程碑——求學、研究、競賽，以及形塑我的各個專案。",
+    intro: "往下滑，看看我這一路走來的求學、研究、競賽，還有那些把我帶到這裡的專案。",
     viewLink: "查看",
     types: {
       education: "求學",

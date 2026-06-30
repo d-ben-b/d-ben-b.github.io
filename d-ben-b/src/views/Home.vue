@@ -11,7 +11,7 @@
       data-aos="fade-up" data-aos-duration="1000">
 
       <h1 class="mb-4 text-4xl font-extrabold tracking-tight text-gray-900 md:text-5xl lg:text-6xl">
-        {{ t("home.greeting") }} <span class="text-primary">{{ t("home.name") }}</span>.
+        {{ t("home.greeting") }}<span class="text-primary">{{ t("home.name") }}</span>{{ t("home.greetingEnd") }}
       </h1>
       <p class="max-w-2xl mb-6 text-lg text-gray-700 md:text-xl">
         {{ t("home.tagline") }}

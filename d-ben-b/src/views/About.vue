@@ -111,7 +111,7 @@ const stats = [
   { value: "4.04 / 4.3", label: "about.stats.gpa" },
   { value: "835", label: "about.stats.toeic" },
   { value: "M.S.", label: "about.stats.degree" },
-  { value: "60 km", label: "about.stats.ride" },
+  { value: "6+", label: "about.stats.certs" },
 ];
 
 const educationList = computed(() => [

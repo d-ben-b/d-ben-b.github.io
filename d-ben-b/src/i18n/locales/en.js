@@ -9,7 +9,8 @@ export default {
   },
 
   home: {
-    greeting: "Hi, I'm",
+    greeting: "Hi, I'm ",
+    greetingEnd: ".",
     name: "RUAN, SHAO-MING",
     tagline: "A passionate web developer crafting elegant and interactive solutions.",
     explore: "Explore My Work",
@@ -39,7 +40,7 @@ export default {
       gpa: "Undergrad GPA",
       toeic: "TOEIC",
       degree: "M.S. @ NCKU",
-      ride: "Longest Ride",
+      certs: "Certifications",
     },
     education: "Education",
     edu: {
@@ -110,7 +111,7 @@ export default {
   timeline: {
     heading: "My Journey",
     intro:
-      "Scroll through the milestones — studies, research, competitions, and the projects that shaped me.",
+      "Scroll down for the milestones along the way — studies, research, competitions, and the projects that shaped me.",
     viewLink: "View",
     types: {
       education: "Education",
