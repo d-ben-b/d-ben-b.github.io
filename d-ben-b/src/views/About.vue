@@ -1,104 +1,100 @@
 <template>
   <section class="min-h-screen p-5 rounded-lg shadow-md md:p-10 about bg-content">
-    <h1 class="mb-8 text-3xl font-bold text-center text-gray-800 md:mb-10 md:text-4xl">About Myself</h1>
+    <h1 class="mb-8 text-3xl font-bold text-center text-gray-800 md:mb-10 md:text-4xl">{{ t("about.heading") }}</h1>
 
-    <div class="flex flex-col items-center gap-6 mb-8 md:flex-row">
-      <img loading="lazy" decoding="async" :src="image(0)" alt="my profile"
-        class="flex-shrink-0 object-cover w-full rounded-lg sm:w-1/2 md:w-1/4" />
-      <div class="text-left">
-        <p class="text-base text-gray-600 md:text-lg">
-          My name is RUAN, SHAO-MING , and I am currently a student at National
-          Cheng Kung University(NCKU) majoring in Electrical Engineering. I have
-          a strong passion for artificial intelligence, programming, and
-          technological innovation, particularly in applying these technologies
-          to solve real-world problems and enhance quality of life.
-          Academically, I specialize in data analysis, software development, and
-          artificial intelligence. I am proficient in programming languages such
-          as C/C++, Java, and Python and have conducted in-depth studies on
-          artificial intelligence and IoT technologies. During my university
-          years, I participated in several research projects, including AI model
-          development and Website development experiences, achieving outstanding
-          results in my core courses.
-        </p>
+    <!-- Quick-fact stat band -->
+    <div class="grid max-w-3xl grid-cols-2 gap-3 mx-auto mb-12 md:grid-cols-4 md:gap-4">
+      <div v-for="s in stats" :key="s.label"
+        class="p-4 text-center transition border shadow-sm bg-white/70 rounded-xl border-black/5 hover:-translate-y-1 hover:shadow-md">
+        <p class="text-2xl font-bold text-emerald-800 md:text-3xl">{{ s.value }}</p>
+        <p class="mt-1 text-xs text-gray-500 md:text-sm">{{ t(s.label) }}</p>
       </div>
     </div>
 
-    <div class="flex flex-col-reverse items-center gap-6 mb-8 md:flex-row">
-      <div class="text-left">
-        <p class="text-base text-gray-600 md:text-lg">
-          Beyond academics, I actively engage in cross-disciplinary practices
-          and community services, such as promoting STEM education in rural
-          schools by teaching programming courses. I have also participated in
-          cultural exchange programs that helped me develop a global
-          perspective. These experiences have honed my teamwork, leadership, and
-          problem-solving skills
-        </p>
-      </div>
-      <img loading="lazy" decoding="async" :src="image(1)" alt="Volunteer picture"
-        class="flex-shrink-0 object-cover w-full rounded-lg sm:w-1/2 md:w-1/4" />
-    </div>
-
-    <div class="flex flex-col items-center gap-6 mb-8 md:flex-row">
-      <img loading="lazy" decoding="async" :src="image(2)" alt="my profile"
-        class="flex-shrink-0 object-cover w-full rounded-lg sm:w-1/2 md:w-1/4" />
-      <div class="text-left">
-        <p class="text-base text-gray-600 md:text-lg">
-          My goal is to combine my expertise and innovative thinking to work in
-          leading technology companies like Google or NVIDIA, contributing to
-          cutting-edge developments in AI and IoT. Additionally, I aspire to
-          pursue entrepreneurship, leveraging AI to design games that are both
-          educational and entertaining. I am confident that my technical skills,
-          hands-on experiences, and continuous learning mindset will bring value
-          to your team. I look forward to the opportunity to showcase my
-          abilities and passion!
-        </p>
-      </div>
-    </div>
-
-    <h2 class="mt-4 text-xl font-semibold text-gray-700">Skills</h2>
-    <div ref="skillsContainer" class="grid grid-cols-1 gap-4 mt-3 sm:grid-cols-2 md:grid-cols-3 md:ml-5">
-      <div v-for="(skill, index) in skills" :key="skill" class="skill-item" :class="{ visible: skillsVisible }"
-        :style="{ animationDelay: `${index * 0.1}s` }">
-        <div class="skill-icon">
-          <img loading="lazy" decoding="async" :src="getSkillIcon(skill)" :alt="skill + ' icon'" class="w-6 h-6" />
+    <div class="max-w-5xl mx-auto">
+      <div class="flex flex-col items-center gap-6 mb-8 md:flex-row">
+        <img loading="lazy" decoding="async" :src="image(0)" alt="my profile"
+          class="flex-shrink-0 object-cover w-full rounded-xl shadow-md sm:w-1/2 md:w-1/3" />
+        <div class="text-left">
+          <p class="text-base leading-relaxed text-gray-600 md:text-lg">
+            {{ t("about.p1") }}
+          </p>
         </div>
-        <span>{{ skill }}</span>
+      </div>
+
+      <div class="flex flex-col-reverse items-center gap-6 mb-8 md:flex-row">
+        <div class="text-left">
+          <p class="text-base leading-relaxed text-gray-600 md:text-lg">
+            {{ t("about.p2") }}
+          </p>
+        </div>
+        <img loading="lazy" decoding="async" :src="image(1)" alt="Volunteer picture"
+          class="flex-shrink-0 object-cover w-full rounded-xl shadow-md sm:w-1/2 md:w-1/3" />
+      </div>
+
+      <div class="flex flex-col items-center gap-6 mb-8 md:flex-row">
+        <img loading="lazy" decoding="async" :src="image(2)" alt="my profile"
+          class="flex-shrink-0 object-cover w-full rounded-xl shadow-md sm:w-1/2 md:w-1/3" />
+        <div class="text-left">
+          <p class="text-base leading-relaxed text-gray-600 md:text-lg">
+            {{ t("about.p3") }}
+          </p>
+        </div>
       </div>
     </div>
 
-    <h2 class="mt-8 text-xl font-semibold text-gray-700 md:mt-4">Hobbies</h2>
-    <div class="flex flex-col items-center gap-6 mb-8 md:flex-row">
-      <p class="pb-10 mt-2 text-base text-gray-600 md:pb-20 md:text-lg">
-        In my free time, I enjoy cycling, playing the violin, and exploring new
-        technologies. One of my most memorable achievements was cycling from
-        National Cheng Kung University to Guoshenggang Lighthouse—the
-        westernmost point of Taiwan—and back, totaling around 60 kilometers. It
-        remains my longest and most rewarding ride to date. As for music, I
-        often practice the violin. I’ve performed classical pieces such as
-        Zigeunerweisen (Sarasate’s Gypsy Airs) and also enjoy playing popular
-        songs like Red Scarf. I’m particularly drawn to pop music because it
-        allows me to express my emotions more freely and release stress. On
-        weekends, I like to visit a cozy bookstore near NCKU where I can immerse
-        myself in the world of books. Recently, I read The Courage to Be
-        Disliked, a thought-provoking book based on Adlerian psychology. It
-        offered me a fresh perspective and helped me reflect on various aspects
-        of my life and personal relationships.
-      </p>
-      <img loading="lazy" decoding="async" :src="image(3)" alt="Volunteer picture"
-        class="flex-shrink-0 object-cover w-full rounded-lg sm:w-1/2 md:w-1/4" />
+    <!-- Education -->
+    <div class="max-w-5xl mx-auto">
+      <h2 class="mt-10 mb-4 text-xl font-semibold text-left text-gray-700">{{ t("about.education") }}</h2>
+      <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+        <div v-for="edu in educationList" :key="edu.degree"
+          class="p-5 text-left transition bg-white border shadow-sm rounded-xl border-black/5 hover:-translate-y-1 hover:shadow-md">
+          <div class="flex items-center justify-between gap-2 mb-1">
+            <span class="px-2 py-0.5 text-xs font-semibold rounded-full bg-emerald-100 text-emerald-700">
+              {{ t("about.education") }}
+            </span>
+            <span class="text-xs text-gray-400">{{ edu.date }}</span>
+          </div>
+          <h3 class="text-base font-bold text-gray-800">{{ edu.degree }}</h3>
+          <p class="mt-0.5 text-sm font-medium text-emerald-800/80">{{ t("about.edu.org") }}</p>
+          <p class="mt-2 text-sm text-gray-600">{{ edu.note }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Skills -->
+    <div class="max-w-5xl mx-auto">
+      <h2 class="mt-10 mb-3 text-xl font-semibold text-left text-gray-700">{{ t("about.skills") }}</h2>
+      <div ref="skillsContainer" class="grid grid-cols-2 gap-3 sm:grid-cols-3">
+        <div v-for="(skill, index) in skills" :key="skill" class="skill-item" :class="{ visible: skillsVisible }"
+          :style="{ animationDelay: `${index * 0.1}s` }">
+          <div class="skill-icon">
+            <img loading="lazy" decoding="async" :src="getSkillIcon(skill)" :alt="skill + ' icon'" class="w-6 h-6" />
+          </div>
+          <span>{{ skill }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hobbies -->
+    <div class="max-w-5xl mx-auto">
+      <h2 class="mt-10 mb-3 text-xl font-semibold text-left text-gray-700">{{ t("about.hobbies") }}</h2>
+      <div class="flex flex-col items-center gap-6 mb-8 md:flex-row">
+        <p class="pb-6 text-base leading-relaxed text-left text-gray-600 md:pb-10 md:text-lg">
+          {{ t("about.hobbiesText") }}
+        </p>
+        <img loading="lazy" decoding="async" :src="image(3)" alt="Hobby picture"
+          class="flex-shrink-0 object-cover w-full rounded-xl shadow-md sm:w-1/2 md:w-1/3" />
+      </div>
     </div>
   </section>
 </template>
 
 <script setup>
 import { computed, ref, onMounted } from "vue";
+import { t } from "@/i18n";
 
-const image_files = [
-  "MyProfile.jpg",
-  "Volunteer.jpg",
-  "Goal1.jpg",
-  "Hobby.jpg",
-];
+const image_files = ["MyProfile.jpg", "Volunteer.jpg", "Goal1.jpg", "Hobby.jpg"];
 const image = computed(() => {
   return (index) => {
     if (index < 0 || index >= image_files.length) {
@@ -110,6 +106,27 @@ const image = computed(() => {
   };
 });
 
+// Real figures pulled from the timeline / résumé — not invented.
+const stats = [
+  { value: "4.04 / 4.3", label: "about.stats.gpa" },
+  { value: "835", label: "about.stats.toeic" },
+  { value: "M.S.", label: "about.stats.degree" },
+  { value: "60 km", label: "about.stats.ride" },
+];
+
+const educationList = computed(() => [
+  {
+    degree: t("about.edu.msDegree"),
+    date: t("about.edu.msDate"),
+    note: t("about.edu.msNote"),
+  },
+  {
+    degree: t("about.edu.bsDegree"),
+    date: t("about.edu.bsDate"),
+    note: t("about.edu.bsNote"),
+  },
+]);
+
 // Skills data
 const skills = [
   "JavaScript",
@@ -120,7 +137,6 @@ const skills = [
   "Machine learning",
 ];
 
-// Skill icons (you may need to add these icons to your assets folder)
 const getSkillIcon = (skill) => {
   const iconMap = {
     JavaScript: "js.png",
@@ -139,7 +155,6 @@ const skillsContainer = ref(null);
 const skillsVisible = ref(false);
 
 onMounted(() => {
-  // Setup intersection observer for skills animation
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -159,8 +174,6 @@ onMounted(() => {
 </script>
 
 <style scoped>
-/* 移除原本寫死的 skills-container 網格，已移至 template 透過 Tailwind 處理 */
-
 .skill-item {
   display: flex;
   align-items: center;

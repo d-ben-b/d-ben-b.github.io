@@ -11,7 +11,7 @@
       </button>
 
       <h2 class="mb-6 text-3xl font-bold tracking-tight text-gray-900">
-        {{ project.title }}
+        {{ pick(project.title) }}
       </h2>
 
       <div class="w-full max-w-sm aspect-[4/3] mb-6 relative overflow-hidden rounded-xl bg-gray-100 shadow-inner">
@@ -22,7 +22,7 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
               d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
           </svg>
-          <span class="text-sm font-medium">Loading image...</span>
+          <span class="text-sm font-medium">{{ t("projects.loadingImage") }}</span>
         </div>
 
         <img :src="project.inner_img" alt="Project Detail Image"
@@ -31,13 +31,13 @@
           decoding="async" />
       </div>
 
-      <p class="px-2 overflow-y-auto leading-relaxed text-left text-gray-700 max-h-60 custom-scrollbar">
-        {{ project.description }}
+      <p class="px-2 overflow-y-auto leading-relaxed text-left text-gray-700 whitespace-pre-line max-h-60 custom-scrollbar">
+        {{ pick(project.description) }}
       </p>
 
       <a v-if="project.link" :href="project.link" target="_blank"
         class="inline-block px-8 py-3 mt-8 font-semibold text-white transition duration-300 bg-blue-600 rounded-xl shadow-md hover:bg-blue-700 hover:shadow-lg hover:-translate-y-0.5">
-        View Project Demo
+        {{ t("projects.viewDemo") }}
       </a>
     </div>
   </div>
@@ -45,6 +45,7 @@
 
 <script setup>
 import { ref, watch } from 'vue';
+import { t, pick } from '@/i18n';
 
 const props = defineProps({
   isVisible: Boolean,

@@ -1,35 +1,26 @@
 <template>
   <div class="min-h-screen not-finished-container">
     <div class="content-box">
-      <h1 class="text-rose-900">{{ title }}</h1>
+      <h1 class="text-rose-900">{{ title || t("notFound.title") }}</h1>
       <div class="divider"></div>
       <div class="construction-icon">
         <i class="fas fa-tools"></i>
       </div>
-      <h2>Coming Soon</h2>
-      <p>This section is currently under development and will be available
-        soon.</p>
-      <p class="details">{{ description }}</p>
-      <router-link to="/" class="home-button"> Return to Homepage </router-link>
+      <h2>{{ t("notFound.comingSoon") }}</h2>
+      <p>{{ t("notFound.underDev") }}</p>
+      <p class="details">{{ description || t("notFound.details") }}</p>
+      <router-link to="/" class="home-button">{{ t("notFound.returnHome") }}</router-link>
     </div>
   </div>
 </template>
 
-<script>
-export default {
-  name: "NotFinishedYet",
-  props: {
-    title: {
-      type: String,
-      default: "Under Construction",
-    },
-    description: {
-      type: String,
-      default:
-        "We're working hard to bring you this content. Check back soon!",
-    },
-  },
-};
+<script setup>
+import { t } from "@/i18n";
+
+defineProps({
+  title: { type: String, default: "" },
+  description: { type: String, default: "" },
+});
 </script>
 
 <style scoped>

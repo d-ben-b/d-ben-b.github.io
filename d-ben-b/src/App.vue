@@ -4,7 +4,7 @@
     <outerLink />
     <router-view v-slot="{ Component }">
       <transition name="fade" mode="out-in">
-        <component :is="Component" :key="$route.fullPath" class="font-mono" />
+        <component :is="Component" :key="$route.fullPath" />
       </transition>
     </router-view>
     <Footer />
@@ -19,12 +19,8 @@ import outerLink from "./components/OuterLink.vue";
 
 <style scoped>
 .content {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  transition: all 0.5s;
 }
 
 /* 淡入淡出過渡 */

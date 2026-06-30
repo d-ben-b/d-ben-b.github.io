@@ -11,20 +11,20 @@
       data-aos="fade-up" data-aos-duration="1000">
 
       <h1 class="mb-4 text-4xl font-extrabold tracking-tight text-gray-900 md:text-5xl lg:text-6xl">
-        Hi, I'm <span class="text-primary">RUAN, SHAO-MING</span>.
+        {{ t("home.greeting") }} <span class="text-primary">{{ t("home.name") }}</span>.
       </h1>
       <p class="max-w-2xl mb-6 text-lg text-gray-700 md:text-xl">
-        A passionate web developer crafting elegant and interactive solutions.
+        {{ t("home.tagline") }}
       </p>
 
       <div class="flex flex-col w-full gap-4 sm:flex-row sm:w-auto">
         <button @click="scrollToCardSection"
           class="w-full px-6 py-3 text-white transition sm:py-2 sm:w-auto bg-primary rounded-xl hover:bg-primary-dark">
-          Explore My Work
+          {{ t("home.explore") }}
         </button>
         <button @click="isContactModalOpen = true"
           class="w-full px-6 py-3 transition border sm:py-2 sm:w-auto border-primary text-primary rounded-xl hover:bg-primary-light">
-          Contact
+          {{ t("home.contact") }}
         </button>
       </div>
 
@@ -39,11 +39,12 @@
     <div id="card-section"
       class="scroll-mt-[100px] relative z-10 grid grid-cols-1 gap-8 px-6 pt-20 pb-20 md:pt-32 md:px-16 md:grid-cols-3 bg-cream"
       data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
-      <HomeCard title="Projects" subtitle="Explore my latest works and applications." :image="image(1)"
+      <HomeCard :title="t('home.cards.projects.title')" :subtitle="t('home.cards.projects.subtitle')" :image="image(1)"
         link="/projects" />
-      <HomeCard title="Journey" subtitle="A timeline of growth, learning, and coding adventures." :image="image(2)"
+      <HomeCard :title="t('home.cards.journey.title')" :subtitle="t('home.cards.journey.subtitle')" :image="image(2)"
         link="/journey" />
-      <HomeCard title="About" subtitle="Learn who I am and what drives my passion." :image="image(3)" link="/about" />
+      <HomeCard :title="t('home.cards.about.title')" :subtitle="t('home.cards.about.subtitle')" :image="image(3)"
+        link="/about" />
     </div>
     <ContactModal :isOpen="isContactModalOpen" @close="isContactModalOpen = false" />
   </section>
@@ -53,6 +54,7 @@
 import { ref, computed, onMounted, onBeforeUnmount } from "vue";
 import HomeCard from "../components/HomeCard.vue";
 import ContactModal from "../components/ContactModal.vue";
+import { t } from "@/i18n";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -139,6 +141,7 @@ const scrollToCardSection = () => {
 }
 
 .font-sans {
-  font-family: "Inter", "DM Sans", sans-serif;
+  font-family: "Inter", "Noto Sans TC", "DM Sans", ui-sans-serif, system-ui,
+    sans-serif;
 }
 </style>

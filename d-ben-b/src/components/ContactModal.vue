@@ -20,9 +20,9 @@
               <span class="text-4xl font-bold text-[#0f4229]">B</span>
             </div>
 
-            <h2 class="text-2xl font-bold text-gray-900">Let's Build Something!</h2>
+            <h2 class="text-2xl font-bold text-gray-900">{{ t("contactModal.title") }}</h2>
             <p class="mt-2 mb-6 text-sm text-gray-500">
-              I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.
+              {{ t("contactModal.subtitle") }}
             </p>
 
             <div class="flex flex-col gap-3">
@@ -36,18 +36,19 @@
                     </svg>
                   </div>
                   <div class="text-left">
-                    <p class="text-xs font-semibold tracking-wider text-gray-400 uppercase">Email</p>
+                    <p class="text-xs font-semibold tracking-wider text-gray-400 uppercase">{{ t("contactModal.email")
+                    }}</p>
                     <p class="font-medium text-gray-800">{{ contactData.email }}</p>
                   </div>
                 </a>
                 <button @click.prevent="copyEmail"
                   class="absolute right-3 top-1/2 -translate-y-1/2 p-2 text-gray-400 transition opacity-0 group-hover:opacity-100 hover:text-[#0f4229]"
-                  title="Copy Email">
+                  :title="t('contactModal.copyEmail')">
                   <svg v-if="!copied" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                       d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012-2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
                   </svg>
-                  <span v-else class="text-xs font-bold text-[#0f4229]">Copied!</span>
+                  <span v-else class="text-xs font-bold text-[#0f4229]">{{ t("contactModal.copied") }}</span>
                 </button>
               </div>
 
@@ -60,8 +61,9 @@
                   </svg>
                 </div>
                 <div class="text-left">
-                  <p class="text-xs font-semibold tracking-wider text-gray-400 uppercase">LinkedIn</p>
-                  <p class="font-medium text-gray-800">Connect with me</p>
+                  <p class="text-xs font-semibold tracking-wider text-gray-400 uppercase">{{ t("contactModal.linkedin")
+                  }}</p>
+                  <p class="font-medium text-gray-800">{{ t("contactModal.linkedinText") }}</p>
                 </div>
               </a>
 
@@ -75,18 +77,19 @@
                   </svg>
                 </div>
                 <div class="text-left">
-                  <p class="text-xs font-semibold tracking-wider text-gray-400 uppercase">GitHub</p>
-                  <p class="font-medium text-gray-800">Explore my code</p>
+                  <p class="text-xs font-semibold tracking-wider text-gray-400 uppercase">{{ t("contactModal.github")
+                  }}</p>
+                  <p class="font-medium text-gray-800">{{ t("contactModal.githubText") }}</p>
                 </div>
               </a>
-              <a href="/Resume.pdf" target="_blank"
+              <a :href="cvHref" target="_blank"
                 class="flex items-center justify-center p-3 mt-2 text-white transition shadow-md rounded-xl bg-[#0f4229] hover:bg-[#1b5e3f] hover:shadow-lg group">
                 <svg class="w-5 h-5 mr-2 transition-transform group-hover:-translate-y-1" fill="none"
                   stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                 </svg>
-                <span class="font-semibold tracking-wide">Download CV</span>
+                <span class="font-semibold tracking-wide">{{ t("contactModal.downloadCv") }}</span>
               </a>
 
             </div>
@@ -98,9 +101,15 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 // 確保路徑對應你的資料夾結構
 import { data as contactData } from '../assets/data.js';
+import { t, locale } from '@/i18n';
+
+// 依語言提供對應的履歷檔
+const cvHref = computed(() =>
+  locale.value === 'zh' ? '/resume_zh_full.pdf' : '/resume_en_full.pdf'
+);
 
 const props = defineProps({
   isOpen: {

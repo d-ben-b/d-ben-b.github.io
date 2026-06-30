@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html {
+    font-family: "Inter", "Noto Sans TC", ui-sans-serif, system-ui,
+      -apple-system, "Segoe UI", Roboto, "PingFang TC", "Microsoft JhengHei",
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
 .text-style {
   @apply text-3xl text-gray-600 mb-8 absolute left-[50vh] w-1/2;
 }

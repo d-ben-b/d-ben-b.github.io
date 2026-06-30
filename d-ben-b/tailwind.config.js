@@ -10,8 +10,16 @@ export const theme = {
       theme: "#66B032",
     },
     fontFamily: {
-      sans: ["Inter", "sans-serif"],
-      serif: ["Merriweather", "serif"],
+      sans: [
+        "Inter",
+        "Noto Sans TC",
+        "ui-sans-serif",
+        "system-ui",
+        "PingFang TC",
+        "Microsoft JhengHei",
+        "sans-serif",
+      ],
+      serif: ["Noto Serif TC", "Merriweather", "serif"],
     },
     animation: {
       fade: "fadeOut 5s ease-in-out",
