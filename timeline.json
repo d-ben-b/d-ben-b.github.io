@@ -1,0 +1,423 @@
+[
+  {
+    "date": { "en": "Jun 2026", "zh": "2026年6月" },
+    "sort": "2026-06",
+    "type": "certification",
+    "title": { "en": "Google Career Certificates", "zh": "Google 職涯證書" },
+    "org": { "en": "Google · Coursera", "zh": "Google · Coursera" },
+    "summary": {
+      "en": "Completed Network Architecture and Foundations of Digital Marketing & E-commerce.",
+      "zh": "完成 Network Architecture 與數位行銷與電子商務基礎課程。"
+    },
+    "tech": ["Networking", "E-commerce"]
+  },
+  {
+    "date": { "en": "Dec 2025", "zh": "2025年12月" },
+    "sort": "2025-12",
+    "type": "certification",
+    "title": {
+      "en": "Machine Learning Foundations: A Case Study Approach",
+      "zh": "機器學習基礎：案例研究取向"
+    },
+    "org": { "en": "University of Washington · Coursera", "zh": "華盛頓大學 · Coursera" },
+    "summary": {
+      "en": "Regression, classification, retrieval, recommenders, and deep features.",
+      "zh": "迴歸、分類、檢索、推薦系統與深度特徵。"
+    },
+    "tech": ["ML"]
+  },
+  {
+    "date": { "en": "Sep–Dec 2025", "zh": "2025年9–12月" },
+    "sort": "2025-12",
+    "type": "competition",
+    "title": {
+      "en": "AI CUP 2025 — Suspicious-Account (Fraud) Detection",
+      "zh": "AI CUP 2025 — 可疑帳戶（詐欺）偵測"
+    },
+    "org": { "en": "E.SUN Bank · AI CUP", "zh": "玉山銀行 · AI CUP" },
+    "summary": {
+      "en": "Ranked 261 / 790 using PU Learning (Elkanoto) + LightGBM over bidirectional transaction features on highly imbalanced data.",
+      "zh": "以 PU Learning（Elkanoto）+ LightGBM 處理高度不平衡資料的雙向交易特徵，名次 261 / 790。"
+    },
+    "tech": ["Python", "LightGBM", "PU Learning", "pandas"]
+  },
+  {
+    "date": { "en": "2025", "zh": "2025" },
+    "sort": "2025-12",
+    "approx": true,
+    "type": "research",
+    "title": {
+      "en": "PPO vs. DQN for Autonomous Highway Driving",
+      "zh": "自駕高速公路決策：PPO vs. DQN 架構消融"
+    },
+    "org": { "en": "NCKU — RL course paper", "zh": "成功大學 — 強化學習課程論文" },
+    "summary": {
+      "en": "From-scratch PPO + Double DQN with a parameter-matched Self-Attention vs. MLP ablation (n=5); episodic returns tie within 5.7% while deployed crash rates differ ~7× (DQN 11.3% vs. PPO 60–80%) — return alone is misleading for safety-critical control.",
+      "zh": "從零實作 PPO 與 Double DQN，並做參數對齊的 Self-Attention vs. MLP 消融（n=5）；episodic return 差距 ≤5.7%，但碰撞率相差約 7×（DQN 11.3% vs. PPO 60–80%），證明單看 return 對安全關鍵控制具誤導性。"
+    },
+    "tech": ["PyTorch", "PPO", "Double DQN", "Self-Attention", "highway-env"]
+  },
+  {
+    "date": { "en": "2025", "zh": "2025" },
+    "sort": "2025-11",
+    "approx": true,
+    "type": "research",
+    "title": {
+      "en": "Model Compression Pipeline — Pruning · Quantization · Distillation",
+      "zh": "模型壓縮全流程 — 剪枝 · 量化 · 蒸餾"
+    },
+    "org": { "en": "NCKU — Efficient-AI course", "zh": "成功大學 — 高效率 AI 課程" },
+    "summary": {
+      "en": "ResNet-50 channel pruning −84% params (91.8% acc), INT8 PTQ/QAT 3.06× faster inference (95.38% acc), knowledge distillation, and EViT token pruning.",
+      "zh": "ResNet-50 通道剪枝 −84% 參數（精度 91.8%）、INT8 PTQ/QAT 推論 3.06× 加速（精度 95.38%）、知識蒸餾與 EViT token 剪枝。"
+    },
+    "tech": ["PyTorch", "Network Slimming", "PTQ / QAT", "ONNX"],
+    "link": "https://hackmd.io/@Z1Pajuk0RT2TQl-NwDQzDw/rk7yFLlWlg"
+  },
+  {
+    "date": { "en": "2025", "zh": "2025" },
+    "sort": "2025-12",
+    "approx": true,
+    "type": "project",
+    "title": {
+      "en": "Edge-AI Elder-Care Companion Robot",
+      "zh": "邊緣 AI 長照陪伴機器人"
+    },
+    "org": { "en": "NCKU — systems-design project", "zh": "成功大學 — 系統設計專案" },
+    "summary": {
+      "en": "Offline Jetson Nano / Raspberry Pi voice robot: Distil-Whisper ASR + quantized small LLM (LLaMA-3-mini / Phi-3) + YOLOv8-Nano, targeting ≤1.2s latency, ≤400MB, ≤15W.",
+      "zh": "可離線運行於 Jetson Nano / Raspberry Pi 的語音機器人：Distil-Whisper + 量化小型 LLM（LLaMA-3-mini / Phi-3）+ YOLOv8-Nano，目標 ≤1.2s、≤400MB、≤15W。"
+    },
+    "tech": ["Jetson Nano", "TensorRT / TFLite", "INT8", "ONNX"]
+  },
+  {
+    "date": { "en": "2025", "zh": "2025" },
+    "sort": "2025-06",
+    "approx": true,
+    "type": "project",
+    "title": {
+      "en": "UAV Aerial Semantic Segmentation",
+      "zh": "無人機空拍語意分割"
+    },
+    "org": { "en": "Kaggle competition", "zh": "Kaggle 競賽" },
+    "summary": {
+      "en": "16-class pipeline comparing DeepLabV3 vs. UNet++; DeepLabV3-ResNet101 reached public mIoU 0.58 with a CE + Dice hybrid loss (fixed pipeline bug: 0.26 → 0.58).",
+      "zh": "16 類分割 pipeline，比較 DeepLabV3 與 UNet++；DeepLabV3-ResNet101 以 CE + Dice 混合損失取得 public mIoU 0.58（修正 pipeline 問題：0.26 → 0.58）。"
+    },
+    "tech": ["PyTorch", "DeepLabV3", "UNet++", "ResNet-101"]
+  },
+  {
+    "date": { "en": "2025", "zh": "2025" },
+    "sort": "2025-05",
+    "approx": true,
+    "type": "project",
+    "title": { "en": "RAG Lecture Q&A System", "zh": "RAG 講義問答系統" },
+    "org": { "en": "NCKU — ML course", "zh": "成功大學 — 機器學習課程" },
+    "summary": {
+      "en": "FAISS + SentenceTransformers retrieval over lecture decks; RAG lifted BLEU 0.028 → 0.110 (~4×), ROUGE-L 0.19 → 0.33, BERTScore 0.848 → 0.888. Benchmarked Gemma-3 vs. Llama-3.2/Ollama.",
+      "zh": "以 FAISS + SentenceTransformers 檢索講義；導入 RAG 後 BLEU 0.028 → 0.110（約 4×）、ROUGE-L 0.19 → 0.33、BERTScore 0.848 → 0.888，並比較 Gemma-3 與 Llama-3.2/Ollama。"
+    },
+    "tech": ["FAISS", "SentenceTransformers", "Gemma-3", "Llama-3.2 / Ollama"]
+  },
+  {
+    "date": { "en": "Sep 2025", "zh": "2025年9月" },
+    "sort": "2025-09",
+    "type": "education",
+    "title": {
+      "en": "Began M.S. in Electrical Engineering (Information Engineering)",
+      "zh": "入學電機工程碩士（資訊工程組）"
+    },
+    "org": { "en": "National Cheng Kung University (NCKU)", "zh": "國立成功大學（NCKU）" },
+    "summary": {
+      "en": "Research focus: efficient AI — model compression and edge deployment.",
+      "zh": "研究方向：高效率 AI——模型壓縮與邊緣部署。"
+    }
+  },
+  {
+    "date": { "en": "Aug 2025", "zh": "2025年8月" },
+    "sort": "2025-08",
+    "type": "certification",
+    "title": {
+      "en": "Google Cloud Certificate — Generative AI & Cloud Foundations",
+      "zh": "Google Cloud 學程證書 — 生成式 AI 與雲端基礎"
+    },
+    "org": { "en": "Google Cloud", "zh": "Google Cloud" },
+    "summary": {
+      "en": "Vertex AI, LLMs, Prompt Design, Responsible AI, and Google Cloud infrastructure.",
+      "zh": "Vertex AI、LLM、Prompt Design、Responsible AI 與 Google Cloud 基礎架構。"
+    },
+    "tech": ["Vertex AI", "LLMs", "Prompt Design"]
+  },
+  {
+    "date": { "en": "Jun 2025", "zh": "2025年6月" },
+    "sort": "2025-06",
+    "type": "competition",
+    "title": {
+      "en": "2025 Hualien HSH Hackathon — Finalist",
+      "zh": "2025 花蓮 HSH 黑客松 — 決賽入圍"
+    },
+    "org": { "en": "Hualien County Government", "zh": "花蓮縣政府" },
+    "summary": {
+      "en": "As Data Analyst, mined government open data to find tourist-flow imbalances and turned them into a field-tested ARG board game.",
+      "zh": "擔任資料分析師，從政府開放資料找出觀光人流失衡，並轉化為實地驗證的 ARG 桌遊。"
+    },
+    "tech": ["pandas", "Open Data"],
+    "link": "https://hsh-mu.vercel.app/"
+  },
+  {
+    "date": { "en": "Jun 2025", "zh": "2025年6月" },
+    "sort": "2025-06",
+    "type": "education",
+    "title": {
+      "en": "B.S. in Electrical Engineering — graduated",
+      "zh": "電機工程學士 — 畢業"
+    },
+    "org": { "en": "National Cheng Kung University (NCKU)", "zh": "國立成功大學（NCKU）" },
+    "summary": {
+      "en": "GPA 4.04 / 4.3 (graduated Top 20%); completed the Semiconductor Specialization Micro-Program.",
+      "zh": "GPA 4.04 / 4.3（畢業班排前 20%）；完成半導體專長微學程。"
+    }
+  },
+  {
+    "date": { "en": "Apr 2025", "zh": "2025年4月" },
+    "sort": "2025-04",
+    "type": "competition",
+    "title": {
+      "en": "Sparkful “Hack to the Top” AI Hackathon — Finalist",
+      "zh": "Sparkful「Hack to the Top」AI 黑客松 — 決賽入圍"
+    },
+    "org": { "en": "Sparkful (200+ teams)", "zh": "Sparkful（200+ 隊）" },
+    "summary": {
+      "en": "Owned the full build of a food-recognition health & finance platform; retrained YOLOv11n on UECFOOD256 (256 classes), Vue + Django over REST APIs.",
+      "zh": "獨力完成食物辨識健康理財平台；在 UECFOOD256（256 類）上重訓 YOLOv11n，Vue + Django 以 REST API 串接。"
+    },
+    "tech": ["Vue.js", "Django", "YOLOv11n", "REST API"],
+    "link": "https://sparkful-frontend.vercel.app"
+  },
+  {
+    "date": { "en": "Nov 2024", "zh": "2024年11月" },
+    "sort": "2024-11",
+    "type": "competition",
+    "title": {
+      "en": "AI Tainan Digital Governance Hackathon — Best Popularity Award",
+      "zh": "台南數位城市治理黑客松 — 最佳人氣獎"
+    },
+    "org": {
+      "en": "Ministry of Digital Affairs (moda) / Tainan City",
+      "zh": "數位發展部（moda）/ 台南市"
+    },
+    "summary": {
+      "en": "Built a role-based web platform replacing the Health Bureau's error-prone shared-Excel workflow (Vue + Flask, RBAC, versioning, task tracking); six-person team.",
+      "zh": "為衛生局把易出錯的共用 Excel 流程改造為具權限控管的網頁平台（Vue + Flask、RBAC、版本控制、任務追蹤）；六人團隊。"
+    },
+    "tech": ["Vue.js", "Flask", "MySQL"]
+  },
+  {
+    "date": { "en": "2024", "zh": "2024" },
+    "sort": "2024-10",
+    "approx": true,
+    "type": "research",
+    "title": {
+      "en": "DeiT Transformer Pruning & Lightweighting",
+      "zh": "DeiT Transformer 剪枝與輕量化"
+    },
+    "org": { "en": "Personal research", "zh": "個人研究" },
+    "summary": {
+      "en": "2:4 / 4:8 N:M structured pruning across six DeiT variants with a reproducible prune → fine-tune → evaluate pipeline; LoRA recovery study.",
+      "zh": "對六種 DeiT 變體做 2:4 / 4:8 N:M 結構化剪枝，建立可重現的剪枝 → 微調 → 評估流程；並做 LoRA 精度回復研究。"
+    },
+    "tech": ["PyTorch", "timm", "LoRA", "WeightNormSparsifier"],
+    "link": "https://hackmd.io/@Z1Pajuk0RT2TQl-NwDQzDw/rk7yFLlWlg"
+  },
+  {
+    "date": { "en": "2024", "zh": "2024" },
+    "sort": "2024-06",
+    "approx": true,
+    "type": "project",
+    "title": {
+      "en": "Facial-Expression Image Classification",
+      "zh": "臉部表情影像分類"
+    },
+    "org": { "en": "NCKU — Computer Vision course", "zh": "成功大學 — 電腦視覺課程" },
+    "summary": {
+      "en": "Compared ResNet18 / EfficientNet-B0 / custom CNN on 7-class FER (~45k images); EfficientNet-B0 reached ~79.1% validation accuracy.",
+      "zh": "於七類表情辨識（約 4.5 萬張）比較 ResNet18 / EfficientNet-B0 / 自建 CNN；EfficientNet-B0 達約 79.1% 驗證準確率。"
+    },
+    "tech": ["PyTorch", "EfficientNet-B0", "Transfer Learning"]
+  },
+  {
+    "date": { "en": "2024", "zh": "2024" },
+    "sort": "2024-05",
+    "approx": true,
+    "type": "project",
+    "title": { "en": "Deep-RL Game Agent (DQN)", "zh": "深度強化學習遊戲代理（DQN）" },
+    "org": { "en": "NCKU — course project", "zh": "成功大學 — 課程專案" },
+    "summary": {
+      "en": "Trained Deep Q-Network agents on Super Mario and MiniGrid with custom env wrappers, reward shaping, and experience replay.",
+      "zh": "於 Super Mario 與 MiniGrid 訓練 DQN 代理，含自定義環境包裝、reward shaping 與 experience replay。"
+    },
+    "tech": ["PyTorch", "DQN", "Gym / MiniGrid"]
+  },
+  {
+    "date": { "en": "2024", "zh": "2024" },
+    "sort": "2024-05",
+    "approx": true,
+    "type": "project",
+    "title": {
+      "en": "Quantitative Trading Strategies (FinTech)",
+      "zh": "量化交易策略（FinTech）"
+    },
+    "org": { "en": "NCKU — FinTech course", "zh": "成功大學 — 金融科技課程" },
+    "summary": {
+      "en": "IRR solver and multi-stock trading optimization via dynamic programming under transaction-fee and cooldown constraints.",
+      "zh": "IRR 求解與多股交易最佳化，以動態規劃在手續費與冷卻期約束下求解。"
+    },
+    "tech": ["Python", "NumPy", "Dynamic Programming"]
+  },
+  {
+    "date": { "en": "2024", "zh": "2024" },
+    "sort": "2024-04",
+    "approx": true,
+    "type": "project",
+    "title": {
+      "en": "Whisper Auto-Subtitle Tool (local inference)",
+      "zh": "Whisper 本地自動字幕工具"
+    },
+    "org": { "en": "Personal tooling", "zh": "個人工具" },
+    "summary": {
+      "en": "Offline subtitle pipeline (yt-dlp → FFmpeg → Whisper) with a multithreaded GUI and optional CUDA acceleration.",
+      "zh": "離線字幕流程（yt-dlp → FFmpeg → Whisper），含多執行緒 GUI 與可選 CUDA 加速。"
+    },
+    "tech": ["Whisper", "FFmpeg", "yt-dlp", "CUDA"]
+  },
+  {
+    "date": { "en": "2024", "zh": "2024" },
+    "sort": "2024-03",
+    "approx": true,
+    "type": "project",
+    "title": { "en": "AI Financial Dashboard", "zh": "AI 財務儀表板" },
+    "org": { "en": "Django full-stack project", "zh": "Django 全端專案" },
+    "summary": {
+      "en": "Market dashboard with Selenium + Pandas ingestion/cleaning, Highcharts viz, deployed via Docker Compose.",
+      "zh": "金融儀表板：Selenium + Pandas 蒐集清理、Highcharts 視覺化，以 Docker Compose 部署。"
+    },
+    "tech": ["Django", "Pandas", "Selenium", "Docker Compose"]
+  },
+  {
+    "date": { "en": "2024", "zh": "2024" },
+    "sort": "2024-03",
+    "approx": true,
+    "type": "project",
+    "title": {
+      "en": "Yu Jan Shin — Enterprise Training-Platform Backend",
+      "zh": "玉珍馨 — 企業教育訓練平台後端"
+    },
+    "org": { "en": "Industry collaboration", "zh": "產學合作" },
+    "summary": {
+      "en": "Built modules in a Flask Blueprint microservice on Amazon RDS (MySQL): schema design, FK constraints, token-based access control / RBAC.",
+      "zh": "在 Flask Blueprint 微服務（Amazon RDS / MySQL）中負責模組：資料表設計、外鍵約束、token 存取控管 / RBAC。"
+    },
+    "tech": ["Flask", "Amazon RDS", "MySQL"]
+  },
+  {
+    "date": { "en": "Feb 2024", "zh": "2024年2月" },
+    "sort": "2024-02",
+    "type": "certification",
+    "title": {
+      "en": "TOEIC 835 (Listening 455 / Reading 380)",
+      "zh": "TOEIC 835（聽 455 / 讀 380）"
+    },
+    "org": { "en": "ETS", "zh": "ETS" },
+    "summary": {
+      "en": "English proficiency — tested 2024/02/25.",
+      "zh": "英語能力——測驗日 2024/02/25。"
+    }
+  },
+  {
+    "date": { "en": "2023", "zh": "2023" },
+    "sort": "2023-12",
+    "approx": true,
+    "type": "award",
+    "title": { "en": "Academic Excellence Award (書卷獎)", "zh": "書卷獎（學業優異）" },
+    "org": {
+      "en": "NCKU College of Electrical Engineering & Computer Science",
+      "zh": "成功大學電機資訊學院"
+    },
+    "summary": {
+      "en": "Top of class for the semester (semester GPA up to 4.24 / 4.3, Top 10%).",
+      "zh": "學期班排前段（學期 GPA 達 4.24 / 4.3，前 10%）。"
+    }
+  },
+  {
+    "date": { "en": "Oct–Nov 2023", "zh": "2023年10–11月" },
+    "sort": "2023-11",
+    "type": "certification",
+    "title": {
+      "en": "Interactive Programming in Python (Part 1 & 2)",
+      "zh": "Python 互動程式設計（I & II）"
+    },
+    "org": { "en": "Rice University · Coursera", "zh": "Rice 大學 · Coursera" },
+    "summary": {
+      "en": "Event-driven Python programming fundamentals.",
+      "zh": "事件驅動的 Python 程式設計基礎。"
+    },
+    "tech": ["Python"]
+  },
+  {
+    "date": { "en": "Sep–Oct 2023", "zh": "2023年9–10月" },
+    "sort": "2023-10",
+    "type": "certification",
+    "title": { "en": "Deep Learning (Andrew Ng)", "zh": "深度學習（吳恩達）" },
+    "org": { "en": "DeepLearning.AI · Coursera", "zh": "DeepLearning.AI · Coursera" },
+    "summary": {
+      "en": "Neural Networks & Deep Learning, Improving Deep Neural Networks, and Structuring ML Projects.",
+      "zh": "神經網路與深度學習、深度神經網路調校、機器學習專案結構化。"
+    },
+    "tech": ["Deep Learning"]
+  },
+  {
+    "date": { "en": "Mar 2023", "zh": "2023年3月" },
+    "sort": "2023-03",
+    "type": "certification",
+    "title": {
+      "en": "Wireless Communications for Everybody",
+      "zh": "無線通訊（Wireless Communications for Everybody）"
+    },
+    "org": { "en": "Yonsei University · Coursera", "zh": "延世大學 · Coursera" },
+    "summary": {
+      "en": "Fundamentals of wireless communication systems.",
+      "zh": "無線通訊系統基礎。"
+    }
+  },
+  {
+    "date": { "en": "2023", "zh": "2023" },
+    "sort": "2023-01",
+    "approx": true,
+    "type": "project",
+    "title": {
+      "en": "NCKU × E Ink: Future Dynamic Program",
+      "zh": "NCKU × 元太 E Ink：未來動態學程"
+    },
+    "org": { "en": "NCKU program", "zh": "成功大學學程" },
+    "summary": {
+      "en": "First web project — an interactive e-paper demo exploring sustainable, low-power displays (HTML / CSS / JS).",
+      "zh": "第一個網頁專案——探索永續低功耗電子紙的互動展示（HTML / CSS / JS）。"
+    },
+    "tech": ["HTML", "CSS", "JavaScript"],
+    "link": "https://eink-demo-etvn.vercel.app"
+  },
+  {
+    "date": { "en": "Sep 2021", "zh": "2021年9月" },
+    "sort": "2021-09",
+    "type": "education",
+    "title": {
+      "en": "Began B.S. in Electrical Engineering",
+      "zh": "入學電機工程學士"
+    },
+    "org": { "en": "National Cheng Kung University (NCKU)", "zh": "國立成功大學（NCKU）" },
+    "summary": {
+      "en": "Start of undergraduate studies in EE.",
+      "zh": "電機工程學士班入學。"
+    }
+  }
+]
