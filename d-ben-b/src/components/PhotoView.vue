@@ -13,14 +13,15 @@
 
       <!-- Photo content -->
       <div class="flex flex-col items-center mt-4">
-        <img v-if="selectedPhoto" :src="currentImage" alt="" class="max-h-[50vh] object-contain" />
+        <img v-if="selectedPhoto" :src="currentImage" alt="" class="max-h-[50vh] object-contain" decoding="async" />
 
         <!-- Thumbnails section -->
         <div v-if="hasMultipleImages" class="flex flex-wrap justify-center gap-2 mt-4">
           <div v-for="(img, idx) in allImages" :key="idx" @click="currentImageIndex = idx"
             class="w-16 h-16 transition-all border-2 cursor-pointer"
             :class="currentImageIndex === idx ? 'border-blue-500 opacity-100' : 'border-gray-200 opacity-70 hover:opacity-100'">
-            <img :src="img" alt="" class="object-cover w-full h-full" />
+            <img :src="img" alt="" class="object-cover w-full h-full" loading="lazy" decoding="async" width="64"
+              height="64" />
           </div>
         </div>
 

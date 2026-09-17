@@ -1,18 +1,15 @@
-import Home from "@/views/Home.vue";
-import About from "@/views/About.vue";
-import Contact from "@/views/Contact.vue";
-import NotFinishedYet from "../views/NotFinishedYet.vue";
-import Projects from "@/views/Projects.vue";
-import Journey from "@/views/Journey.vue";
-import Anniversary from "@/views/Anniversary.vue";
 import { createRouter, createWebHistory } from "vue-router";
+
+// Home 是著陸頁（LCP 所在），維持靜態 import，避免多一次 chunk 往返延遲首屏。
+// 其餘頁面改成動態 import，各自切成獨立 chunk，進到該頁才下載。
+import Home from "@/views/Home.vue";
 
 const routes = [
   {
     path: "/:catchAll(.*)",
     //redirect: "/",
     name: "Error",
-    component: NotFinishedYet,
+    component: () => import("@/views/NotFinishedYet.vue"),
     meta: {
       routeName: "error",
     },
@@ -28,7 +25,7 @@ const routes = [
   {
     path: "/about",
     name: "About",
-    component: About,
+    component: () => import("@/views/About.vue"),
     meta: {
       routeName: "About",
     },
@@ -36,7 +33,7 @@ const routes = [
   {
     path: "/contact",
     name: "Contact",
-    component: Contact,
+    component: () => import("@/views/Contact.vue"),
     meta: {
       routeName: "Contact",
     },
@@ -44,7 +41,7 @@ const routes = [
   {
     path: "/projects",
     name: "Projects",
-    component: Projects,
+    component: () => import("@/views/Projects.vue"),
     meta: {
       routeName: "Projects",
     },
@@ -52,7 +49,7 @@ const routes = [
   {
     path: "/journey",
     name: "Journey",
-    component: Journey,
+    component: () => import("@/views/Journey.vue"),
     meta: {
       routeName: "Journey",
     },
@@ -60,7 +57,7 @@ const routes = [
   {
     path: "/anniversary",
     name: "Anniversary",
-    component: Anniversary,
+    component: () => import("@/views/Anniversary.vue"),
     meta: {
       routeName: "Anniversary",
     },

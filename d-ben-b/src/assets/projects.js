@@ -30,8 +30,8 @@ const projects = [
       en: "AI++ Tainan: Innovating Tomorrow's Digital City — 2024 AI Governance Tainan Hackathon",
       zh: "AI++ 台南：打造明日數位城市 — 2024 台南數位城市治理黑客松",
     },
-    img: "Project/IMG_0959.png",
-    inner_img: "Project/IMG_5126.png",
+    img: "Project/IMG_0959.jpg",
+    inner_img: "Project/IMG_5126.jpg",
     short_description: {
       en: "2024 AI Tainan Digital Governance Hackathon – Best Popularity Award. Developed a web-based form management platform to replace Excel-based workflows for the Tainan Health Bureau. Led frontend development with Vue.js and integrated a Flask backend. Implemented role-based access control, input validation, version control, and task tracking to enhance cross-departmental collaboration and prevent data overwrites.",
       zh: "2024 台南數位城市治理黑客松 — 最佳人氣獎。為台南市衛生局開發以網頁為基礎的表單管理平台，取代原本仰賴 Excel 的流程。主導以 Vue.js 進行前端開發並串接 Flask 後端，實作權限控管（RBAC）、輸入驗證、版本控制與任務追蹤，強化跨部門協作並避免資料被覆寫。",
@@ -131,7 +131,7 @@ const projects = [
       zh: "2025 花蓮黑客松",
     },
     img: "Project/hualien_hackathon.jpg",
-    inner_img: "Project/hualien_hackathon_inner.png",
+    inner_img: "Project/hualien_hackathon_inner.jpg",
     short_description: {
       en: "2025 Hualien Hackathon – Finalist. Acted as a Data Analyst to tackle uneven tourist distribution. Analyzed open data to identify spatial imbalances and translated these insights into an Alternative Reality Game (ARG) board game, 'Wandering in Yuguang.' Designed mechanics to guide players to lesser-known spots and successfully conducted field testing with local sponsors.",
       zh: "2025 花蓮黑客松 — 決賽入圍。擔任資料分析師，處理觀光人流分布不均的問題。透過分析開放資料找出空間上的失衡，並把這些洞察轉化為一款 ARG 實境遊戲桌遊〈洄遊漁光中〉。設計遊戲機制引導玩家走訪較冷門的景點，並與在地贊助商合作完成實地測試。",
@@ -179,8 +179,8 @@ const projects = [
   {
     id: 0,
     title: { en: "Coming Soon", zh: "敬請期待" },
-    img: "Project/coming_soon.png",
-    inner_img: "Project/coming_soon.png",
+    img: "Project/coming_soon.jpg",
+    inner_img: "Project/coming_soon.jpg",
     short_description: {
       en: "A fresh project is on the horizon, promising creativity, sustainability, and groundbreaking tech insights. Check back soon for updates!",
       zh: "一個全新的專案即將登場，充滿創意、永續理念與突破性的技術洞察。敬請持續關注更新！",

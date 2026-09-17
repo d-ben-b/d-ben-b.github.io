@@ -2,7 +2,9 @@
   <section class="relative min-h-screen overflow-hidden font-sans text-gray-800 bg-cream">
     <div class="absolute inset-0 z-0 will-change-transform"
       :style="{ transform: `translateY(${parallaxOffset * 0.5}px)` }">
-      <img :src="image(imageIndex)" alt="Hero Background" class="object-cover w-full h-full opacity-30" />
+      <!-- hero 是 LCP：刻意不加 loading="lazy" -->
+      <img :src="image(imageIndex)" alt="Hero Background" class="object-cover w-full h-full opacity-30"
+        decoding="async" />
       <div class="absolute inset-0 bg-gradient-to-b from-black/30 to-transparent"></div>
     </div>
 
