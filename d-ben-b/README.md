@@ -26,7 +26,7 @@ npm run preview  # 預覽 dist/
 | 關於我的數字與技能 | `src/views/About.vue` 的 `stats`、`skillGroups` |
 | 首頁輪播照片 | `src/assets/heroImages.js` |
 | Email、GitHub、LinkedIn | `src/assets/data.js` |
-| 下載履歷 | `public/resume_zh_full.pdf`、`public/resume_en_full.pdf`（由 resume repo 產生） |
+| 下載履歷 | `public/resume_zh_full.pdf`、`public/resume_en_full.pdf`：從 resume repo 的 `output/resume_zh_concise.pdf`、`resume_en_concise.pdf` 複製過來（一頁版，檔名沿用舊的，連結才不會失效） |
 
 內容的出處和但書在 resume repo（`../resume/resources/`）；網站上放了哪些、還缺哪些，記在 `resources/website/personal-website.md`。
 

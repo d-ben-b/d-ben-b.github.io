@@ -27,6 +27,32 @@
   },
   {
     "date": {
+      "en": "Jul 2026 – present",
+      "zh": "2026年7月至今"
+    },
+    "sort": "2026-10",
+    "type": "competition",
+    "title": {
+      "en": "Baseball-Pitching Robot — Vision and Aiming Software",
+      "zh": "棒球投手機器人 — 視覺定位與瞄準軟體"
+    },
+    "org": {
+      "en": "2026 robot competition · in progress (event in Nov)",
+      "zh": "2026 機器人比賽 · 進行中（11 月比賽）"
+    },
+    "summary": {
+      "en": "Wrote all of the robot's software: YOLO11n hole detection trained on 2,000 synthetic images, board-level PnP with one camera, aiming with per-shot landing correction (hit rate 80% → 91% over 60 simulated matches), and a PyBullet simulation. Connected and calibrated the real camera in Oct 2026 (0.71 px).",
+      "zh": "負責機器人的全部軟體：以 2,000 張合成影像訓練 YOLO11n 偵測網孔、用一台相機以整板 PnP 定位、依每球落點修正瞄準（模擬 60 場，命中率 80% → 91%），以及 PyBullet 物理模擬。2026 年 10 月接上實體相機並完成標定（誤差 0.71 像素）。"
+    },
+    "tech": [
+      "YOLO11n",
+      "OpenCV",
+      "PyBullet",
+      "Jetson Orin Nano"
+    ]
+  },
+  {
+    "date": {
       "en": "Aug–Oct 2026",
       "zh": "2026年8–10月"
     },
@@ -166,8 +192,8 @@
       "zh": "Jetson Orin Nano 風格轉換 — TensorRT FP16／INT8"
     },
     "org": {
-      "en": "Edge-AI team project (3 people)",
-      "zh": "邊緣 AI 專題（三人團隊）"
+      "en": "Edge-AI project",
+      "zh": "邊緣 AI 專題"
     },
     "summary": {
       "en": "Compiled a pretrained style-transfer model into TensorRT engines with a custom INT8 calibrator: 65.8 ms (FP32) → 45.0 ms (FP16) → 40.5 ms (INT8, 24.7 FPS) per 480×640 frame.",
@@ -550,13 +576,13 @@
       "zh": "Sparkful（200+ 隊）"
     },
     "summary": {
-      "en": "Owned the technical build of a food-recognition health & finance platform; retrained YOLO11 on UECFOOD256 (256 classes), Vue + Django over REST APIs.",
-      "zh": "負責食物辨識健康理財平台的全部技術實作；在 UECFOOD256（256 類）上重訓 YOLO11，Vue + Django 以 REST API 串接。"
+      "en": "Owned the technical build of a food-recognition health & finance platform; retrained YOLO11n on UECFOOD256 (256 classes), Vue + Django over REST APIs.",
+      "zh": "負責食物辨識健康理財平台的全部技術實作；在 UECFOOD256（256 類）上重訓 YOLO11n，Vue + Django 以 REST API 串接。"
     },
     "tech": [
       "Vue.js",
       "Django",
-      "YOLO11",
+      "YOLO11n",
       "REST API"
     ],
     "link": "https://sparkful-frontend.vercel.app"
