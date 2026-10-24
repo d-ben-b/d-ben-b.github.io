@@ -7,14 +7,17 @@
       <rect x="20" y="4" width="24" height="6" rx="1" fill="#4B5563" transform="rotate(45 20 4)" />
       <circle cx="32" cy="16" r="2" fill="white" />
     </svg>
-    <img :src="props.image" alt="" class="object-cover w-full aspect-square grow" draggable="false" loading="lazy"
-      decoding="async" width="350" height="350" />
+    <!-- 卡片內寬 318px：高密度螢幕最多挑 640px 的版本就夠清楚 -->
+    <SmartImg :src="props.image" alt="" class="object-cover w-full aspect-square grow" draggable="false"
+      sizes="318px" :max-width="640" />
     <div class="time">{{ time }}</div>
     <div class="title">{{ title }}</div>
   </div>
 </template>
 
 <script setup>
+import SmartImg from "./SmartImg.vue";
+
 const props = defineProps({
   image: {
     type: String,

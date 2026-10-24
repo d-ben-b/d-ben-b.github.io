@@ -1,16 +1,18 @@
 <template>
-  <section class="relative min-h-screen overflow-hidden font-sans text-gray-800 bg-cream">
-    <div class="absolute inset-0 z-0 will-change-transform"
-      :style="{ transform: `translateY(${parallaxOffset * 0.5}px)` }">
-      <!-- hero 是 LCP：刻意不加 loading="lazy" -->
-      <img :src="image(imageIndex)" alt="Hero Background" class="object-cover w-full h-full opacity-30"
-        decoding="async" />
+  <section class="relative w-full min-h-screen overflow-hidden font-sans text-gray-800 bg-cream">
+    <div ref="heroBg" class="absolute inset-0 z-0 will-change-transform">
+      <!-- 下一張先在背景下載、解碼好才切換，兩張疊在一起淡入淡出 -->
+      <Transition name="hero-fade">
+        <div :key="heroIndex" class="absolute inset-0 opacity-30">
+          <SmartImg :src="heroImages[heroIndex]" alt="" sizes="100vw" :eager="heroIndex === 0"
+            class="object-cover w-full h-full" />
+        </div>
+      </Transition>
       <div class="absolute inset-0 bg-gradient-to-b from-black/30 to-transparent"></div>
     </div>
 
-    <div
-      class="relative z-10 flex flex-col items-center justify-center h-screen px-6 text-center md:items-start md:text-left md:px-16 scroll-fade"
-      data-aos="fade-up" data-aos-duration="1000">
+    <div v-reveal
+      class="relative z-10 flex flex-col items-center justify-center h-screen px-6 text-center md:items-start md:text-left md:px-16">
 
       <h1 class="mb-4 text-4xl font-extrabold tracking-tight text-gray-900 md:text-5xl lg:text-6xl">
         {{ t("home.greeting") }}<span class="text-primary">{{ t("home.name") }}</span>{{ t("home.greetingEnd") }}
@@ -38,69 +40,68 @@
       </div>
     </div>
 
-    <div id="card-section"
-      class="scroll-mt-[100px] relative z-10 grid grid-cols-1 gap-8 px-6 pt-20 pb-20 md:pt-32 md:px-16 md:grid-cols-3 bg-cream"
-      data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
-      <HomeCard :title="t('home.cards.projects.title')" :subtitle="t('home.cards.projects.subtitle')" :image="image(1)"
-        link="/projects" />
-      <HomeCard :title="t('home.cards.journey.title')" :subtitle="t('home.cards.journey.subtitle')" :image="image(2)"
-        link="/journey" />
-      <HomeCard :title="t('home.cards.about.title')" :subtitle="t('home.cards.about.subtitle')" :image="image(3)"
-        link="/about" />
+    <div id="card-section" v-reveal="200"
+      class="scroll-mt-[100px] relative z-10 grid grid-cols-1 gap-8 px-6 pt-20 pb-20 md:pt-32 md:px-16 md:grid-cols-3 bg-cream">
+      <HomeCard :title="t('home.cards.projects.title')" :subtitle="t('home.cards.projects.subtitle')"
+        :image="heroImages[1]" link="/projects" />
+      <HomeCard :title="t('home.cards.journey.title')" :subtitle="t('home.cards.journey.subtitle')"
+        :image="heroImages[2]" link="/journey" />
+      <HomeCard :title="t('home.cards.about.title')" :subtitle="t('home.cards.about.subtitle')"
+        :image="heroImages[3]" link="/about" />
     </div>
     <ContactModal :isOpen="isContactModalOpen" @close="isContactModalOpen = false" />
   </section>
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onBeforeUnmount } from "vue";
+import { ref, onMounted, onBeforeUnmount } from "vue";
 import HomeCard from "../components/HomeCard.vue";
 import ContactModal from "../components/ContactModal.vue";
+import SmartImg from "../components/SmartImg.vue";
+import { heroImages } from "@/assets/heroImages";
+import { preloadImage } from "@/lib/images";
 import { t } from "@/i18n";
-import AOS from "aos";
-import "aos/dist/aos.css";
 
-const image_files = [
-  "LINE_ALBUM_台東出去玩第三天_241225_1.jpg",
-  "HOME.jpg",
-  "LINE_ALBUM_2024714高雄出來玩_241225_1.jpg",
-  "LINE_ALBUM_20221225大二聖誕節🎄_241225_1.jpg",
-];
-
-const imageIndex = ref(0);
-const parallaxOffset = ref(0);
+const heroIndex = ref(0);
+const heroBg = ref(null);
 const isContactModalOpen = ref(false);
 
-const image = computed(() => {
-  return (index) => {
-    if (index < 0 || index >= image_files.length) {
-      console.error(`Invalid index: ${index}`);
-      return null;
+// 輪播：看不到首屏（分頁在背景或已經往下捲）就不換，省流量
+let rotateTimer;
+let rotating = false;
+const rotateHero = async () => {
+  if (rotating || document.hidden || window.scrollY > window.innerHeight) return;
+  rotating = true;
+  const next = (heroIndex.value + 1) % heroImages.length;
+  await preloadImage(heroImages[next], "100vw");
+  heroIndex.value = next;
+  rotating = false;
+};
+
+// 視差：每個畫面更新最多算一次，直接改 transform，不經過 Vue 重新渲染
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+let ticking = false;
+const handleScroll = () => {
+  if (ticking) return;
+  ticking = true;
+  requestAnimationFrame(() => {
+    ticking = false;
+    const y = window.scrollY;
+    if (heroBg.value && y <= window.innerHeight * 1.5) {
+      heroBg.value.style.transform = `translate3d(0, ${y * 0.5}px, 0)`;
     }
-    return new URL(`../assets/images/${image_files[index]}`, import.meta.url).href;
-  };
-});
+  });
+};
 
-// 注意：原程式碼中 setInterval 沒被清除，建議在 onBeforeUnmount 裡加上 clearInterval
-let intervalId;
 onMounted(() => {
-  AOS.init({ once: true });
-  window.addEventListener("scroll", handleScroll);
-
-  intervalId = setInterval(() => {
-    imageIndex.value = (imageIndex.value + 1) % image_files.length;
-  }, 5000);
+  if (!reduceMotion) window.addEventListener("scroll", handleScroll, { passive: true });
+  rotateTimer = setInterval(rotateHero, 6000);
 });
 
 onBeforeUnmount(() => {
   window.removeEventListener("scroll", handleScroll);
-  if (intervalId) clearInterval(intervalId);
+  clearInterval(rotateTimer);
 });
-
-const handleScroll = () => {
-  // 加上 null 判斷與範圍限制，避免過度計算
-  parallaxOffset.value = window.scrollY;
-};
 
 const scrollToCardSection = () => {
   const el = document.getElementById("card-section");
@@ -142,8 +143,13 @@ const scrollToCardSection = () => {
   color: #09311f;
 }
 
-.font-sans {
-  font-family: "Inter", "Noto Sans TC", "DM Sans", ui-sans-serif, system-ui,
-    sans-serif;
+.hero-fade-enter-active,
+.hero-fade-leave-active {
+  transition: opacity 1.2s ease;
+}
+
+.hero-fade-enter-from,
+.hero-fade-leave-to {
+  opacity: 0;
 }
 </style>

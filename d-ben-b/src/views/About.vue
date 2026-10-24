@@ -13,7 +13,7 @@
 
     <div class="max-w-5xl mx-auto">
       <div class="flex flex-col items-center gap-6 mb-8 md:flex-row">
-        <img loading="lazy" decoding="async" :src="image(0)" alt="my profile"
+        <SmartImg :src="photos.profile" :sizes="photoSizes" alt="my profile"
           class="flex-shrink-0 object-cover w-full rounded-xl shadow-md sm:w-1/2 md:w-1/3" />
         <div class="text-left">
           <p class="text-base leading-relaxed text-gray-600 md:text-lg">
@@ -28,12 +28,12 @@
             {{ t("about.p2") }}
           </p>
         </div>
-        <img loading="lazy" decoding="async" :src="image(1)" alt="Volunteer picture"
+        <SmartImg :src="photos.volunteer" :sizes="photoSizes" alt="Volunteer picture"
           class="flex-shrink-0 object-cover w-full rounded-xl shadow-md sm:w-1/2 md:w-1/3" />
       </div>
 
       <div class="flex flex-col items-center gap-6 mb-8 md:flex-row">
-        <img loading="lazy" decoding="async" :src="image(2)" alt="my profile"
+        <SmartImg :src="photos.goal" :sizes="photoSizes" alt="Giving a talk"
           class="flex-shrink-0 object-cover w-full rounded-xl shadow-md sm:w-1/2 md:w-1/3" />
         <div class="text-left">
           <p class="text-base leading-relaxed text-gray-600 md:text-lg">
@@ -62,16 +62,16 @@
       </div>
     </div>
 
-    <!-- Skills -->
+    <!-- Skills：分組和履歷（resume repo 的 data/content.yml）一致，只列有專案或課程佐證的項目 -->
     <div class="max-w-5xl mx-auto">
       <h2 class="mt-10 mb-3 text-xl font-semibold text-left text-gray-700">{{ t("about.skills") }}</h2>
-      <div ref="skillsContainer" class="grid grid-cols-2 gap-3 sm:grid-cols-3">
-        <div v-for="(skill, index) in skills" :key="skill" class="skill-item" :class="{ visible: skillsVisible }"
-          :style="{ animationDelay: `${index * 0.1}s` }">
-          <div class="skill-icon">
-            <img loading="lazy" decoding="async" :src="getSkillIcon(skill)" :alt="skill + ' icon'" class="w-6 h-6" />
+      <div ref="skillsContainer" class="grid gap-3 text-left md:grid-cols-2">
+        <div v-for="(group, index) in skillGroups" :key="group.label" class="skill-group"
+          :class="{ visible: skillsVisible }" :style="{ animationDelay: `${index * 0.1}s` }">
+          <h3 class="mb-2 text-sm font-semibold text-emerald-900">{{ t(group.label) }}</h3>
+          <div class="flex flex-wrap gap-1.5">
+            <span v-for="item in group.items" :key="item" class="skill-chip">{{ item }}</span>
           </div>
-          <span>{{ skill }}</span>
         </div>
       </div>
     </div>
@@ -83,7 +83,7 @@
         <p class="pb-6 text-base leading-relaxed text-left text-gray-600 md:pb-10 md:text-lg">
           {{ t("about.hobbiesText") }}
         </p>
-        <img loading="lazy" decoding="async" :src="image(3)" alt="Hobby picture"
+        <SmartImg :src="photos.hobby" :sizes="photoSizes" alt="Hobby picture"
           class="flex-shrink-0 object-cover w-full rounded-xl shadow-md sm:w-1/2 md:w-1/3" />
       </div>
     </div>
@@ -91,27 +91,26 @@
 </template>
 
 <script setup>
-import { computed, ref, onMounted } from "vue";
+import { computed, ref, onMounted, onBeforeUnmount } from "vue";
+import SmartImg from "../components/SmartImg.vue";
 import { t } from "@/i18n";
 
-const image_files = ["MyProfile.jpg", "Volunteer.jpg", "Goal1.jpg", "Hobby.jpg"];
-const image = computed(() => {
-  return (index) => {
-    if (index < 0 || index >= image_files.length) {
-      console.error(`Invalid index: ${index}`);
-      return null;
-    }
-    return new URL(`../assets/images/${image_files[index]}`, import.meta.url)
-      .href;
-  };
-});
+const photos = {
+  profile: "images/about-profile.jpg",
+  volunteer: "images/about-volunteer.jpg",
+  goal: "images/about-goal.jpg",
+  hobby: "images/about-hobby.jpg",
+};
+// 手機全寬、平板半寬、桌機三分之一（內容區最寬 1024px，所以最多約 340px）
+const photoSizes = "(min-width: 1024px) 340px, (min-width: 768px) 33vw, (min-width: 640px) 50vw, 100vw";
 
 // Real figures pulled from the timeline / résumé — not invented.
+// certs：resume repo 的 resources/certificates 有 20 張 Coursera 證書和 2 張 Google 學程證書
 const stats = [
   { value: "4.04 / 4.3", label: "about.stats.gpa" },
   { value: "835", label: "about.stats.toeic" },
   { value: "M.S.", label: "about.stats.degree" },
-  { value: "6+", label: "about.stats.certs" },
+  { value: "20+", label: "about.stats.certs" },
 ];
 
 const educationList = computed(() => [
@@ -127,35 +126,24 @@ const educationList = computed(() => [
   },
 ]);
 
-// Skills data
-const skills = [
-  "JavaScript",
-  "Vue.js",
-  "HTML & CSS",
-  "Node.js",
-  "Python",
-  "Machine learning",
+const skillGroups = [
+  { label: "about.skillGroups.languages", items: ["Python", "JavaScript", "SQL", "C / C++"] },
+  { label: "about.skillGroups.ml", items: ["PyTorch", "Hugging Face", "timm", "scikit-learn", "LightGBM"] },
+  {
+    label: "about.skillGroups.compression",
+    items: ["Pruning (N:M)", "Quantization (INT8)", "Distillation", "ONNX", "TensorRT", "Jetson"],
+  },
+  { label: "about.skillGroups.vision", items: ["YOLO", "DeepLabV3", "OpenCV", "GStreamer", "RAG / FAISS", "PPO / DQN"] },
+  { label: "about.skillGroups.web", items: ["Vue.js", "Django", "Flask", "Docker", "Git"] },
 ];
-
-const getSkillIcon = (skill) => {
-  const iconMap = {
-    JavaScript: "js.png",
-    "Vue.js": "vue.png",
-    "HTML & CSS": "html.png",
-    "Node.js": "node.png",
-    Python: "python.png",
-    "Machine learning": "ml.png",
-  };
-  const fileName = iconMap[skill] || "default-skill.png";
-  return new URL(`../assets/images/icons/${fileName}`, import.meta.url).href;
-};
 
 // Animation for skills
 const skillsContainer = ref(null);
 const skillsVisible = ref(false);
+let observer;
 
 onMounted(() => {
-  const observer = new IntersectionObserver(
+  observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -171,13 +159,13 @@ onMounted(() => {
     observer.observe(skillsContainer.value);
   }
 });
+
+onBeforeUnmount(() => observer?.disconnect());
 </script>
 
 <style scoped>
-.skill-item {
-  display: flex;
-  align-items: center;
-  padding: 0.75rem;
+.skill-group {
+  padding: 0.9rem 1rem;
   background-color: rgba(227, 245, 179, 0.8);
   border-radius: 0.5rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
@@ -186,25 +174,18 @@ onMounted(() => {
   transition: all 0.4s ease-out;
 }
 
-.skill-item.visible {
+.skill-group.visible {
   transform: translateY(0);
   animation: fadeInUp 0.5s ease forwards;
 }
 
-.skill-icon {
-  margin-right: 0.75rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 2rem;
-  height: 2rem;
-  border-radius: 50%;
-  background-color: rgba(229, 231, 235, 0.5);
-}
-
-.skill-item span {
+.skill-chip {
+  padding: 0.2rem 0.6rem;
+  font-size: 0.875rem;
   font-weight: 500;
   color: #4b5563;
+  background-color: rgba(255, 255, 255, 0.75);
+  border-radius: 9999px;
 }
 
 @keyframes fadeInUp {

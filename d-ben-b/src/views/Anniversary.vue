@@ -42,6 +42,11 @@
 import { ref, computed } from "vue";
 import PhotoCard from "@/components/PhotoCard.vue";
 import PhotoView from "@/components/PhotoView.vue"
+import { registerImages } from "@/lib/images";
+
+// 這頁照片的尺寸清單只在這頁需要，跟著這頁的程式一起載入（由 scripts/build-images.mjs 產生）
+const manifests = import.meta.glob("/src/generated/images-anniversary.json", { eager: true, import: "default" });
+Object.values(manifests).forEach(registerImages);
 const scrollContainer1 = ref(null);
 const scrollContainer2 = ref(null);
 let isDragging = false;

@@ -10,13 +10,16 @@ export const theme = {
       theme: "#66B032",
     },
     fontFamily: {
+      // 英數字用 Inter；中文不載入網路字型（Noto Sans TC 一頁要 0.7–1MB），
+      // 直接用系統字型：Mac / iOS 蘋方、Windows 微軟正黑體、Android 思源黑體
       sans: [
-        "Inter",
-        "Noto Sans TC",
-        "ui-sans-serif",
-        "system-ui",
+        "Inter Variable",
         "PingFang TC",
         "Microsoft JhengHei",
+        "Noto Sans TC",
+        "Noto Sans CJK TC",
+        "ui-sans-serif",
+        "system-ui",
         "sans-serif",
       ],
       serif: ["Noto Serif TC", "Merriweather", "serif"],

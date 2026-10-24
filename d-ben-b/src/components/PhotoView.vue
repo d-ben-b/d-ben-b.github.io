@@ -13,15 +13,18 @@
 
       <!-- Photo content -->
       <div class="flex flex-col items-center mt-4">
-        <img v-if="selectedPhoto" :src="currentImage" alt="" class="max-h-[50vh] object-contain" decoding="async" />
+        <!-- 圖框照這張照片的長寬比，最高半個螢幕 -->
+        <div v-if="selectedPhoto" class="overflow-hidden bg-gray-100" :style="frame.style">
+          <SmartImg :key="currentImage" :src="currentImage" eager :sizes="frame.sizes"
+            class="object-cover w-full h-full" />
+        </div>
 
-        <!-- Thumbnails section -->
+        <!-- Thumbnails section：64px 的縮圖只下載 160px 的版本 -->
         <div v-if="hasMultipleImages" class="flex flex-wrap justify-center gap-2 mt-4">
           <div v-for="(img, idx) in allImages" :key="idx" @click="currentImageIndex = idx"
             class="w-16 h-16 transition-all border-2 cursor-pointer"
             :class="currentImageIndex === idx ? 'border-blue-500 opacity-100' : 'border-gray-200 opacity-70 hover:opacity-100'">
-            <img :src="img" alt="" class="object-cover w-full h-full" loading="lazy" decoding="async" width="64"
-              height="64" />
+            <SmartImg :src="img" sizes="64px" :max-width="160" class="object-cover w-full h-full" />
           </div>
         </div>
 
@@ -35,6 +38,8 @@
 
 <script setup>
 import { ref, computed } from 'vue';
+import SmartImg from './SmartImg.vue';
+import { viewerFrame } from '@/lib/images';
 
 const props = defineProps({
   isOpen: {
@@ -91,6 +96,9 @@ const currentImage = computed(() => {
 
   return allImages.value[currentImageIndex.value];
 });
+
+// 檢視器內容最寬 848px（max-w-4xl 扣掉左右 padding），手機上 padding 共 48px
+const frame = computed(() => viewerFrame(currentImage.value, 848, 48));
 </script>
 
 <style scoped>

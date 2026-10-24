@@ -99,11 +99,13 @@ let cards = [];
 let ticking = false;
 
 // Scale up the card nearest the viewport centre; shrink + fade the ones above/below.
+// 先一次讀完所有卡片的位置，再一次寫入樣式：讀寫交錯會讓瀏覽器每張卡片都重算一次版面
 const update = () => {
   ticking = false;
   const mid = window.innerHeight / 2;
-  for (const card of cards) {
-    const rect = card.getBoundingClientRect();
+  const rects = cards.map((card) => card.getBoundingClientRect());
+  cards.forEach((card, i) => {
+    const rect = rects[i];
     const cardMid = rect.top + rect.height / 2;
     const norm = Math.min(Math.abs(cardMid - mid) / mid, 1); // 0 = centre, 1 = far
     const eased = norm * norm; // gentle falloff so the effect isn't too aggressive
@@ -111,7 +113,7 @@ const update = () => {
     const opacity = (1 - eased * 0.55).toFixed(3); // 1 centre → ~0.45 edges
     card.style.transform = `scale(${scale})`;
     card.style.opacity = opacity;
-  }
+  });
 };
 
 const onScroll = () => {
@@ -130,7 +132,8 @@ const refreshCards = async () => {
 onMounted(async () => {
   try {
     const res = await fetch(`${import.meta.env.BASE_URL}timeline.json`);
-    items.value = await res.json();
+    // 依 sort（YYYY-MM）新到舊排；同一個月的照 timeline.json 裡的順序
+    items.value = (await res.json()).sort((a, b) => (b.sort || "").localeCompare(a.sort || ""));
   } catch (e) {
     console.error("Failed to load timeline.json", e);
   } finally {
@@ -138,7 +141,7 @@ onMounted(async () => {
   }
   await refreshCards();
   window.addEventListener("scroll", onScroll, { passive: true });
-  window.addEventListener("resize", onScroll);
+  window.addEventListener("resize", onScroll, { passive: true });
 });
 
 onBeforeUnmount(() => {

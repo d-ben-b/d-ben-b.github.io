@@ -14,10 +14,27 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v4
 
+      - name: Setup Node 🟢
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: d-ben-b/package-lock.json
+
+      # scripts/build-images.mjs 的輸出：照片沒變就沿用上次產生的 WebP，只重產有變動的
+      - name: Cache responsive images 🖼️
+        uses: actions/cache@v4
+        with:
+          path: |
+            d-ben-b/public/_img
+            d-ben-b/src/generated
+          key: images-${{ hashFiles('d-ben-b/public/images/**', 'd-ben-b/public/Project/**', 'd-ben-b/public/anniversary/**', 'd-ben-b/scripts/build-images.mjs') }}
+          restore-keys: images-
+
       - name: Install and Build 🔧
         working-directory: ./d-ben-b
         run: |
-          npm install
+          npm ci
           npm run build
 
       - name: Deploy 🚀

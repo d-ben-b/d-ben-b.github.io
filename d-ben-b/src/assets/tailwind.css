@@ -4,9 +4,7 @@
 
 @layer base {
   html {
-    font-family: "Inter", "Noto Sans TC", ui-sans-serif, system-ui,
-      -apple-system, "Segoe UI", Roboto, "PingFang TC", "Microsoft JhengHei",
-      sans-serif;
+    font-family: theme("fontFamily.sans");
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -21,4 +19,23 @@
 
 .icon-style {
   @apply w-10 h-10;
+}
+
+/* v-reveal（src/directives/reveal.js）：捲進畫面時淡入上移 */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }

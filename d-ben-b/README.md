@@ -1,48 +1,47 @@
-# my-vue-app/my-vue-app/README.md
+# d-ben-b.github.io
 
-# My Vue App
+阮紹銘的個人網站：<https://d-ben-b.github.io/>。Vue 3 + Vite + Tailwind CSS，中英雙語。
+push 到 `main` 後由 GitHub Actions（`.github/workflows/deploy.yml`）建置並部署到 GitHub Pages。
 
-## Description
+## 開發
 
-This is a personal portfolio website built with Vue.js. It showcases information about myself, my projects, and provides a way to contact me.
+需要 Node.js 22。
 
-## Project Structure
+```bash
+npm ci           # 照 package-lock.json 安裝
+npm run dev      # 本機預覽 http://localhost:5173
+npm run build    # 產出 dist/
+npm run preview  # 預覽 dist/
+```
 
-- **public/index.html**: Main HTML file for the application.
-- **src/assets**: Directory for static assets like images and styles.
-- **src/components**: Contains reusable Vue components.
-  - **About.vue**: Displays information about myself.
-  - **Contact.vue**: Provides contact information and a contact form.
-  - **Projects.vue**: Showcases my projects.
-- **src/views/Home.vue**: Main view that arranges the About, Projects, and Contact components.
-- **src/App.vue**: Root component of the Vue application.
-- **src/main.js**: Entry point of the Vue application.
-- **package.json**: Configuration file for npm.
-- **vue.config.js**: Configuration for Vue CLI settings.
+`dev` 和 `build` 之前會自動執行 `npm run images`（見下面「圖片」）。
 
-## Setup Instructions
+## 內容在哪裡改
 
-1. Clone the repository:
-   ```
-   git clone <repository-url>
-   ```
-2. Navigate to the project directory:
-   ```
-   cd my-vue-app
-   ```
-3. Install dependencies:
-   ```
-   npm install
-   ```
-4. Run the application:
-   ```
-   npm run serve
-   ```
+| 頁面 | 檔案 |
+| --- | --- |
+| 作品 | `src/assets/projects.js`（欄位說明寫在檔案開頭） |
+| 歷程 | `public/timeline.json`（頁面會依 `sort` 新到舊排，不用手動排順序） |
+| 首頁、關於我的文字 | `src/i18n/locales/zh.js`、`en.js` |
+| 關於我的數字與技能 | `src/views/About.vue` 的 `stats`、`skillGroups` |
+| 首頁輪播照片 | `src/assets/heroImages.js` |
+| Email、GitHub、LinkedIn | `src/assets/data.js` |
+| 下載履歷 | `public/resume_zh_full.pdf`、`public/resume_en_full.pdf`（由 resume repo 產生） |
 
-## Usage
+內容的出處和但書在 resume repo（`../resume/resources/`）；網站上放了哪些、還缺哪些，記在 `resources/website/personal-website.md`。
 
-Open your browser and go to `http://localhost:8080` to view the application. You can navigate through the sections to learn more about me, my projects, and how to contact me.
+## 圖片
 
-## License
+照片原檔放在 `public/images/`、`public/Project/`、`public/anniversary/`，程式裡用相對 `public/` 的路徑引用（例如 `"Project/foo.jpg"`），
+並用 `src/components/SmartImg.vue` 顯示，不要直接寫 `<img>`。
 
-This project is licensed under the MIT License.
+`scripts/build-images.mjs` 會為每張照片產生 160～1920px 多種寬度的 WebP（`public/_img/`）和尺寸清單（`src/generated/`），
+瀏覽器依螢幕大小只下載夠用的那張；圖片下載完之前先顯示清單裡 16px 的模糊預覽。這兩個資料夾不進 git，每次建置重產，內容沒變的照片會跳過。
+
+新增照片的步驟：
+
+1. 原圖長邊超過 2000px 的，先跑 `node scripts/optimize-images.mjs` 縮小（會直接覆寫原檔）。
+2. 放進上面三個資料夾之一，在資料檔裡引用。
+3. `npm run dev`，照片會自動處理。
+
+作品卡片的圖固定 16:10，照片會裁邊；圖表這類不能裁的，在 `projects.js` 那一項加 `coverFit: "contain"`。

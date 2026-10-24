@@ -28,3 +28,7 @@ coverage
 *.sw?
 
 *.tsbuildinfo
+
+# scripts/build-images.mjs 產生的 WebP 與圖片清單（每次 dev / build 前重產）
+public/_img/
+src/generated/

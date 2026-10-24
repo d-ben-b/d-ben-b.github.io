@@ -41,6 +41,7 @@
           {{ t("contact.send") }}
         </button>
       </div>
+      <p class="mt-3 text-sm text-center text-gray-500">{{ t("contact.mailNote") }}</p>
     </form>
   </section>
 </template>
@@ -52,17 +53,15 @@ import { t } from "@/i18n";
 
 const name = ref("");
 const message = ref("");
-const showBubble = ref(true);
 const emailData = data.email;
 const githubData = data.github;
 const linkedInData = data.linkedin;
 
+// 網站是純靜態的，沒有後端可以收信；改成打開訪客的郵件程式，把姓名和訊息帶進信裡
 const sendMessage = () => {
-  // Logic to handle sending the message (e.g., API call)
-  console.log(`Name: ${name.value}, Message: ${message.value}`);
-  // Reset form fields
-  name.value = "";
-  message.value = "";
+  const subject = `${t("contact.mailSubject")} - ${name.value}`;
+  const body = `${message.value}\n\n— ${name.value}`;
+  window.location.href = `mailto:${emailData}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 };
 </script>
 

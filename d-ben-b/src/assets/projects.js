@@ -1,163 +1,181 @@
-// Bilingual project data. Each text field is { en, zh }; pick() in components
-// selects the right language at render time. Draft zh translations — feel free
-// to refine the wording.
+// 作品頁的資料，新到舊排列。文字欄位都是 { en, zh }，元件用 pick() 依目前語言挑。
+//
+// cover    卡片上的圖；gallery 詳細視窗的圖，第一張先顯示。路徑都相對 public/。
+//          圖片放進 public/Project/ 之後，npm run dev / build 會自動產生各種尺寸（scripts/build-images.mjs）。
+//          卡片固定 16:10，照片會裁邊；圖表這類不能裁的加 coverFit: "contain"。
+// tag      比賽、計畫或場合，顯示在標題下方；獎項只寫在這裡，不要在介紹裡再寫一次。
+// links    type 決定按鈕文字：demo 線上展示、code 原始碼、writeup 技術報告、paper 論文、article 相關報導；
+//          同一種有兩個時用 label 覆寫文字。
+//
+// 內容的出處與但書在 resume repo 的 resources/projects/<專案>/；改數字前先對過那邊的文件。
 const projects = [
   {
-    id: 1,
-    title: {
-      en: "NCKU vs E Ink: Future Dynamic Program",
-      zh: "成大 × 元太 E Ink：未來動態學程",
+    id: "youwo",
+    date: { en: "Oct 2026", zh: "2026年10月" },
+    tag: {
+      en: "Startup Camp (NKUST × NCKU) · the only team awarded, by vote",
+      zh: "創業一定營（高科大 × 成大）· 全場票選唯一獲獎隊伍",
     },
-    img: "Project/_MG_4683.jpg",
-    inner_img: "Project/_MG_4994.jpg",
+    title: {
+      en: "Youwo Youni: A Trip Planner for Lesser-Known Spots",
+      zh: "有我遊你：小眾景點旅遊規劃網頁",
+    },
+    cover: "Project/youwo_team.jpg",
+    gallery: ["Project/youwo_app.jpg", "Project/youwo_trophy.jpg", "Project/youwo_team.jpg"],
     short_description: {
-      en: "I explored electronic paper as a green technology to improve information access and reduce waste. This project at NCKU deepened my commitment to sustainability and inspired me to apply design and development skills toward social and environmental impact.",
-      zh: "我探索電子紙作為一種綠色科技，藉以提升資訊取得便利性並減少浪費。這個在成大進行的專案深化了我對永續的投入，也啟發我把設計與開發能力運用在社會與環境影響上。",
+      en: "A mobile-first trip planner: pick a city or a theme and it lays out a multi-day itinerary with lesser-known spots, local activities, meals, transport, and costs. I built the software with Vue 3 and Pinia.",
+      zh: "手機優先的旅遊規劃網頁：選城市或主題，排出含小眾景點、在地活動、午晚餐、交通與花費的多日行程。我負責軟體，用 Vue 3 + Pinia 開發。",
     },
     description: {
-      en: `This project marked my first step into web development. Built solely with HTML, CSS, and JavaScript, it may not be the most advanced among my works, but it played a significant role in paving the way for my growth and success.
-      I deeply resonate with the United Nations Sustainable Development Goals (SDGs), especially in promoting environmentally friendly technologies . Among them, electronic paper stands out for its reusability and low energy consumption—qualities that make it both innovative and sustainable. Inspired by the animated newspapers in Harry Potter, I envision its potential to revolutionize how we interact with digital content.
-      At National Cheng Kung University (NCKU), I have had the opportunity to apply my skills in app design and web development to explore this technology further. This hands-on experience has enriched my understanding of both system-level design and user experience challenges. While current limitations—such as slow refresh rates and screen ghosting—still hinder widespread adoption, I remain optimistic about the future of e-paper and its potential to contribute meaningfully to sustainable innovation.`,
-      zh: `這個專案是我踏入網頁開發的第一步。它僅以 HTML、CSS 與 JavaScript 打造，或許不是我作品中最進階的，但對於鋪平我後續的成長與成就扮演了重要角色。
-      我深深認同聯合國永續發展目標（SDGs），尤其是推廣對環境友善的技術。其中，電子紙以其可重複使用與低耗能的特性脫穎而出——這讓它兼具創新與永續。受《哈利波特》中會動的報紙啟發，我看見它徹底改變我們與數位內容互動方式的潛力。
-      在國立成功大學（NCKU），我有機會運用 App 設計與網頁開發的能力，更深入地探索這項技術。這段實作經驗豐富了我對系統層級設計與使用者體驗挑戰的理解。雖然目前的限制——例如更新速度慢與殘影——仍阻礙普及，但我對電子紙的未來，以及它為永續創新做出實質貢獻的潛力，始終樂觀。`,
+      en: `Built at the Startup Camp co-hosted by National Kaohsiung University of Science and Technology and NCKU on Oct 17–18, 2026. My teammates came from different fields; I built the software.
+
+Niche index: a place's review count, social-post count, and peak crowding are ranked against places of the same type in the same city to get an exposure score, and lower exposure means more off the beaten path. A threshold on the Bayesian-average rating then filters out places that are merely empty: a place with only a few reviews scores close to the city average, so a handful of 5-star reviews cannot push it to the top.
+
+Routing: k-means on latitude and longitude splits the spots into one area per day. Each day starts and ends at the lodging; a nearest-neighbour pass (always go to the closest unvisited spot) sets the order, and 2-opt then removes crossing segments. On the demo data, sampling 5 spots 200 times per city, the ordered round trip was 18–22% shorter than a random order.
+
+Budget: a daily budget estimated from past trips' food, transport, and ticket spending is a hard cap. When a plan goes over, it switches to cheaper restaurants on the way, replaces pricier paid attractions, and finally drops the most expensive spot, logging each step in a budget-adjustment record.
+
+Day 1 shows up first while the remaining days are generated in the background. The places, restaurants, and spending history are demo data for Taipei, Tainan, and Hualien; itineraries are computed by the front end, and the site is deployed on Vercel.`,
+      zh: `2026 年 10 月 17～18 日創業一定營（國立高雄科技大學與國立成功大學合辦）的作品。隊友的專業各不相同，我負責軟體。
+
+小眾指數：把地點的評論數、社群貼文數、尖峰擁擠度，和同城市、同類型的地點比排名，算出曝光度，曝光度越低越小眾；再用貝氏平均評分設門檻，排除只是冷清的地方：評論很少的地點，算出來的分數會接近城市平均，不會因為剛好幾則五星就排到前面。
+
+排路線：先用 k-means 依經緯度把景點分成和天數一樣多的區域，一天只玩一區。每天從住處出發、回到住處，用最近鄰居法（每次走到最近、還沒去過的景點）排出順序，再用 2-opt 把交叉的路段換掉。在示範資料上，每個城市隨機抽 5 個景點、抽 200 組，排序後的來回路程比隨機順序短 18–22%。
+
+預算：用過去旅遊的餐飲、交通、門票花費推估每日預算，當作上限；超支時依序換成順路的平價餐廳、換掉較貴的付費景點、移除最花錢的景點，每一步都寫進「預算調整紀錄」。
+
+第 1 天的行程先出現，其餘天數在背景產生。景點、餐廳和消費紀錄是台北、台南、花蓮三個城市的示範資料，行程由前端的程式計算，網站部署在 Vercel。`,
     },
-    link: "https://sdg.ncku.edu.tw/product-792.html",
+    tech: ["Vue 3", "Pinia", "Vue Router", "Vite", "Vercel"],
+    links: [{ type: "demo", url: "https://youwo-youni.vercel.app" }],
   },
   {
-    id: 2,
-    title: {
-      en: "AI++ Tainan: Innovating Tomorrow's Digital City — 2024 AI Governance Tainan Hackathon",
-      zh: "AI++ 台南：打造明日數位城市 — 2024 台南數位城市治理黑客松",
+    id: "street-detection",
+    date: { en: "Aug–Oct 2026", zh: "2026年8–10月" },
+    tag: {
+      en: "AI talent program · Hamastar Technology",
+      zh: "AI 人才培育計畫 · 哈瑪星科技",
     },
-    img: "Project/IMG_0959.jpg",
-    inner_img: "Project/IMG_5126.jpg",
+    title: {
+      en: "Street-Scene Object Detection: YOLOv8 in the Browser",
+      zh: "街景物件偵測：在瀏覽器裡跑 YOLOv8",
+    },
+    cover: "Project/smis_expo.jpg",
+    gallery: ["Project/smis_pred.jpg", "Project/smis_expo.jpg", "Project/smis_team.jpg"],
     short_description: {
-      en: "2024 AI Tainan Digital Governance Hackathon – Best Popularity Award. Developed a web-based form management platform to replace Excel-based workflows for the Tainan Health Bureau. Led frontend development with Vue.js and integrated a Flask backend. Implemented role-based access control, input validation, version control, and task tracking to enhance cross-departmental collaboration and prevent data overwrites.",
-      zh: "2024 台南數位城市治理黑客松 — 最佳人氣獎。為台南市衛生局開發以網頁為基礎的表單管理平台，取代原本仰賴 Excel 的流程。主導以 Vue.js 進行前端開發並串接 Flask 後端，實作權限控管（RBAC）、輸入驗證、版本控制與任務追蹤，強化跨部門協作並避免資料被覆寫。",
+      en: "Detects bicycles, scooters, sedans, vans, and vendor carts in Taiwanese street scenes. After repairing the dataset (606 → 26,418 boxes) and retraining with YOLOv8, it reached 0.873 mAP@0.5 on validation; the model runs in the browser, so photos are never uploaded.",
+      zh: "辨識台灣街景的腳踏車、機車、轎車、廂型車和攤販車。修好資料集（標註框 606 → 26,418 個）後改用 YOLOv8 重訓，驗證集 mAP@0.5 0.873；模型在瀏覽器裡執行，照片不會上傳。",
     },
     description: {
-      en: `In 2024, we participated in the AI Tainan Digital City Governance Hackathon and developed a platform to help the Health Bureau improve the efficiency of information dissemination. Through interviews with staff and volunteers, we discovered that their original communication workflow heavily relied on Excel files. This often led to errors, accidental data overwrites, and difficulty tracking changes—especially when multiple people edited the same sheet.
-        To address these issues, we designed a role-based web platform where each user could log in with defined permissions. Instead of editing shared Excel files, users submitted or updated data through structured forms that automatically validated inputs and logged every change. All records were stored in a centralized database with version control and timestamps, ensuring traceability and preventing accidental overwrites. We also added a task-tracking and commenting system to replace scattered email communication, enabling more efficient collaboration across departments.
-        I was responsible for building the frontend using Vue.js, while also integrating it with a Flask backend. This was my first full-stack web development project, and it taught me how to apply technology to streamline real-world government workflows. Our project was well-received by public sector stakeholders and earned us the Best Popularity Award in the competition.`,
-      zh: `2024 年，我們參加台南數位城市治理黑客松，開發了一個平台協助衛生局提升資訊傳遞的效率。透過訪談承辦人員與志工，我們發現他們原本的溝通流程高度仰賴 Excel 檔案，常導致錯誤、資料被誤覆寫，以及難以追蹤異動——尤其是多人同時編輯同一張表時。
-        為解決這些問題，我們設計了一個具權限控管的網頁平台，每位使用者以各自的權限登入。使用者不再編輯共用的 Excel，而是透過結構化表單提交或更新資料，系統會自動驗證輸入並記錄每一筆異動。所有紀錄都儲存於集中式資料庫，搭配版本控制與時間戳記，確保可追溯並避免誤覆寫。我們也加入任務追蹤與留言系統，取代散落各處的電子郵件溝通，讓跨部門協作更有效率。
-        我負責以 Vue.js 建構前端，並與 Flask 後端整合。這是我第一個全端網頁開發專案，讓我學會如何運用技術簡化真實世界的政府作業流程。我們的作品深獲公部門利害關係人好評，並在競賽中拿下最佳人氣獎。`,
+      en: `A course project on AI image recognition and object detection run by Hamastar Technology under the Digital Youth T-Ambassador program, shown at the program's showcase, "2026 智匯星球 跨域點亮", in October 2026.
+
+The first model (YOLO-NAS) never scored above about 0.4 confidence. I wrote a checker that compares the dataset, the class definitions, and the ONNX model, and it surfaced the problems: only 606 labelled boxes, zero vans, scooters making up 89% of the labels, and class definitions that disagreed across the three (5 vs. 6 classes).
+
+I merged the project's own labels with the open Roboflow dataset "vehiclee" (CC BY 4.0) and wrote a script that maps its classes onto our 5, growing the data to 26,418 boxes (vans: 0 → 420). YOLO-NAS's package only supports Python 3.10, so I switched to Ultralytics YOLOv8 with transfer learning from COCO weights: 0.857 mAP@0.5 on validation, and 0.873 after labelling more vendor carts (on a new validation set). 91% of the validation images are European street scenes, so this number may overstate how well it does on Taiwanese streets.
+
+Inference runs in the browser: a free backend host goes to sleep when idle, and a demo would wait for it to wake up. The model is exported to ONNX and run with onnxruntime-web (WebAssembly); without the Ultralytics package I wrote the pre-processing (letterbox resize and padding) and post-processing (decoding the output, per-class NMS, mapping boxes back) myself. The page is deployed on Vercel and photos stay on the visitor's device.`,
+      zh: `「數位青年 T 大使」計畫中，哈瑪星科技的 AI 影像辨識與物件偵測課程專案；2026 年 10 月在「2026 智匯星球 跨域點亮」成果發表會展出。
+
+初版模型（YOLO-NAS）的信心值最高只有約 0.4。我寫了一個檢查工具，比對資料集、類別定義和 ONNX 模型三者，找出問題：訓練資料只有 606 個標註框、廂型車（van）沒有任何樣本、機車佔了 89%，而且三處的類別定義不一致（5 類與 6 類）。
+
+我把專案自己標註的資料和 Roboflow 的開源資料集「vehiclee」（CC BY 4.0）合併，寫腳本把外部資料集的類別對應到專案的 5 類，標註框增加到 26,418 個，廂型車從 0 增加到 420 個。YOLO-NAS 的套件只支援 Python 3.10，所以改用 Ultralytics YOLOv8，從 COCO 預訓練權重做遷移學習：驗證集 mAP@0.5 0.857，補標攤販車之後 0.873（新驗證集）。驗證集有 91% 是歐洲街景，這個數字可能高估在台灣街景的表現。
+
+推論放在瀏覽器：免費的後端主機閒置一段時間會休眠，展示時要等它開機。模型匯出成 ONNX，用 onnxruntime-web（WebAssembly）執行；少了 Ultralytics 套件，前處理（letterbox 等比縮放加補邊）和後處理（解析輸出、分類別 NMS、座標還原）都自己寫。網頁部署在 Vercel，照片全程在使用者的裝置上處理。`,
     },
-    link: "",
+    tech: ["YOLOv8", "ONNX", "onnxruntime-web", "WebAssembly", "Roboflow", "Vercel"],
+    links: [{ type: "demo", url: "https://smis-weld.vercel.app/" }],
   },
   {
-    id: 3,
-    title: {
-      en: "Sparkful Hack to the Top AI Hackathon",
-      zh: "Sparkful「Hack to the Top」AI 黑客松",
+    id: "rl-highway",
+    date: { en: "May–Jun 2026", zh: "2026年5–6月" },
+    tag: {
+      en: "Course paper (IEEE format) · NCKU EE",
+      zh: "課程論文（IEEE 格式）· 成大電機所",
     },
-    img: "Project/LINE_ALBUM_SPARKFUL AI金融黑客松_250430_1.jpg",
-    inner_img: "Project/LINE_ALBUM_SPARKFUL AI金融黑客松_250430_2.jpg",
+    title: {
+      en: "PPO vs. Double DQN for Autonomous Highway Driving",
+      zh: "自駕高速公路決策：PPO 與 Double DQN 的重現與比較",
+    },
+    cover: "Project/rl_ablation.jpg",
+    coverFit: "contain",
+    gallery: ["Project/rl_ablation.jpg"],
     short_description: {
-      en: "In 2025, our team was selected as a finalist among 200+ teams in the Sparkful Hackathon. I built the frontend with Vue.js and implemented the backend using Django. We retrained YOLOv11n on the UECFOOD256 dataset for food recognition, integrating AI, health scoring, and financial incentives into a full-stack web platform.",
-      zh: "2025 年，我們的團隊從 200 多隊中脫穎而出，入圍 Sparkful 黑客松決賽。我以 Vue.js 建構前端、以 Django 實作後端，並在 UECFOOD256 資料集上重新訓練 YOLOv11n 進行食物辨識，將 AI、健康評分與理財誘因整合成一個全端網頁平台。",
+      en: "Implemented PPO and Double DQN from scratch on highway-env. Episodic returns landed within 5.7% of each other, yet crash rates were 11.3% for Double DQN and 60.7–80.0% for PPO.",
+      zh: "從零實作 PPO 與 Double DQN，在 highway-env 上比較。三者的回合獎勵差距在 5.7% 以內，碰撞率卻是 Double DQN 11.3%、PPO 60.7–80.0%。",
     },
     description: {
-      en: `In 2025, our team was selected as a finalist from over 200 teams to compete in the Sparkful Hackathon. Although we did not place in the final rankings, the experience was immensely rewarding—we gained hands-on experience with new technologies and had the opportunity to connect with other talented participants from diverse backgrounds.
-        In this project, my teammate led the financial mechanism and UI design, while I was responsible for the technical implementation. I built the frontend using Vue.js, and for the backend, I took on the challenge of learning Django, becoming familiar with its MVT architecture and successfully completing full-stack integration.
-        For the AI component, we used YOLOv11n as our core food recognition model. Recognizing the limitations of standard pre-trained models, we retrained it using the UECFOOD256 dataset to improve food classification performance. The final product was a web platform built with Django + Vue + YOLOv11n + UECFOOD256, integrating food recognition, health analysis, and financial incentives via RESTful APIs.
-        This project provided a valuable opportunity to explore full-stack development and real-world AI deployment in a collaborative, interdisciplinary setting.`,
-      zh: `2025 年，我們的團隊從 200 多隊中獲選為決賽隊伍，參加 Sparkful 黑客松。雖然最終未進入名次，但這段經驗收穫極為豐富——我們不僅實際操作了新技術，也有機會結識來自不同背景的優秀夥伴。
-        在這個專案中，隊友主導理財機制與 UI 設計，我則負責技術實作。我以 Vue.js 建構前端，後端則挑戰學習 Django，熟悉其 MVT 架構並成功完成全端整合。
-        在 AI 部分，我們以 YOLOv11n 作為核心食物辨識模型。考量到一般預訓練模型的限制，我們以 UECFOOD256 資料集重新訓練，提升食物分類的表現。最終成品是一個以 Django + Vue + YOLOv11n + UECFOOD256 打造的網頁平台，透過 RESTful API 整合食物辨識、健康分析與理財誘因。
-        這個專案是一次寶貴的機會，讓我在跨領域協作的情境中探索全端開發與真實世界的 AI 部署。`,
+      en: `Paper: "Reproduction and Architectural Ablation of PPO and DQN for Discrete-Action Autonomous Highway Driving" (8 pages, IEEE format).
+
+I implemented PPO (GAE, clipped surrogate) and Double DQN (replay buffer, target network) from scratch and cross-checked them against Stable-Baselines3. The main environment is highway-env's highway-v0, with merge-v0 used to check whether the findings carry over; the agent picks one of 5 discrete actions from the positions and speeds of the 5 nearest cars, and each setting trains for 100,000 steps.
+
+Within PPO I compared a Self-Attention network with an MLP of matched size (66.8k vs. 72.3k parameters). Final episodic returns over 5 seeds: PPO + Attention 235.7 ± 16.7, PPO + MLP 223.0 ± 19.6, Double DQN 234.1 ± 7.7, all within 5.7%.
+
+Running each trained model for 30 episodes: highway-v0 crash rates were 60.7% (PPO + Attention), 80.0% (PPO + MLP), and 11.3% (Double DQN); on merge-v0 both PPO variants crashed every time and Double DQN never did. The paper concludes that safety-critical tasks cannot be judged by episodic return alone.
+
+The DQN network is deliberately smaller (20.5k parameters), so PPO vs. DQN is a comparison of algorithms, not of equally sized models. Self-Attention is the standard choice for highway-env; this is a reproduction.`,
+      zh: `論文：Reproduction and Architectural Ablation of PPO and DQN for Discrete-Action Autonomous Highway Driving（IEEE 格式，8 頁）。
+
+從零實作 PPO（GAE、clipped surrogate）與 Double DQN（replay buffer、target network），並和 Stable-Baselines3 交叉驗證。主要環境是 highway-env 的 highway-v0，用 merge-v0 檢查結論換了環境還成不成立；動作是 5 個離散動作，觀測是周圍 5 台車的位置與速度，每個設定訓練 100,000 步。
+
+PPO 內部比較 Self-Attention 和 MLP 兩種網路，參數量對齊（66.8k 與 72.3k）。5 個 seed 的最終回合獎勵：PPO + Attention 235.7 ± 16.7、PPO + MLP 223.0 ± 19.6、Double DQN 234.1 ± 7.7，差距在 5.7% 以內。
+
+訓練好的模型各跑 30 局：highway-v0 的碰撞率是 PPO + Attention 60.7%、PPO + MLP 80.0%、Double DQN 11.3%；merge-v0 上兩種 PPO 每局都撞，Double DQN 都沒撞。論文的結論是：安全相關的任務不能只看回合獎勵。
+
+Double DQN 的網路刻意做得比較小（20.5k 參數），所以 PPO 和 DQN 是演算法之間的比較，不是同樣大小的模型互比；Self-Attention 是 highway-env 的標準做法，這裡是重現。`,
     },
-    link: "https://sparkful-frontend.vercel.app",
+    tech: ["PyTorch", "PPO", "Double DQN", "Self-Attention", "highway-env"],
+    links: [
+      { type: "code", url: "https://github.com/d-ben-b/RL-final" },
+      { type: "paper", url: "https://github.com/d-ben-b/RL-final/blob/main/paper.pdf" },
+    ],
   },
   {
-    id: 4,
+    id: "style-transfer",
+    date: { en: "May 2026", zh: "2026年5月" },
+    tag: { en: "Edge AI · team of three", zh: "邊緣 AI · 三人團隊" },
     title: {
-      en: "Yu Jan Shin Employee Training Platform",
-      zh: "玉珍馨 企業教育訓練平台",
+      en: "Real-Time Style Transfer on Jetson Orin Nano: TensorRT FP16 / INT8",
+      zh: "Jetson Orin Nano 即時風格轉換：TensorRT FP16／INT8",
     },
-    img: "Project/YJS.png",
-    inner_img: "Project/YJS2.png",
+    cover: "Project/style_split.jpg",
+    gallery: ["Project/style_split.jpg", "Project/style_output.jpg", "Project/style_content.jpg"],
     short_description: {
-      en: "Contributed to a collaborative backend development project using Flask at NCKU, focusing on Modules 2 and 6. Although the project was not fully completed due to academic schedules, it provided hands-on experience in coordinating frontend-backend integration and communicating effectively with teammates and the project manager to ensure technical and design alignment.",
-      zh: "於成大參與一項以 Flask 進行的協作後端開發專案，主要負責第 2 與第 6 模組。雖然因課業時程未能全程參與，但這段經驗讓我實際練習了前後端整合的協調，以及與隊友、專案經理有效溝通，確保技術與設計方向一致。",
+      en: "Compiled a pretrained style-transfer model into TensorRT FP16 / INT8 engines (with my own INT8 calibrator) on a Jetson Orin Nano: 65.8 ms (FP32) → 45.0 ms (FP16) → 40.5 ms (INT8, 24.7 FPS) per 480×640 frame.",
+      zh: "把預訓練的風格轉換模型編成 TensorRT FP16／INT8 引擎（自己寫 INT8 校準器），部署到 Jetson Orin Nano：480×640 的影像，FP32 65.8 ms → FP16 45.0 ms → INT8 40.5 ms（每秒 24.7 張）。",
     },
     description: {
-      en: "This was my first experience participating in a real-world backend system development in collaboration with a company (Yu Jan Shin). I was responsible for two key modules—Module 2 and Module 6—within a Flask-based microservice architecture using Blueprints. Although I stepped away from the later stages due to academic responsibilities, I contributed significantly in the early design and implementation phases. I worked with Amazon RDS (MySQL) and dealt with schema planning, foreign key constraint handling, and naming consistency across multiple modules. The experience also introduced me to basic web security practices such as token management, access control, and role-based permissions. Most importantly, I learned how to communicate effectively with enterprise stakeholders, synchronize with other developers through Git, and align backend logic with frontend requirements.",
-      zh: "這是我第一次與企業（玉珍馨）合作、參與真實世界的後端系統開發。我在以 Flask Blueprint 建構的微服務架構中負責兩個關鍵模組——第 2 與第 6 模組。雖然後期因課業而退出，但我在早期的設計與實作階段貢獻良多。我使用 Amazon RDS（MySQL），處理資料表設計、外鍵約束，以及跨多個模組的命名一致性。這段經驗也讓我接觸到基本的網站安全實務，如 token 管理、存取控管與角色權限。最重要的是，我學會如何與企業利害關係人有效溝通、透過 Git 與其他開發者協作，並讓後端邏輯對齊前端需求。",
+      en: `A team project with three members. The weights are a downloaded pretrained model (mosaic style); my part was deployment: ONNX export, TensorRT engines, INT8 calibration, the inference code, and the measurements.
+
+Why TensorRT: the Orin Nano has an Ampere GPU (1,024 CUDA cores, 32 Tensor cores). When TensorRT builds an engine it tries different kernels on that exact GPU, keeps the fastest, and fuses neighbouring layers, so the engine has to be built on the Orin itself. FP16 and INT8 beat FP32 because the Tensor cores have dedicated FP16 / INT8 units, and fewer bytes per number means less data to move.
+
+The ONNX export fixes the input at 1×3×480×640. The INT8 engine uses post-training quantization with an IInt8EntropyCalibrator2 calibrator I wrote, caching the calibration result. Inference uses TensorRT 10's execute_async_v3; GPU memory, CUDA streams, and async copies go through ctypes calls to libcudart, with no PyCUDA.
+
+On the Jetson Orin Nano with 480×640 input, the three TensorRT engines took 65.81 ms (FP32), 44.96 ms (FP16), and 40.45 ms (INT8, 24.7 FPS). FP16 is 1.46× faster than FP32; INT8 is only 11% faster than FP16 even though its peak throughput is twice as high, and I have not yet verified why.
+
+The Gradio demo takes the Orin's USB camera, a phone or laptop camera streamed to the Orin over WebRTC, or a single uploaded image, and switches between FP16 and INT8 live. A teammate wrote its first version; I added the on-device camera demo and removed PyTorch from the app.`,
+      zh: `三人團隊的專題。模型權重是下載的預訓練模型（mosaic 風格），我負責部署：匯出 ONNX、編 TensorRT 引擎、INT8 校準、推論程式和量測。
+
+用 TensorRT 是因為 Orin Nano 有 Ampere 架構的 GPU（1,024 個 CUDA 核心、32 個 Tensor 核心）：TensorRT 編譯引擎時，會在這顆 GPU 上試跑各種運算方式、挑最快的，並把相鄰的層合併成一個運算，所以引擎要在 Orin 上編譯。FP16 和 INT8 比 FP32 快，是因為 Tensor 核心有專門算 FP16／INT8 的單元，而且每個數的位元組變少，要搬的資料也變少。
+
+匯出 ONNX 時把輸入固定為 1×3×480×640。INT8 引擎用訓練後量化，自己實作 IInt8EntropyCalibrator2 校準器，並把校準結果存起來重用。推論用 TensorRT 10 的 execute_async_v3，GPU 記憶體、CUDA stream 和非同步複製都用 ctypes 直接呼叫 libcudart，沒有裝 PyCUDA。
+
+在 Jetson Orin Nano 上、輸入 480×640，三種精度的 TensorRT 引擎：FP32 65.81 ms、FP16 44.96 ms、INT8 40.45 ms（每秒 24.7 張）。FP16 比 FP32 快 1.46 倍；INT8 只比 FP16 再快 11%，理論算力卻是兩倍，原因還沒驗證。
+
+展示介面用 Gradio，可以用 Orin 上的 USB 相機、手機或筆電相機（經 WebRTC 傳給 Orin），或上傳單張圖，並即時切換 FP16／INT8。介面的第一版是隊友寫的，我加上 Orin 本機相機的展示，並把介面裡的 PyTorch 拿掉。`,
     },
-    link: "",
+    tech: ["TensorRT", "ONNX", "INT8", "CUDA", "Jetson Orin Nano", "Gradio"],
+    links: [{ type: "code", url: "https://github.com/d-ben-b/style_transfer" }],
   },
   {
-    id: 5,
-    title: {
-      en: "Structured Pruning and Fine-tuning on DeiT Models",
-      zh: "DeiT 模型的結構化剪枝與微調",
-    },
-    img: "Project/deit_prune_summary.png",
-    inner_img: "Project/deit_pointwise_diff.png",
-    short_description: {
-      en: "Conducted structured N:M pruning on DeiT models and compared full and LoRA fine-tuning strategies in terms of accuracy and resource trade-offs.",
-      zh: "對 DeiT 模型進行結構化 N:M 剪枝，並從精度與資源取捨的角度比較完整微調與 LoRA 兩種微調策略。",
-    },
-    description: {
-      en: `This project investigates structured N:M pruning on six DeiT variants (Tiny / Small / Base × Distilled / Non-distilled) and evaluates two fine-tuning strategies: Full Finetuning and LoRA (Low-Rank Adaptation).
-
-  Using PyTorch's WeightNormSparsifier, we applied 2:4 and 4:8 sparsity to linear layers and measured accuracy drop post-pruning. We then fine-tuned models using both full and LoRA methods, recording training time and accuracy recovery.
-
-  Key findings include:
-  - Tiny models are highly sensitive to pruning, especially under 2:4 sparsity.
-  - Base models retain strong performance under 4:8 sparsity, ideal for deployment.
-  - LoRA achieves competitive accuracy with significantly fewer trainable parameters, offering an efficient solution for constrained environments.
-
-  This project lays the foundation for further work in model compression pipelines and deployable vision transformer optimization.`,
-      zh: `本專案研究六種 DeiT 變體（Tiny / Small / Base × 蒸餾 / 非蒸餾）的結構化 N:M 剪枝，並評估兩種微調策略：完整微調（Full Finetuning）與 LoRA（低秩適配）。
-
-  我們使用 PyTorch 的 WeightNormSparsifier，對線性層套用 2:4 與 4:8 稀疏度，並量測剪枝後的精度下降。接著以完整微調與 LoRA 兩種方式進行微調，記錄訓練時間與精度回復。
-
-  主要發現包括：
-  - Tiny 模型對剪枝極為敏感，尤其在 2:4 稀疏度下。
-  - Base 模型在 4:8 稀疏度下仍維持優異表現，非常適合部署。
-  - LoRA 以遠少的可訓練參數達到具競爭力的精度，為資源受限環境提供高效解法。
-
-  本專案為後續模型壓縮流程與可部署的視覺 Transformer 最佳化奠定了基礎。`,
-    },
-    link: "https://hackmd.io/@Z1Pajuk0RT2TQl-NwDQzDw/rk7yFLlWlg",
-  },
-  {
-    id: 6,
-    title: {
-      en: "2025 Hualien Hackathon",
-      zh: "2025 花蓮黑客松",
-    },
-    img: "Project/hualien_hackathon.jpg",
-    inner_img: "Project/hualien_hackathon_inner.jpg",
-    short_description: {
-      en: "2025 Hualien Hackathon – Finalist. Acted as a Data Analyst to tackle uneven tourist distribution. Analyzed open data to identify spatial imbalances and translated these insights into an Alternative Reality Game (ARG) board game, 'Wandering in Yuguang.' Designed mechanics to guide players to lesser-known spots and successfully conducted field testing with local sponsors.",
-      zh: "2025 花蓮黑客松 — 決賽入圍。擔任資料分析師，處理觀光人流分布不均的問題。透過分析開放資料找出空間上的失衡，並把這些洞察轉化為一款 ARG 實境遊戲桌遊〈洄遊漁光中〉。設計遊戲機制引導玩家走訪較冷門的景點，並與在地贊助商合作完成實地測試。",
-    },
-    description: {
-      en: `In the 2025 Hualien Hackathon, our team advanced to the finals by addressing the local issue of uneven tourist distribution. As the Data Analyst, I utilized government Open Data to analyze tourist flow trends and attraction distribution. I identified the imbalance between overcrowded hotspots and underexposed areas, translating these data insights into actionable design strategies to determine which areas needed traffic redirection and how to guide user movement through game mechanics.
-
-      Moving beyond pure analysis, I collaborated with the team to turn these insights into a tangible product: an Alternative Reality Game (ARG) board game titled "Wandering in Yuguang" (〈洄遊漁光中〉). I co-designed the story scripts, mission pacing, and puzzle mechanics, ensuring each stage directly aligned with our traffic redirection goals and local consumption scenarios. This allowed players to naturally visit different attractions and local shops while completing tasks, forming a verifiable behavioral path.
-
-      Finally, we successfully executed field validation. With the support of our sponsor, Lin Ji Fishball, we conducted real-world testing. We also gathered feedback through interviews with local residents and players, validating the game's story, playability, and potential to drive local tourism. This project demonstrated my ability to transform data analysis into product strategy and execute real-world validation.`,
-      zh: `在 2025 花蓮黑客松中，我們的團隊以解決在地「觀光人流分布不均」的問題進入決賽。身為資料分析師，我運用政府開放資料分析觀光人流趨勢與景點分布，找出熱門景點過度擁擠、冷門地區曝光不足之間的失衡，並把這些資料洞察轉化為可執行的設計策略——決定哪些地區需要分流，以及如何透過遊戲機制引導人流。
-
-      除了純粹的分析，我也與團隊合作把洞察化為實際產品：一款名為〈洄遊漁光中〉的 ARG 實境遊戲桌遊。我共同設計故事腳本、任務節奏與解謎機制，確保每個關卡都直接對應我們的人流分流目標與在地消費情境，讓玩家在完成任務的同時自然走訪不同景點與在地店家，形成可驗證的行為路徑。
-
-      最後，我們成功完成實地驗證。在贊助商林記魚丸的支持下，我們進行了真實場域測試，並透過訪談在地居民與玩家蒐集回饋，驗證遊戲的故事性、可玩性以及帶動在地觀光的潛力。這個專案展現了我把資料分析轉化為產品策略、並落地驗證的能力。`,
-    },
-    link: "https://hsh-mu.vercel.app/",
-  },
-  {
-    id: 7,
+    id: "google-cloud",
+    date: { en: "Aug 2025", zh: "2025年8月" },
+    tag: { en: "Google Digital Talent Program", zh: "Google 數位人才探索計畫" },
     title: {
       en: "Google Cloud Certificate Program",
       zh: "Google Cloud 學程證書",
     },
-    img: "Project/google_cloud_cert.jpg",
-    inner_img: "Project/google_cloud_cert.jpg",
+    cover: "Project/google_cloud_cert.jpg",
+    gallery: ["Project/google_cloud_cert.jpg"],
     short_description: {
       en: "Completed the Google Cloud Certificate Program, bridging the gap between machine learning theory and practical cloud deployment. Gained expertise in GCP infrastructure, LLMs, Prompt Engineering, and Responsible AI to design end-to-end AI applications.",
       zh: "完成 Google Cloud 學程證書，銜接機器學習理論與實際的雲端部署。在 GCP 基礎架構、LLM、Prompt Engineering 與 Responsible AI 等領域累積專業，得以設計端到端的 AI 應用。",
@@ -165,31 +183,219 @@ const projects = [
     description: {
       en: `Participating in the Google Cloud Certificate Program marked a significant turning point for me, extending my AI technical skills toward practical, real-world applications. While I previously had a solid foundation in machine learning and deep learning—capable of training and fine-tuning models locally—I lacked a comprehensive understanding of how AI is deployed, maintained, and served to users in a cloud environment.
 
-      Through this program, I learned the core architecture of cloud computing, including infrastructure, networking, and security design. I also mastered the integration of data analytics, machine learning, and AI services on Google Cloud. In the Generative AI courses, I gained hands-on experience with Large Language Models (LLMs), learning how to guide model behavior through Prompt Engineering and how to implement Generative AI into actual systems while strictly adhering to ethical and Responsible AI principles.
+Through this program, I learned the core architecture of cloud computing, including infrastructure, networking, and security design. I also mastered the integration of data analytics, machine learning, and AI services on Google Cloud. In the Generative AI courses, I gained hands-on experience with Large Language Models (LLMs), learning how to guide model behavior through Prompt Engineering and how to implement Generative AI into actual systems while strictly adhering to ethical and Responsible AI principles.
 
-      This experience transformed my perspective from simply "building models" to becoming an engineer capable of "designing AI applications and cloud architectures." For my future endeavors in AI application development, automated systems, and cross-disciplinary projects, this program not only strengthened my technical expertise but also equipped me with a holistic view—spanning from cloud infrastructure and model training to the final product application. It serves as a crucial cornerstone for my continued growth in the AI field.`,
+This experience transformed my perspective from simply "building models" to becoming an engineer capable of "designing AI applications and cloud architectures." For my future endeavors in AI application development, automated systems, and cross-disciplinary projects, this program not only strengthened my technical expertise but also equipped me with a holistic view—spanning from cloud infrastructure and model training to the final product application. It serves as a crucial cornerstone for my continued growth in the AI field.`,
       zh: `參與 Google Cloud 學程證書是我重要的轉捩點，把我的 AI 技術能力延伸到實際、真實世界的應用。在此之前，我在機器學習與深度學習已有扎實基礎，能在本地訓練與微調模型，卻缺乏對「AI 如何在雲端環境中部署、維運並提供給使用者」的全面理解。
 
-      透過這個學程，我學到雲端運算的核心架構，包括基礎設施、網路與安全設計，也掌握了在 Google Cloud 上整合資料分析、機器學習與 AI 服務的方法。在生成式 AI 課程中，我實際操作大型語言模型（LLM），學會如何透過 Prompt Engineering 引導模型行為，以及如何在嚴格遵循倫理與 Responsible AI 原則下，把生成式 AI 導入實際系統。
+透過這個學程，我學到雲端運算的核心架構，包括基礎設施、網路與安全設計，也掌握了在 Google Cloud 上整合資料分析、機器學習與 AI 服務的方法。在生成式 AI 課程中，我實際操作大型語言模型（LLM），學會如何透過 Prompt Engineering 引導模型行為，以及如何在嚴格遵循倫理與 Responsible AI 原則下，把生成式 AI 導入實際系統。
 
-      這段經驗讓我的視角從單純「建立模型」轉變為能夠「設計 AI 應用與雲端架構」的工程師。對於我未來在 AI 應用開發、自動化系統與跨領域專案的發展，這個學程不僅強化了我的技術專業，也讓我具備從雲端基礎架構、模型訓練到最終產品應用的整體視野，成為我在 AI 領域持續成長的重要基石。`,
+這段經驗讓我的視角從單純「建立模型」轉變為能夠「設計 AI 應用與雲端架構」的工程師。對於我未來在 AI 應用開發、自動化系統與跨領域專案的發展，這個學程不僅強化了我的技術專業，也讓我具備從雲端基礎架構、模型訓練到最終產品應用的整體視野，成為我在 AI 領域持續成長的重要基石。`,
     },
-    link: "",
+    tech: ["Google Cloud", "Vertex AI", "LLM", "Prompt Design"],
+    links: [],
   },
   {
-    id: 0,
-    title: { en: "Coming Soon", zh: "敬請期待" },
-    img: "Project/coming_soon.jpg",
-    inner_img: "Project/coming_soon.jpg",
+    id: "hualien",
+    date: { en: "Jun 2025", zh: "2025年6月" },
+    tag: { en: "2025 Hualien HSH Hackathon · Finalist", zh: "2025 花蓮 HSH 黑客松 · 決賽入圍" },
+    title: {
+      en: "“Wandering in Yuguang”: An ARG Board Game for Hualien",
+      zh: "ARG 桌遊〈洄遊漁光中〉",
+    },
+    cover: "Project/hualien_hackathon.jpg",
+    gallery: ["Project/hualien_hackathon_inner.jpg", "Project/hualien_hackathon.jpg"],
     short_description: {
-      en: "A fresh project is on the horizon, promising creativity, sustainability, and groundbreaking tech insights. Check back soon for updates!",
-      zh: "一個全新的專案即將登場，充滿創意、永續理念與突破性的技術洞察。敬請持續關注更新！",
+      en: "Acted as a Data Analyst to tackle uneven tourist distribution. Analyzed open data to identify spatial imbalances and translated these insights into an Alternative Reality Game (ARG) board game, 'Wandering in Yuguang.' Designed mechanics to guide players to lesser-known spots and successfully conducted field testing with local sponsors.",
+      zh: "擔任資料分析師，處理觀光人流分布不均的問題。透過分析開放資料找出空間上的失衡，並把這些洞察轉化為一款 ARG 實境遊戲桌遊〈洄遊漁光中〉。設計遊戲機制引導玩家走訪較冷門的景點，並與在地贊助商合作完成實地測試。",
     },
     description: {
-      en: "A fresh project is on the horizon, promising creativity, sustainability, and groundbreaking tech insights. Check back soon for updates!",
-      zh: "一個全新的專案即將登場，充滿創意、永續理念與突破性的技術洞察。敬請持續關注更新！",
+      en: `In the 2025 Hualien Hackathon, our team advanced to the finals by addressing the local issue of uneven tourist distribution. As the Data Analyst, I utilized government Open Data to analyze tourist flow trends and attraction distribution. I identified the imbalance between overcrowded hotspots and underexposed areas, translating these data insights into actionable design strategies to determine which areas needed traffic redirection and how to guide user movement through game mechanics.
+
+Moving beyond pure analysis, I collaborated with the team to turn these insights into a tangible product: an Alternative Reality Game (ARG) board game titled "Wandering in Yuguang" (〈洄遊漁光中〉). I co-designed the story scripts, mission pacing, and puzzle mechanics, ensuring each stage directly aligned with our traffic redirection goals and local consumption scenarios. This allowed players to naturally visit different attractions and local shops while completing tasks, forming a verifiable behavioral path.
+
+Finally, we successfully executed field validation. With the support of our sponsor, Lin Ji Fishball, we conducted real-world testing. We also gathered feedback through interviews with local residents and players, validating the game's story, playability, and potential to drive local tourism. This project demonstrated my ability to transform data analysis into product strategy and execute real-world validation.`,
+      zh: `在 2025 花蓮黑客松中，我們的團隊以解決在地「觀光人流分布不均」的問題進入決賽。身為資料分析師，我運用政府開放資料分析觀光人流趨勢與景點分布，找出熱門景點過度擁擠、冷門地區曝光不足之間的失衡，並把這些資料洞察轉化為可執行的設計策略——決定哪些地區需要分流，以及如何透過遊戲機制引導人流。
+
+除了純粹的分析，我也與團隊合作把洞察化為實際產品：一款名為〈洄遊漁光中〉的 ARG 實境遊戲桌遊。我共同設計故事腳本、任務節奏與解謎機制，確保每個關卡都直接對應我們的人流分流目標與在地消費情境，讓玩家在完成任務的同時自然走訪不同景點與在地店家，形成可驗證的行為路徑。
+
+最後，我們成功完成實地驗證。在贊助店家 Lin Ji Fishball 的支持下，我們進行了真實場域測試，並透過訪談在地居民與玩家蒐集回饋，驗證遊戲的故事性、可玩性以及帶動在地觀光的潛力。這個專案展現了我把資料分析轉化為產品策略、並落地驗證的能力。`,
     },
-    link: "",
+    tech: ["pandas", "Plotly", "Open Data", "Vue 3"],
+    links: [
+      { type: "demo", url: "https://hsh-mu.vercel.app/" },
+      { type: "code", url: "https://github.com/d-ben-b/HSH" },
+    ],
+  },
+  {
+    id: "deit-pruning",
+    date: { en: "2025", zh: "2025" },
+    tag: { en: "Personal research", zh: "個人研究" },
+    title: {
+      en: "Structured Pruning and Fine-tuning on DeiT Models",
+      zh: "DeiT 模型的結構化剪枝與微調",
+    },
+    cover: "Project/deit_pointwise_diff.png",
+    gallery: ["Project/deit_prune_summary.png", "Project/deit_pointwise_diff.png"],
+    short_description: {
+      en: "Applied 2:4 and 4:8 N:M structured pruning to six DeiT models, then recovered accuracy with 5 epochs of full fine-tuning, comparing the effects of model size, sparsity pattern, and distillation.",
+      zh: "對六種 DeiT 模型做 2:4 與 4:8 N:M 結構化剪枝，再以 5 個 epoch 的完整微調回復精度，比較模型大小、稀疏格式與蒸餾版的影響。",
+    },
+    description: {
+      en: `This project studies structured N:M pruning on six DeiT variants (Tiny / Small / Base × distilled / non-distilled).
+
+Using PyTorch's WeightNormSparsifier, we applied 2:4 and 4:8 sparsity to the linear layers, measured the accuracy drop, and then ran 5 epochs of full fine-tuning (all parameters updated). 2:4 matters because NVIDIA GPUs since Ampere have sparse Tensor Cores that skip half the multiplications when 2 of every 4 weights are zero; this project gets the weights into the 2:4 format but does not measure the actual speed-up.
+
+Key findings:
+- The larger the model, the less pruning hurts: under 2:4, Tiny drops from 72% to 23.5% while Base drops from 82% to 66.2%.
+- Fine-tuning recovers most of the loss: Base (2:4) 66.2% → 74.4%, Tiny (2:4) 23.5% → 66.7%.
+- Right after pruning 4:8 is far ahead of 2:4, but after fine-tuning the two are within 0.1–0.6 points. Since hardware only accelerates 2:4, choosing 2:4 costs less than the post-pruning numbers suggest.
+
+This project lays the foundation for further work in model compression pipelines and deployable vision transformer optimization.`,
+      zh: `本專案研究六種 DeiT 變體（Tiny / Small / Base × 蒸餾 / 非蒸餾）的結構化 N:M 剪枝。
+
+我們使用 PyTorch 的 WeightNormSparsifier，對線性層套用 2:4 與 4:8 稀疏度，量測剪枝後的精度下降，再做 5 個 epoch 的完整微調（所有參數都更新）。選 2:4 是因為 NVIDIA 從 Ampere 架構開始的 GPU 有稀疏運算核心，每 4 個權重有 2 個是 0 時可以跳過一半的乘法；這個專案做到權重符合 2:4 格式，沒有量測實際加速。
+
+主要發現：
+- 模型越大，剪枝掉得越少：2:4 下 Tiny 從 72% 掉到 23.5%，Base 從 82% 掉到 66.2%。
+- 微調補回大部分精度：Base（2:4）66.2% → 74.4%，Tiny（2:4）23.5% → 66.7%。
+- 剪完時 4:8 比 2:4 高很多，微調後兩者只差 0.1～0.6 個百分點；硬體只加速 2:4，所以選 2:4 的代價比剪完當下看起來的小。
+
+本專案為後續模型壓縮流程與可部署的視覺 Transformer 最佳化奠定了基礎。`,
+    },
+    tech: ["PyTorch", "timm", "N:M Sparsity", "WeightNormSparsifier"],
+    links: [{ type: "writeup", url: "https://hackmd.io/@Z1Pajuk0RT2TQl-NwDQzDw/rk7yFLlWlg" }],
+  },
+  {
+    id: "sparkful",
+    date: { en: "Apr 2025", zh: "2025年4月" },
+    tag: {
+      en: "Sparkful “Hack to the Top” AI Hackathon · Finalist among 200+ teams",
+      zh: "Sparkful「Hack to the Top」AI 黑客松 · 200 多隊中入圍決賽",
+    },
+    title: {
+      en: "Foodie Finance: Food Recognition for Health and Savings",
+      zh: "吃貨理財：食物辨識健康理財平台",
+    },
+    cover: "Project/sparkful_banner.jpg",
+    gallery: ["Project/sparkful_stage.jpg", "Project/sparkful_banner.jpg", "Project/sparkful_certificate.png"],
+    short_description: {
+      en: "I built the frontend with Vue.js and implemented the backend using Django. We retrained YOLO11 on the UECFOOD256 dataset for food recognition, integrating AI, health scoring, and financial incentives into a full-stack web platform.",
+      zh: "我以 Vue.js 建構前端、以 Django 實作後端，並在 UECFOOD256 資料集上重新訓練 YOLO11 進行食物辨識，將 AI、健康評分與理財誘因整合成一個全端網頁平台。",
+    },
+    description: {
+      en: `In 2025, our team was selected as a finalist from over 200 teams to compete in the Sparkful Hackathon. Although we did not place in the final rankings, the experience was immensely rewarding—we gained hands-on experience with new technologies and had the opportunity to connect with other talented participants from diverse backgrounds.
+In this project, my teammate led the financial mechanism and UI design, while I was responsible for the technical implementation. I built the frontend using Vue.js, and for the backend, I took on the challenge of learning Django, becoming familiar with its MVT architecture and successfully completing full-stack integration.
+For the AI component, we used YOLO11 as our core food recognition model. Recognizing the limitations of standard pre-trained models, we retrained it using the UECFOOD256 dataset to improve food classification performance. The final product was a web platform built with Django + Vue + YOLO11 + UECFOOD256, integrating food recognition, health analysis, and financial incentives via RESTful APIs.
+This project provided a valuable opportunity to explore full-stack development and real-world AI deployment in a collaborative, interdisciplinary setting.`,
+      zh: `2025 年，我們的團隊從 200 多隊中獲選為決賽隊伍，參加 Sparkful 黑客松。雖然最終未進入名次，但這段經驗收穫極為豐富——我們不僅實際操作了新技術，也有機會結識來自不同背景的優秀夥伴。
+在這個專案中，隊友主導理財機制與 UI 設計，我則負責技術實作。我以 Vue.js 建構前端，後端則挑戰學習 Django，熟悉其 MVT 架構並成功完成全端整合。
+在 AI 部分，我們以 YOLO11 作為核心食物辨識模型。考量到一般預訓練模型的限制，我們以 UECFOOD256 資料集重新訓練，提升食物分類的表現。最終成品是一個以 Django + Vue + YOLO11 + UECFOOD256 打造的網頁平台，透過 RESTful API 整合食物辨識、健康分析與理財誘因。
+這個專案是一次寶貴的機會，讓我在跨領域協作的情境中探索全端開發與真實世界的 AI 部署。`,
+    },
+    tech: ["Vue.js", "Django", "YOLO11", "REST API"],
+    links: [
+      { type: "demo", url: "https://sparkful-frontend.vercel.app" },
+      {
+        type: "code",
+        url: "https://github.com/d-ben-b/Sparkful-Hack-to-the-Top-AI-hackathon",
+        label: { en: "Frontend code", zh: "前端原始碼" },
+      },
+      {
+        type: "code",
+        url: "https://github.com/d-ben-b/sparkful-backend",
+        label: { en: "Backend code", zh: "後端原始碼" },
+      },
+    ],
+  },
+  {
+    id: "tainan-hackathon",
+    date: { en: "Nov 2024", zh: "2024年11月" },
+    tag: {
+      en: "2024 AI Tainan Digital Governance Hackathon · Best Popularity Award",
+      zh: "2024 台南數位城市治理黑客松 · 最佳人氣獎",
+    },
+    title: {
+      en: "Information Platform for the Designated Physician Program",
+      zh: "專責醫師制度資訊整合平台",
+    },
+    cover: "Project/IMG_0959.jpg",
+    gallery: ["Project/IMG_5126.jpg", "Project/IMG_0959.jpg"],
+    short_description: {
+      en: "Developed a web-based platform to replace the Excel-based workflow of the Tainan Health Bureau. Led frontend development with Vue.js and integrated a Flask backend, with login, case management, case tasks, and validation of 13 required fields.",
+      zh: "為台南市衛生局開發網頁平台，取代原本仰賴共用 Excel 的流程。主導以 Vue.js 進行前端開發並串接 Flask 後端，實作登入、個案管理、個案任務，以及 13 個必填欄位的驗證。",
+    },
+    description: {
+      en: `In 2024, we participated in the AI Tainan Digital City Governance Hackathon and developed a platform to help the Health Bureau improve the efficiency of information dissemination. Through interviews with staff and volunteers, we discovered that their original communication workflow heavily relied on Excel files. This often led to errors, accidental data overwrites, and difficulty tracking changes—especially when multiple people edited the same sheet.
+
+Instead of editing a shared Excel file, users log in and add or edit case records and case tasks through forms. Creating or updating a record checks 13 required fields, and every update refreshes the record's timestamp.
+
+I was responsible for building the frontend using Vue.js, while also integrating it with a Flask backend. I chose Vue because the forms needed instant validation, and Flask because a hackathon leaves little time and Flask gets an API running in a few lines. This was my first full-stack web development project, and it taught me how to apply technology to streamline real-world government workflows. Our project was well-received by public sector stakeholders and earned us the Best Popularity Award in the competition.`,
+      zh: `2024 年，我們參加台南數位城市治理黑客松，開發了一個平台協助衛生局提升資訊傳遞的效率。透過訪談承辦人員與志工，我們發現他們原本的溝通流程高度仰賴 Excel 檔案，常導致錯誤、資料被誤覆寫，以及難以追蹤異動——尤其是多人同時編輯同一張表時。
+
+使用者不再編輯共用的 Excel，而是登入後透過表單新增、編輯個案紀錄與個案任務；新增和修改都會檢查 13 個必填欄位，每次修改都會更新該筆紀錄的時間戳記。
+
+我負責以 Vue.js 建構前端，並與 Flask 後端整合。前端選 Vue 是因為表單要即時驗證；後端選 Flask 是因為黑客松時間短，幾行就能開出 API。這是我第一個全端網頁開發專案，讓我學會如何運用技術簡化真實世界的政府作業流程。我們的作品深獲公部門利害關係人好評，並在競賽中拿下最佳人氣獎。`,
+    },
+    tech: ["Vue.js", "Flask", "SQLite"],
+    links: [{ type: "code", url: "https://github.com/d-ben-b/2024-AI-Tainan-Digital-Governance-Hackathon" }],
+  },
+  {
+    id: "eink",
+    date: { en: "Jan–Nov 2024", zh: "2024年1–11月" },
+    tag: {
+      en: "Future Dynamic Program (NCKU × E Ink)",
+      zh: "向未來孵育計畫（成大 × 元太科技）",
+    },
+    title: {
+      en: "E-Paper Communication Board",
+      zh: "電子溝通欄：元太電子紙專案",
+    },
+    cover: "Project/_MG_4683.jpg",
+    gallery: ["Project/_MG_4994.jpg", "Project/_MG_4683.jpg"],
+    short_description: {
+      en: "In the 3rd Future Dynamic Program, a classmate from EE and I built an “e-communication board”: a calendar-first interface that turns one-way announcements into two-way interaction, shown on E Ink's 13.3-inch eNote e-paper notebook.",
+      zh: "第三屆向未來孵育計畫，我和電機系同學做「電子溝通欄」：以日曆當入口，讓公告從單向通知變成雙向互動，成果放進元太 13.3 吋 eNote 電子紙筆記本展示。",
+    },
+    description: {
+      en: `The problem: when a teacher announced a day off on Moodle, the notification reached phones two hours later, and the daily emails were mostly unrelated to what students needed that day. The board uses a calendar as the entry point and lets users respond to the items they care about that day. We built the prototype as a web page, industry engineers rewrote it for the eNote, and it was shown at the program's showcase on Nov 27, 2024.
+
+This project marked my first step into web development. Built solely with HTML, CSS, and JavaScript, it may not be the most advanced among my works, but it played a significant role in paving the way for my growth and success.
+
+I deeply resonate with the United Nations Sustainable Development Goals (SDGs), especially in promoting environmentally friendly technologies. Among them, electronic paper stands out for its reusability and low energy consumption—qualities that make it both innovative and sustainable. Inspired by the animated newspapers in Harry Potter, I envision its potential to revolutionize how we interact with digital content.
+
+At National Cheng Kung University (NCKU), I have had the opportunity to apply my skills in app design and web development to explore this technology further. This hands-on experience has enriched my understanding of both system-level design and user experience challenges. While current limitations—such as slow refresh rates and screen ghosting—still hinder widespread adoption, I remain optimistic about the future of e-paper and its potential to contribute meaningfully to sustainable innovation.`,
+      zh: `要解決的問題：老師在 Moodle 公告當天放假，手機兩小時後才收到通知；每天的 e-mail 也常是和學生當下需求不相關的訊息。電子溝通欄以日曆當入口，讓使用者對當天感興趣的內容回饋。我們先用網頁做出 prototype，再由業界工程師改寫成 eNote 專用的程式，在 2024 年 11 月 27 日的成果分享會展示。
+
+這個專案是我踏入網頁開發的第一步。它僅以 HTML、CSS 與 JavaScript 打造，或許不是我作品中最進階的，但對於鋪平我後續的成長與成就扮演了重要角色。
+
+我深深認同聯合國永續發展目標（SDGs），尤其是推廣對環境友善的技術。其中，電子紙以其可重複使用與低耗能的特性脫穎而出——這讓它兼具創新與永續。受《哈利波特》中會動的報紙啟發，我看見它徹底改變我們與數位內容互動方式的潛力。
+
+在國立成功大學（NCKU），我有機會運用 App 設計與網頁開發的能力，更深入地探索這項技術。這段實作經驗豐富了我對系統層級設計與使用者體驗挑戰的理解。雖然目前的限制——例如更新速度慢與殘影——仍阻礙普及，但我對電子紙的未來，以及它為永續創新做出實質貢獻的潛力，始終樂觀。`,
+    },
+    tech: ["HTML", "CSS", "JavaScript"],
+    links: [{ type: "article", url: "https://sdg.ncku.edu.tw/product-792.html" }],
+  },
+  {
+    id: "yu-jan-shin",
+    date: { en: "2024", zh: "2024" },
+    tag: { en: "Industry collaboration", zh: "產學合作" },
+    title: {
+      en: "Yu Jan Shin Employee Training Platform (Backend)",
+      zh: "裕珍馨企業教育訓練平台（後端）",
+    },
+    cover: "Project/YJS.png",
+    gallery: ["Project/YJS2.png", "Project/YJS.png"],
+    short_description: {
+      en: "Contributed to a collaborative backend development project using Flask at NCKU, focusing on Modules 2 and 6. Although the project was not fully completed due to academic schedules, it provided hands-on experience in coordinating frontend-backend integration and communicating effectively with teammates and the project manager to ensure technical and design alignment.",
+      zh: "於成大參與一項以 Flask 進行的協作後端開發專案，主要負責第 2 與第 6 模組。雖然因課業時程未能全程參與，但這段經驗讓我實際練習了前後端整合的協調，以及與隊友、專案經理有效溝通，確保技術與設計方向一致。",
+    },
+    description: {
+      en: "This was my first experience participating in a real-world backend system development in collaboration with a company (Yu Jan Shin). I was responsible for two key modules—Module 2 and Module 6—within a Flask-based microservice architecture using Blueprints. Although I stepped away from the later stages due to academic responsibilities, I contributed significantly in the early design and implementation phases. I worked with Amazon RDS (MySQL) and dealt with schema planning, foreign key constraint handling, and naming consistency across multiple modules. The experience also introduced me to basic web security practices such as token management, access control, and role-based permissions. Most importantly, I learned how to communicate effectively with enterprise stakeholders, synchronize with other developers through Git, and align backend logic with frontend requirements.",
+      zh: "這是我第一次與企業（裕珍馨）合作、參與真實世界的後端系統開發。我在以 Flask Blueprint 建構的微服務架構中負責兩個關鍵模組——第 2 與第 6 模組。雖然後期因課業而退出，但我在早期的設計與實作階段貢獻良多。我使用 Amazon RDS（MySQL），處理資料表設計、外鍵約束，以及跨多個模組的命名一致性。這段經驗也讓我接觸到基本的網站安全實務，如 token 管理、存取控管與角色權限。最重要的是，我學會如何與企業利害關係人有效溝通、透過 Git 與其他開發者協作，並讓後端邏輯對齊前端需求。",
+    },
+    tech: ["Flask", "Amazon RDS", "MySQL"],
+    links: [],
   },
 ];
 

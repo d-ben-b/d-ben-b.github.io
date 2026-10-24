@@ -1,8 +1,8 @@
 /**
  * 一次性圖片瘦身腳本（可重複執行，已達標的檔案會自動跳過）
  *
- * 為什麼需要它：vite-plugin-image-optimizer 只會「重新壓縮」，不會縮小像素尺寸，
- * 所以 4000~6000px 的原圖會原尺寸送到瀏覽器。這支腳本在原始檔就先做好 resize。
+ * 為什麼需要它：手機拍的原圖常有 4000~6000px，直接 commit 會讓 repo 越來越肥。
+ * 這支腳本在原始檔就先縮到夠用的大小；給瀏覽器的各種尺寸 WebP 則由 scripts/build-images.mjs 產生。
  *
  * 用法：
  *   node scripts/optimize-images.mjs --dry   # 只報告，不改檔
@@ -18,7 +18,8 @@ const DRY = process.argv.includes("--dry");
 const RULES = [
   { dir: "src/assets/images/icons", max: 128 },   // 技能圖示，顯示 24px
   { dir: "src/assets/images/HomeSvg", max: 1600 },
-  { dir: "src/assets/images", max: 1920 },        // 首頁 hero 全螢幕
+  { dir: "src/assets/images", max: 1920 },
+  { dir: "public/images", max: 1920 },            // 首頁 hero 全螢幕、關於我
   { dir: "public/Project", max: 1600 },           // 專案卡片 + Modal
   { dir: "public/anniversary", max: 1280 },       // 相簿縮圖 + 檢視器
 ];
