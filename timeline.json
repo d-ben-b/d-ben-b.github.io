@@ -1,35 +1,140 @@
 [
   {
     "date": {
-      "en": "Jun 2026",
-      "zh": "2026年6月"
+      "en": "Oct 2026",
+      "zh": "2026年10月"
     },
-    "sort": "2026-06",
-    "type": "certification",
+    "sort": "2026-10",
+    "type": "award",
     "title": {
-      "en": "Google Career Certificates",
-      "zh": "Google 職涯證書"
+      "en": "Startup Camp — the only team awarded, by vote",
+      "zh": "創業一定營 — 全場票選唯一獲獎隊伍"
     },
     "org": {
-      "en": "Google · Coursera",
-      "zh": "Google · Coursera"
+      "en": "NKUST × NCKU",
+      "zh": "國立高雄科技大學 × 國立成功大學"
     },
     "summary": {
-      "en": "Completed Network Architecture and Foundations of Digital Marketing & E-commerce.",
-      "zh": "完成 Network Architecture 與數位行銷與電子商務基礎課程。"
+      "en": "Built the software for “Youwo Youni”, a mobile-first trip planner for lesser-known spots: k-means day clustering, nearest-neighbour + 2-opt routing with return trips, and a daily budget cap (demo data).",
+      "zh": "負責旅遊規劃網頁「有我遊你」的軟體：以 k-means 分天、最近鄰居法加 2-opt 排出含回程的路線，並以每日預算為上限自動調整行程（示範資料）。"
     },
     "tech": [
-      "Networking",
-      "E-commerce"
+      "Vue 3",
+      "Pinia",
+      "Vercel"
+    ],
+    "link": "https://youwo-youni.vercel.app"
+  },
+  {
+    "date": {
+      "en": "Jul 2026 – present",
+      "zh": "2026年7月至今"
+    },
+    "sort": "2026-10",
+    "type": "competition",
+    "title": {
+      "en": "Baseball-Pitching Robot — Vision and Aiming Software",
+      "zh": "棒球投手機器人 — 視覺定位與瞄準軟體"
+    },
+    "org": {
+      "en": "2026 robot competition · in progress (event in Nov)",
+      "zh": "2026 機器人比賽 · 進行中（11 月比賽）"
+    },
+    "summary": {
+      "en": "Wrote all of the robot's software: YOLO11n hole detection trained on 2,000 synthetic images, board-level PnP with one camera, aiming with per-shot landing correction (hit rate 80% → 91% over 60 simulated matches), and a PyBullet simulation. Connected and calibrated the real camera in Oct 2026 (0.71 px).",
+      "zh": "負責機器人的全部軟體：以 2,000 張合成影像訓練 YOLO11n 偵測網孔、用一台相機以整板 PnP 定位、依每球落點修正瞄準（模擬 60 場，命中率 80% → 91%），以及 PyBullet 物理模擬。2026 年 10 月接上實體相機並完成標定（誤差 0.71 像素）。"
+    },
+    "tech": [
+      "YOLO11n",
+      "OpenCV",
+      "PyBullet",
+      "Jetson Orin Nano"
     ]
   },
   {
     "date": {
-      "en": "2026",
-      "zh": "2026"
+      "en": "Aug–Oct 2026",
+      "zh": "2026年8–10月"
     },
-    "sort": "2026-12",
-    "approx": true,
+    "sort": "2026-09",
+    "type": "project",
+    "title": {
+      "en": "Street-Scene Object Detection — In-Browser YOLOv8",
+      "zh": "街景物件偵測 — 瀏覽器端 YOLOv8 推論"
+    },
+    "org": {
+      "en": "AI talent program · Hamastar Technology",
+      "zh": "AI 人才培育計畫 · 哈瑪星科技"
+    },
+    "summary": {
+      "en": "Repaired the dataset (606 → 26,418 boxes; vans 0 → 420) and retrained with YOLOv8 to 0.873 mAP@0.5 on validation; the first YOLO-NAS model never exceeded ~0.4 confidence. Runs entirely in the browser via onnxruntime-web; shown at the program's showcase in Oct 2026.",
+      "zh": "修好資料集（標註框 606 → 26,418 個、廂型車 0 → 420）並改用 YOLOv8 重訓，驗證集 mAP@0.5 0.873；初版 YOLO-NAS 信心值最高只有約 0.4。模型用 onnxruntime-web 在瀏覽器執行，2026 年 10 月在成果發表會展出。"
+    },
+    "tech": [
+      "YOLOv8",
+      "ONNX",
+      "onnxruntime-web",
+      "Roboflow"
+    ],
+    "link": "https://smis-weld.vercel.app/"
+  },
+  {
+    "date": {
+      "en": "Sep 2026",
+      "zh": "2026年9月"
+    },
+    "sort": "2026-09",
+    "type": "project",
+    "title": {
+      "en": "GStreamer × YOLOv8 Real-Time Inference Pipeline",
+      "zh": "GStreamer × YOLOv8 即時推論管線"
+    },
+    "org": {
+      "en": "Personal project",
+      "zh": "個人專案"
+    },
+    "summary": {
+      "en": "H.264 hardware decoding (NVDEC) feeding ONNX object detection, with hand-written letterbox and NMS: 13.4 ms end-to-end p50 (70 FPS) with GPU inference, 7.3× faster than CPU inference, no dropped frames. A 4-way benchmark showed appsink drop=true discarding 44% of frames from a file source without lowering latency.",
+      "zh": "H.264 硬體解碼（NVDEC）接 ONNX 物件偵測，letterbox 與 NMS 自己寫：GPU 推論時端到端延遲 p50 13.4 ms（70 FPS），比 CPU 推論快 7.3 倍，沒有丟幀。四組對照實驗發現檔案來源開 appsink drop=true 會丟掉 44% 的影格，延遲卻沒有降低。"
+    },
+    "tech": [
+      "GStreamer",
+      "ONNX Runtime",
+      "CUDA",
+      "OpenCV"
+    ]
+  },
+  {
+    "date": {
+      "en": "Jun–Jul 2026",
+      "zh": "2026年6–7月"
+    },
+    "sort": "2026-07",
+    "type": "certification",
+    "title": {
+      "en": "11 Networking & Security Courses (incl. Google Network Security, 7 courses)",
+      "zh": "網路與資安課程 11 門（含 Google 網路安全專項 7 門）"
+    },
+    "org": {
+      "en": "Google · Cisco · Packt · EDUCBA · Coursera",
+      "zh": "Google · Cisco · Packt · EDUCBA · Coursera"
+    },
+    "summary": {
+      "en": "Google Network Security specialization: network architecture, network operations, securing against intrusions, security hardening, detection & incident response, network monitoring, and IDS / SIEM log analysis. Plus Cisco's Network Security, Packt's TCP/IP routing & wireless and advanced network security & endpoints, and EDUCBA's introduction to SIEM (Splunk).",
+      "zh": "Google 網路安全專項：網路架構、網路維運、入侵防護、系統強化、偵測與事件應變、網路監控、IDS 與 SIEM 日誌分析。另有 Cisco 的 Network Security、Packt 的 TCP/IP 路由與無線網路、進階網路安全與端點防護，以及 EDUCBA 的 SIEM（Splunk）入門。"
+    },
+    "tech": [
+      "Networking",
+      "Security",
+      "SIEM"
+    ]
+  },
+  {
+    "date": {
+      "en": "May–Jun 2026",
+      "zh": "2026年5–6月"
+    },
+    "sort": "2026-06",
     "type": "research",
     "title": {
       "en": "PPO vs. DQN for Autonomous Highway Driving",
@@ -49,6 +154,82 @@
       "Double DQN",
       "Self-Attention",
       "highway-env"
+    ],
+    "link": "https://github.com/d-ben-b/RL-final"
+  },
+  {
+    "date": {
+      "en": "Jun 2026",
+      "zh": "2026年6月"
+    },
+    "sort": "2026-06",
+    "type": "certification",
+    "title": {
+      "en": "Foundations of Digital Marketing and E-commerce",
+      "zh": "數位行銷與電子商務基礎"
+    },
+    "org": {
+      "en": "Google · Coursera",
+      "zh": "Google · Coursera"
+    },
+    "summary": {
+      "en": "A course in the Google Career Certificates program.",
+      "zh": "Google 職涯證書（Google Career Certificates）系列課程。"
+    },
+    "tech": [
+      "E-commerce"
+    ]
+  },
+  {
+    "date": {
+      "en": "May 2026",
+      "zh": "2026年5月"
+    },
+    "sort": "2026-05",
+    "type": "project",
+    "title": {
+      "en": "Style Transfer on Jetson Orin Nano — TensorRT FP16 / INT8",
+      "zh": "Jetson Orin Nano 風格轉換 — TensorRT FP16／INT8"
+    },
+    "org": {
+      "en": "Edge-AI project",
+      "zh": "邊緣 AI 專題"
+    },
+    "summary": {
+      "en": "Compiled a pretrained style-transfer model into TensorRT engines with a custom INT8 calibrator: 65.8 ms (FP32) → 45.0 ms (FP16) → 40.5 ms (INT8, 24.7 FPS) per 480×640 frame.",
+      "zh": "把預訓練的風格轉換模型編成 TensorRT 引擎（自己寫 INT8 校準器）：480×640 影像 FP32 65.8 ms → FP16 45.0 ms → INT8 40.5 ms（每秒 24.7 張）。"
+    },
+    "tech": [
+      "TensorRT",
+      "ONNX",
+      "INT8",
+      "Jetson Orin Nano"
+    ],
+    "link": "https://github.com/d-ben-b/style_transfer"
+  },
+  {
+    "date": {
+      "en": "2026",
+      "zh": "2026"
+    },
+    "sort": "2026-01",
+    "approx": true,
+    "type": "certification",
+    "title": {
+      "en": "AI Workplace Literacy Certificate Program",
+      "zh": "AI 職場通識學程結業證書"
+    },
+    "org": {
+      "en": "Google Digital Talent Program",
+      "zh": "Google 數位人才探索計畫"
+    },
+    "summary": {
+      "en": "Generative AI leader courses and hands-on modules for Gemini, NotebookLM, and Google Workspace with Gemini.",
+      "zh": "生成式 AI 領導者課程，以及 Gemini、NotebookLM、Google Workspace with Gemini 的實作單元。"
+    },
+    "tech": [
+      "Gemini",
+      "NotebookLM"
     ]
   },
   {
@@ -102,6 +283,32 @@
   },
   {
     "date": {
+      "en": "Dec 2025",
+      "zh": "2025年12月"
+    },
+    "sort": "2025-12",
+    "approx": true,
+    "type": "project",
+    "title": {
+      "en": "Deep-RL Game Agent (DQN)",
+      "zh": "深度強化學習遊戲代理（DQN）"
+    },
+    "org": {
+      "en": "NCKU — course project",
+      "zh": "成功大學 — 課程專案"
+    },
+    "summary": {
+      "en": "Trained Deep Q-Network agents on Super Mario and MiniGrid with custom env wrappers, reward shaping, and experience replay.",
+      "zh": "於 Super Mario 與 MiniGrid 訓練 DQN 代理，含自定義環境包裝、reward shaping 與 experience replay。"
+    },
+    "tech": [
+      "PyTorch",
+      "DQN",
+      "Gym / MiniGrid"
+    ]
+  },
+  {
+    "date": {
       "en": "2025",
       "zh": "2025"
     },
@@ -133,16 +340,16 @@
       "en": "2025",
       "zh": "2025"
     },
-    "sort": "2025-12",
+    "sort": "2025-11",
     "approx": true,
     "type": "project",
     "title": {
-      "en": "Edge-AI Elder-Care Companion Robot",
-      "zh": "邊緣 AI 長照陪伴機器人"
+      "en": "Edge-AI Elder-Care Companion Robot (system proposal)",
+      "zh": "邊緣 AI 長照陪伴機器人（系統提案）"
     },
     "org": {
-      "en": "NCKU — systems-design project",
-      "zh": "成功大學 — 系統設計專案"
+      "en": "NCKU — Efficient-AI course final proposal",
+      "zh": "成功大學 — 高效率 AI 課程期末提案"
     },
     "summary": {
       "en": "Offline Jetson Nano / Raspberry Pi voice robot: Distil-Whisper ASR + quantized small LLM (LLaMA-3-mini / Phi-3) + YOLOv8-Nano, targeting ≤1.2s latency, ≤400MB, ≤15W.",
@@ -157,10 +364,10 @@
   },
   {
     "date": {
-      "en": "2025",
-      "zh": "2025"
+      "en": "Nov 2025",
+      "zh": "2025年11月"
     },
-    "sort": "2025-06",
+    "sort": "2025-11",
     "approx": true,
     "type": "project",
     "title": {
@@ -168,8 +375,8 @@
       "zh": "無人機空拍語意分割"
     },
     "org": {
-      "en": "Kaggle competition",
-      "zh": "Kaggle 競賽"
+      "en": "NCKU ML course — Kaggle competition",
+      "zh": "成功大學機器學習課程 — Kaggle 競賽"
     },
     "summary": {
       "en": "16-class pipeline comparing DeepLabV3 vs. UNet++; DeepLabV3-ResNet101 reached public mIoU 0.58 with a CE + Dice hybrid loss (fixed pipeline bug: 0.26 → 0.58).",
@@ -180,14 +387,15 @@
       "DeepLabV3",
       "UNet++",
       "ResNet-101"
-    ]
+    ],
+    "link": "https://github.com/d-ben-b/AI-pruning-project/tree/main/ML/kaggle"
   },
   {
     "date": {
-      "en": "2025",
-      "zh": "2025"
+      "en": "Nov 2025",
+      "zh": "2025年11月"
     },
-    "sort": "2025-05",
+    "sort": "2025-11",
     "approx": true,
     "type": "project",
     "title": {
@@ -207,6 +415,32 @@
       "SentenceTransformers",
       "Gemma-3",
       "Llama-3.2 / Ollama"
+    ]
+  },
+  {
+    "date": {
+      "en": "Sep–Nov 2025",
+      "zh": "2025年9–11月"
+    },
+    "sort": "2025-10",
+    "approx": true,
+    "type": "project",
+    "title": {
+      "en": "Quantitative Trading Strategies (FinTech)",
+      "zh": "量化交易策略（FinTech）"
+    },
+    "org": {
+      "en": "NCKU — FinTech course",
+      "zh": "成功大學 — 金融科技課程"
+    },
+    "summary": {
+      "en": "IRR solver and multi-stock trading optimization via dynamic programming under transaction-fee and cooldown constraints.",
+      "zh": "IRR 求解與多股交易最佳化，以動態規劃在手續費與冷卻期約束下求解。"
+    },
+    "tech": [
+      "Python",
+      "NumPy",
+      "Dynamic Programming"
     ]
   },
   {
@@ -301,6 +535,33 @@
   },
   {
     "date": {
+      "en": "2025",
+      "zh": "2025"
+    },
+    "sort": "2025-05",
+    "approx": true,
+    "type": "research",
+    "title": {
+      "en": "DeiT Transformer Pruning & Lightweighting",
+      "zh": "DeiT Transformer 剪枝與輕量化"
+    },
+    "org": {
+      "en": "Personal research",
+      "zh": "個人研究"
+    },
+    "summary": {
+      "en": "2:4 / 4:8 N:M structured pruning across six DeiT variants with a reproducible prune → fine-tune → evaluate pipeline; 5 epochs of full fine-tuning brought DeiT-Base (2:4) from 66.2% back to 74.4%.",
+      "zh": "對六種 DeiT 變體做 2:4 / 4:8 N:M 結構化剪枝，建立可重現的剪枝 → 微調 → 評估流程；完整微調 5 個 epoch 讓 DeiT-Base（2:4）從 66.2% 回到 74.4%。"
+    },
+    "tech": [
+      "PyTorch",
+      "timm",
+      "WeightNormSparsifier"
+    ],
+    "link": "https://hackmd.io/@Z1Pajuk0RT2TQl-NwDQzDw/rk7yFLlWlg"
+  },
+  {
+    "date": {
       "en": "Apr 2025",
       "zh": "2025年4月"
     },
@@ -315,16 +576,44 @@
       "zh": "Sparkful（200+ 隊）"
     },
     "summary": {
-      "en": "Owned the full build of a food-recognition health & finance platform; retrained YOLOv11n on UECFOOD256 (256 classes), Vue + Django over REST APIs.",
-      "zh": "獨力完成食物辨識健康理財平台；在 UECFOOD256（256 類）上重訓 YOLOv11n，Vue + Django 以 REST API 串接。"
+      "en": "Owned the technical build of a food-recognition health & finance platform; retrained YOLO11n on UECFOOD256 (256 classes), Vue + Django over REST APIs.",
+      "zh": "負責食物辨識健康理財平台的全部技術實作；在 UECFOOD256（256 類）上重訓 YOLO11n，Vue + Django 以 REST API 串接。"
     },
     "tech": [
       "Vue.js",
       "Django",
-      "YOLOv11n",
+      "YOLO11n",
       "REST API"
     ],
     "link": "https://sparkful-frontend.vercel.app"
+  },
+  {
+    "date": {
+      "en": "Jan 2025",
+      "zh": "2025年1月"
+    },
+    "sort": "2025-01",
+    "type": "project",
+    "title": {
+      "en": "NCKU FinTech Modular Course — Course Website",
+      "zh": "成大金融科技模組化課程網站"
+    },
+    "org": {
+      "en": "Solo full-stack project",
+      "zh": "個人全端專案"
+    },
+    "summary": {
+      "en": "Built alone: a Vue + Highcharts front end with one view per course day, a Django back end that pulls market data with Selenium, a separate Django login service (JWT), and a Dockerfile for each of the four services.",
+      "zh": "獨力完成：Vue + Highcharts 前端（每天的課程內容各一個頁面）、用 Selenium 抓資料的 Django 後端、獨立的 Django 登入服務（JWT），四個服務各有 Dockerfile。"
+    },
+    "tech": [
+      "Vue.js",
+      "Django",
+      "Highcharts",
+      "Selenium",
+      "Docker"
+    ],
+    "link": "https://ncku-modular-course-fin-tech.vercel.app"
   },
   {
     "date": {
@@ -342,42 +631,69 @@
       "zh": "數位發展部（moda）/ 台南市"
     },
     "summary": {
-      "en": "Built a role-based web platform replacing the Health Bureau's error-prone shared-Excel workflow (Vue + Flask, RBAC, versioning, task tracking); six-person team.",
-      "zh": "為衛生局把易出錯的共用 Excel 流程改造為具權限控管的網頁平台（Vue + Flask、RBAC、版本控制、任務追蹤）；六人團隊。"
+      "en": "Replaced the Health Bureau's error-prone shared-Excel workflow with a web platform — login, case management, case tasks, and validation of 13 required fields (Vue + Flask); six-person team.",
+      "zh": "為衛生局把易出錯的共用 Excel 流程改成網頁平台：登入、個案管理、個案任務，新增和修改都檢查 13 個必填欄位（Vue + Flask）；六人團隊。"
     },
     "tech": [
       "Vue.js",
       "Flask",
-      "MySQL"
-    ]
+      "SQLite"
+    ],
+    "link": "https://github.com/d-ben-b/2024-AI-Tainan-Digital-Governance-Hackathon"
+  },
+  {
+    "date": {
+      "en": "Jan–Nov 2024",
+      "zh": "2024年1–11月"
+    },
+    "sort": "2024-11",
+    "type": "project",
+    "title": {
+      "en": "Future Dynamic Program — E Ink E-Paper Project",
+      "zh": "向未來孵育計畫－元太電子紙專案"
+    },
+    "org": {
+      "en": "NCKU Future Smart Factory × E Ink",
+      "zh": "成大未來智慧工場 × 元太科技"
+    },
+    "summary": {
+      "en": "My first web project (HTML / CSS / JS): with a classmate, built an “e-communication board” prototype that puts a calendar first and turns one-way announcements into two-way interaction; shown on E Ink's 13.3-inch eNote at the Nov 2024 showcase.",
+      "zh": "第一個網頁專案（HTML / CSS / JS）：和同學做「電子溝通欄」prototype，以日曆當入口，讓公告從單向通知變成雙向互動；2024 年 11 月的成果分享會上放進元太 13.3 吋 eNote 展示。"
+    },
+    "tech": [
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "link": "https://eink-demo-etvn.vercel.app"
   },
   {
     "date": {
       "en": "2024",
       "zh": "2024"
     },
-    "sort": "2024-10",
+    "sort": "2024-04",
     "approx": true,
-    "type": "research",
+    "type": "project",
     "title": {
-      "en": "DeiT Transformer Pruning & Lightweighting",
-      "zh": "DeiT Transformer 剪枝與輕量化"
+      "en": "Whisper Speech-to-Text Tool (local inference)",
+      "zh": "Whisper 本地語音轉文字工具"
     },
     "org": {
-      "en": "Personal research",
-      "zh": "個人研究"
+      "en": "Personal tooling",
+      "zh": "個人工具"
     },
     "summary": {
-      "en": "2:4 / 4:8 N:M structured pruning across six DeiT variants with a reproducible prune → fine-tune → evaluate pipeline; LoRA recovery study.",
-      "zh": "對六種 DeiT 變體做 2:4 / 4:8 N:M 結構化剪枝，建立可重現的剪枝 → 微調 → 評估流程；並做 LoRA 精度回復研究。"
+      "en": "Desktop tool that transcribes an audio file, a microphone recording, or audio downloaded with yt-dlp (via FFmpeg) using Whisper; runs on CUDA when available, with transcription on a background thread so the GUI stays responsive.",
+      "zh": "桌面工具：把音檔、麥克風錄音或用 yt-dlp 下載的音訊（經 FFmpeg）交給 Whisper 轉成文字；有 GPU 時用 CUDA，轉錄在背景執行緒進行，介面不會卡住。"
     },
     "tech": [
-      "PyTorch",
-      "timm",
-      "LoRA",
-      "WeightNormSparsifier"
+      "Whisper",
+      "FFmpeg",
+      "yt-dlp",
+      "CUDA"
     ],
-    "link": "https://hackmd.io/@Z1Pajuk0RT2TQl-NwDQzDw/rk7yFLlWlg"
+    "link": "https://github.com/d-ben-b/AudioTranscriber"
   },
   {
     "date": {
@@ -410,118 +726,12 @@
       "en": "2024",
       "zh": "2024"
     },
-    "sort": "2024-05",
-    "approx": true,
-    "type": "project",
-    "title": {
-      "en": "Deep-RL Game Agent (DQN)",
-      "zh": "深度強化學習遊戲代理（DQN）"
-    },
-    "org": {
-      "en": "NCKU — course project",
-      "zh": "成功大學 — 課程專案"
-    },
-    "summary": {
-      "en": "Trained Deep Q-Network agents on Super Mario and MiniGrid with custom env wrappers, reward shaping, and experience replay.",
-      "zh": "於 Super Mario 與 MiniGrid 訓練 DQN 代理，含自定義環境包裝、reward shaping 與 experience replay。"
-    },
-    "tech": [
-      "PyTorch",
-      "DQN",
-      "Gym / MiniGrid"
-    ]
-  },
-  {
-    "date": {
-      "en": "2024",
-      "zh": "2024"
-    },
-    "sort": "2024-05",
-    "approx": true,
-    "type": "project",
-    "title": {
-      "en": "Quantitative Trading Strategies (FinTech)",
-      "zh": "量化交易策略（FinTech）"
-    },
-    "org": {
-      "en": "NCKU — FinTech course",
-      "zh": "成功大學 — 金融科技課程"
-    },
-    "summary": {
-      "en": "IRR solver and multi-stock trading optimization via dynamic programming under transaction-fee and cooldown constraints.",
-      "zh": "IRR 求解與多股交易最佳化，以動態規劃在手續費與冷卻期約束下求解。"
-    },
-    "tech": [
-      "Python",
-      "NumPy",
-      "Dynamic Programming"
-    ]
-  },
-  {
-    "date": {
-      "en": "2024",
-      "zh": "2024"
-    },
-    "sort": "2024-04",
-    "approx": true,
-    "type": "project",
-    "title": {
-      "en": "Whisper Auto-Subtitle Tool (local inference)",
-      "zh": "Whisper 本地自動字幕工具"
-    },
-    "org": {
-      "en": "Personal tooling",
-      "zh": "個人工具"
-    },
-    "summary": {
-      "en": "Offline subtitle pipeline (yt-dlp → FFmpeg → Whisper) with a multithreaded GUI and optional CUDA acceleration.",
-      "zh": "離線字幕流程（yt-dlp → FFmpeg → Whisper），含多執行緒 GUI 與可選 CUDA 加速。"
-    },
-    "tech": [
-      "Whisper",
-      "FFmpeg",
-      "yt-dlp",
-      "CUDA"
-    ]
-  },
-  {
-    "date": {
-      "en": "2024",
-      "zh": "2024"
-    },
     "sort": "2024-03",
     "approx": true,
     "type": "project",
     "title": {
-      "en": "AI Financial Dashboard",
-      "zh": "AI 財務儀表板"
-    },
-    "org": {
-      "en": "Django full-stack project",
-      "zh": "Django 全端專案"
-    },
-    "summary": {
-      "en": "Market dashboard with Selenium + Pandas ingestion/cleaning, Highcharts viz, deployed via Docker Compose.",
-      "zh": "金融儀表板：Selenium + Pandas 蒐集清理、Highcharts 視覺化，以 Docker Compose 部署。"
-    },
-    "tech": [
-      "Django",
-      "Pandas",
-      "Selenium",
-      "Docker Compose"
-    ]
-  },
-  {
-    "date": {
-      "en": "2024",
-      "zh": "2024"
-    },
-    "sort": "2024-03",
-    "approx": true,
-    "type": "project",
-    "title": {
-      "en": "Yu Jan Shin — Enterprise Training-Platform",
-      "zh": "裕珍馨 — 企業教育訓練平台"
+      "en": "Yu Jan Shin — Enterprise Training-Platform Backend",
+      "zh": "裕珍馨 — 企業教育訓練平台後端"
     },
     "org": {
       "en": "Industry collaboration",
@@ -643,33 +853,6 @@
       "en": "Fundamentals of wireless communication systems.",
       "zh": "無線通訊系統基礎。"
     }
-  },
-  {
-    "date": {
-      "en": "2023",
-      "zh": "2023"
-    },
-    "sort": "2023-01",
-    "approx": true,
-    "type": "project",
-    "title": {
-      "en": "NCKU × E Ink: Future Dynamic Program",
-      "zh": "NCKU × 元太 E Ink：未來動態學程"
-    },
-    "org": {
-      "en": "NCKU program",
-      "zh": "成功大學學程"
-    },
-    "summary": {
-      "en": "First web project — an interactive e-paper demo exploring sustainable, low-power displays (HTML / CSS / JS).",
-      "zh": "第一個網頁專案——探索永續低功耗電子紙的互動展示（HTML / CSS / JS）。"
-    },
-    "tech": [
-      "HTML",
-      "CSS",
-      "JavaScript"
-    ],
-    "link": "https://eink-demo-etvn.vercel.app"
   },
   {
     "date": {
