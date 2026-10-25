@@ -30,7 +30,7 @@ export default {
       about: {
         title: "About Me",
         subtitle:
-          "Who I am, my clubs, volunteering, and activities, plus education and skills.",
+          "Who I am, clubs, volunteering, the Qingteng Program, and activities, plus education and skills.",
       },
     },
   },
@@ -44,12 +44,17 @@ export default {
     clubs: {
       title: "Clubs",
       alt: "Practising latte art",
-      text: "In the coffee club I learned pour-over brewing, roasting, and cupping, plus latte art, which I love, and later served as the club's teaching officer. In the orchestra I play the violin, and I like practising on my own in a quiet corner of the campus. In the sailing club I started out not knowing how to handle a boat, learned from the coach and other members, and my team took third place in an inter-university race. In the information security club I took classes and played CTFs.",
+      text: "In the coffee club I learned pour-over brewing, roasting, and cupping, plus latte art, which I love, and later served as the club's teaching officer. In the orchestra I play the violin, and I like practising on my own in a quiet corner of the campus. In the sailing club I learned to handle a boat from scratch with the coach and other members. In the information security club I took classes and played CTFs.",
     },
     volunteer: {
       title: "Volunteering",
       alt: "Teaching a class",
       text: "In the summer after my second year I joined an AIESEC volunteer project, teaching English and the UN Sustainable Development Goals at a junior high school in Tainan. In the second semester of my third year, through a service-learning course, I joined a children's service club in helping elementary school students build a reading habit.",
+    },
+    scholarship: {
+      title: "Qingteng Scholarship Program",
+      alt: "At a Qingteng Program event",
+      text: "In my fourth year I was admitted to the Qingteng Scholarship Program, which focuses on volunteer service and a broader view of the world. I completed 80 hours of volunteer work and did a report on Qatar for the program's global-issues project.",
     },
     activities: {
       title: "Activities",
