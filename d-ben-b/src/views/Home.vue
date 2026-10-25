@@ -1,53 +1,54 @@
 <template>
-  <section class="relative w-full min-h-screen overflow-hidden font-sans text-gray-800 bg-cream">
-    <div ref="heroBg" class="absolute inset-0 z-0 will-change-transform">
-      <!-- 下一張先在背景下載、解碼好才切換，兩張疊在一起淡入淡出 -->
-      <Transition name="hero-fade">
-        <div :key="heroIndex" class="absolute inset-0 opacity-30">
-          <SmartImg :src="heroImages[heroIndex]" alt="" sizes="100vw" :eager="heroIndex === 0"
-            class="object-cover w-full h-full" />
+  <section class="w-full font-sans text-stone-800 bg-content">
+    <!-- 首屏：左邊自我介紹，右邊照片（手機上照片在上面） -->
+    <!-- 背景墊淡綠漸層和細點底紋，首屏才不會一片空白 -->
+    <div class="relative overflow-hidden hero-bg">
+      <div
+        class="relative flex flex-col-reverse items-center justify-center w-full max-w-6xl gap-10 px-6 py-12 mx-auto md:flex-row md:gap-16 md:px-12 md:min-h-[calc(100vh-4.25rem)]">
+        <div v-reveal class="flex flex-col items-center flex-1 text-center md:items-start md:text-left">
+          <h1 class="mb-5 text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl">
+            {{ t("home.greeting") }}<span class="text-primary">{{ t("home.name") }}</span>
+          </h1>
+          <p class="max-w-xl mb-8 text-lg leading-relaxed text-stone-700 md:text-xl phrase-wrap">
+            {{ t("home.tagline") }}
+          </p>
+
+          <div class="flex flex-col w-full gap-4 sm:flex-row sm:w-auto">
+            <button @click="scrollToCardSection"
+              class="w-full px-6 py-3 text-white transition sm:py-2 sm:w-auto bg-primary rounded-xl hover:bg-primary-dark">
+              {{ t("home.explore") }}
+            </button>
+            <button @click="isContactModalOpen = true"
+              class="w-full px-6 py-3 transition border sm:py-2 sm:w-auto border-primary text-primary rounded-xl hover:bg-primary-light">
+              {{ t("home.contact") }}
+            </button>
+          </div>
         </div>
-      </Transition>
-      <div class="absolute inset-0 bg-gradient-to-b from-black/30 to-transparent"></div>
-    </div>
 
-    <div v-reveal
-      class="relative z-10 flex flex-col items-center justify-center h-screen px-6 text-center md:items-start md:text-left md:px-16">
-
-      <h1 class="mb-4 text-4xl font-extrabold tracking-tight text-gray-900 md:text-5xl lg:text-6xl">
-        {{ t("home.greeting") }}<span class="text-primary">{{ t("home.name") }}</span>{{ t("home.greetingEnd") }}
-      </h1>
-      <p class="max-w-2xl mb-6 text-lg text-gray-700 md:text-xl">
-        {{ t("home.tagline") }}
-      </p>
-
-      <div class="flex flex-col w-full gap-4 sm:flex-row sm:w-auto">
-        <button @click="scrollToCardSection"
-          class="w-full px-6 py-3 text-white transition sm:py-2 sm:w-auto bg-primary rounded-xl hover:bg-primary-dark">
-          {{ t("home.explore") }}
-        </button>
-        <button @click="isContactModalOpen = true"
-          class="w-full px-6 py-3 transition border sm:py-2 sm:w-auto border-primary text-primary rounded-xl hover:bg-primary-light">
-          {{ t("home.contact") }}
-        </button>
-      </div>
-
-      <div class="absolute z-20 -translate-x-1/2 bottom-10 left-1/2 animate-bounce">
-        <svg class="w-8 h-8 text-gray-600 opacity-70 md:w-6 md:h-6" fill="none" stroke="currentColor" stroke-width="2"
-          viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M19 9l-7 7-7-7" />
-        </svg>
+        <!-- 照片放在 4:5 的相框裡，裁哪一塊由 heroImages.js 的 hero 決定，臉才不會被切掉；
+             下一張先在背景下載、解碼好才切換，兩張疊在一起淡入淡出。相框後面墊一塊錯開的深綠色 -->
+        <div class="relative w-60 md:w-[360px] lg:w-[420px] aspect-[4/5] shrink-0">
+          <div class="absolute inset-0 translate-x-3 translate-y-3 md:translate-x-5 md:translate-y-5 rounded-3xl bg-[#0f4229]/85"></div>
+          <div class="absolute inset-0 overflow-hidden shadow-xl rounded-3xl bg-stone-300">
+            <Transition name="hero-fade">
+              <div :key="heroIndex" class="absolute inset-0">
+                <SmartImg :src="heroImages[heroIndex].src" alt="" :sizes="heroSizes" :eager="heroIndex === 0"
+                  class="object-cover w-full h-full" :style="{ objectPosition: heroImages[heroIndex].hero }" />
+              </div>
+            </Transition>
+          </div>
+        </div>
       </div>
     </div>
 
     <div id="card-section" v-reveal="200"
-      class="scroll-mt-[100px] relative z-10 grid grid-cols-1 gap-8 px-6 pt-20 pb-20 md:pt-32 md:px-16 md:grid-cols-3 bg-cream">
+      class="scroll-mt-[100px] grid grid-cols-1 gap-8 px-6 pt-10 pb-20 md:pt-16 md:px-16 md:grid-cols-3">
       <HomeCard :title="t('home.cards.projects.title')" :subtitle="t('home.cards.projects.subtitle')"
-        :image="heroImages[1]" link="/projects" />
+        :image="heroImages[1].src" :position="heroImages[1].card" link="/projects" />
       <HomeCard :title="t('home.cards.journey.title')" :subtitle="t('home.cards.journey.subtitle')"
-        :image="heroImages[2]" link="/journey" />
+        :image="heroImages[2].src" :position="heroImages[2].card" link="/journey" />
       <HomeCard :title="t('home.cards.about.title')" :subtitle="t('home.cards.about.subtitle')"
-        :image="heroImages[3]" link="/about" />
+        :image="heroImages[3].src" :position="heroImages[3].card" link="/about" />
     </div>
     <ContactModal :isOpen="isContactModalOpen" @close="isContactModalOpen = false" />
   </section>
@@ -58,12 +59,11 @@ import { ref, onMounted, onBeforeUnmount } from "vue";
 import HomeCard from "../components/HomeCard.vue";
 import ContactModal from "../components/ContactModal.vue";
 import SmartImg from "../components/SmartImg.vue";
-import { heroImages } from "@/assets/heroImages";
+import { heroImages, heroSizes } from "@/assets/heroImages";
 import { preloadImage } from "@/lib/images";
 import { t } from "@/i18n";
 
 const heroIndex = ref(0);
-const heroBg = ref(null);
 const isContactModalOpen = ref(false);
 
 // 輪播：看不到首屏（分頁在背景或已經往下捲）就不換，省流量
@@ -73,33 +73,16 @@ const rotateHero = async () => {
   if (rotating || document.hidden || window.scrollY > window.innerHeight) return;
   rotating = true;
   const next = (heroIndex.value + 1) % heroImages.length;
-  await preloadImage(heroImages[next], "100vw");
+  await preloadImage(heroImages[next].src, heroSizes);
   heroIndex.value = next;
   rotating = false;
 };
 
-// 視差：每個畫面更新最多算一次，直接改 transform，不經過 Vue 重新渲染
-const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-let ticking = false;
-const handleScroll = () => {
-  if (ticking) return;
-  ticking = true;
-  requestAnimationFrame(() => {
-    ticking = false;
-    const y = window.scrollY;
-    if (heroBg.value && y <= window.innerHeight * 1.5) {
-      heroBg.value.style.transform = `translate3d(0, ${y * 0.5}px, 0)`;
-    }
-  });
-};
-
 onMounted(() => {
-  if (!reduceMotion) window.addEventListener("scroll", handleScroll, { passive: true });
   rotateTimer = setInterval(rotateHero, 6000);
 });
 
 onBeforeUnmount(() => {
-  window.removeEventListener("scroll", handleScroll);
   clearInterval(rotateTimer);
 });
 
@@ -115,8 +98,12 @@ const scrollToCardSection = () => {
 </script>
 
 <style scoped>
-.bg-cream {
-  background-color: #f9f9eb;
+.hero-bg {
+  background-image:
+    radial-gradient(circle at 12% 18%, rgba(152, 214, 108, 0.28), transparent 42%),
+    radial-gradient(circle at 88% 85%, rgba(15, 66, 41, 0.16), transparent 48%),
+    radial-gradient(rgba(15, 66, 41, 0.1) 1.2px, transparent 1.2px);
+  background-size: auto, auto, 22px 22px;
 }
 
 .text-primary {
@@ -137,10 +124,6 @@ const scrollToCardSection = () => {
 
 .border-primary {
   border-color: #0f4229;
-}
-
-.text-primary-dark {
-  color: #09311f;
 }
 
 .hero-fade-enter-active,

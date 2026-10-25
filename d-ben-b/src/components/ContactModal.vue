@@ -3,12 +3,12 @@
     <div v-if="isOpen" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
       @click.self="closeModal">
       <Transition name="bounce" appear>
-        <div v-if="isOpen" class="relative w-full max-w-md overflow-hidden bg-white shadow-2xl rounded-2xl">
+        <div v-if="isOpen" class="relative w-full max-w-md overflow-hidden shadow-2xl bg-paper rounded-2xl">
 
           <div class="h-24 bg-gradient-to-r from-[#0f4229] to-[#1b5e3f]"></div>
 
           <button @click="closeModal"
-            class="absolute p-2 text-gray-500 transition bg-white rounded-full top-3 right-3 hover:text-gray-900 hover:bg-gray-100">
+            class="absolute p-2 text-gray-500 transition rounded-full bg-paper top-3 right-3 hover:text-gray-900 hover:bg-gray-100">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
@@ -21,14 +21,14 @@
             </div>
 
             <h2 class="text-2xl font-bold text-gray-900">{{ t("contactModal.title") }}</h2>
-            <p class="mt-2 mb-6 text-sm text-gray-500">
+            <p class="mt-2 mb-6 text-sm text-gray-500 phrase-wrap">
               {{ t("contactModal.subtitle") }}
             </p>
 
             <div class="flex flex-col gap-3">
               <div class="relative group">
                 <a :href="`mailto:${contactData.email}`"
-                  class="flex items-center p-3 transition border border-gray-200 rounded-xl hover:border-[#0f4229] hover:bg-gray-50">
+                  class="flex items-center p-3 transition border border-gray-200 rounded-xl hover:border-[#0f4229] hover:bg-stone-200/60">
                   <div class="flex items-center justify-center w-10 h-10 mr-4 rounded-lg bg-[#d8f3e1] text-[#0f4229]">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -53,7 +53,7 @@
               </div>
 
               <a :href="contactData.linkedin" target="_blank"
-                class="flex items-center p-3 transition border border-gray-200 rounded-xl hover:border-[#0f4229] hover:bg-gray-50">
+                class="flex items-center p-3 transition border border-gray-200 rounded-xl hover:border-[#0f4229] hover:bg-stone-200/60">
                 <div class="flex items-center justify-center w-10 h-10 mr-4 rounded-lg bg-[#e1f0fe] text-[#0a66c2]">
                   <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                     <path
@@ -68,7 +68,7 @@
               </a>
 
               <a :href="contactData.github" target="_blank"
-                class="flex items-center p-3 transition border border-gray-200 rounded-xl hover:border-black hover:bg-gray-50">
+                class="flex items-center p-3 transition border border-gray-200 rounded-xl hover:border-black hover:bg-stone-200/60">
                 <div class="flex items-center justify-center w-10 h-10 mr-4 text-gray-800 bg-gray-100 rounded-lg">
                   <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                     <path fill-rule="evenodd"

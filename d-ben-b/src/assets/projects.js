@@ -108,7 +108,7 @@ Day 1 shows up first while the remaining days are generated in the background. T
       zh: "辨識台灣街景的腳踏車、機車、轎車、廂型車和攤販車。我找出初版模型不準的原因，修好資料集（標註框 606 → 26,418 個）、改用 YOLOv8 重訓，驗證集 mAP@0.5 0.873；模型放在瀏覽器裡執行，照片不會上傳。",
     },
     description: {
-      en: `A course project on AI image recognition and object detection run by Hamastar Technology under the Digital Youth T-Ambassador program, shown at the program's showcase, "2026 智匯星球 跨域點亮", in October 2026. I did the whole project: finding what was wrong with the model, repairing the dataset, retraining, and building and deploying the in-browser inference page.
+      en: `A course project on AI image recognition and object detection run by Hamastar Technology under the Digital Youth T-Ambassador program, shown at the program's showcase in October 2026. I did the whole project: finding what was wrong with the model, repairing the dataset, retraining, and building and deploying the in-browser inference page.
 
 The first model (YOLO-NAS, trained on AWS SageMaker) never scored above about 0.4 confidence. I wrote a checker that compares the dataset, the class definitions, and the ONNX model, and it surfaced the problems: only 606 labelled boxes, zero vans, scooters making up 89% of the labels, and class definitions that disagreed across the three (5 vs. 6 classes).
 
@@ -218,20 +218,16 @@ The Gradio demo takes the Orin's USB camera, a phone or laptop camera streamed t
     cover: "Project/google_cloud_cert.jpg",
     gallery: ["Project/google_cloud_cert.jpg"],
     short_description: {
-      en: "Completed the Google Cloud Certificate Program, bridging the gap between machine learning theory and practical cloud deployment. Gained expertise in GCP infrastructure, LLMs, Prompt Engineering, and Responsible AI to design end-to-end AI applications.",
-      zh: "完成 Google Cloud 學程證書，銜接機器學習理論與實際的雲端部署。在 GCP 基礎架構、LLM、Prompt Engineering 與 Responsible AI 等領域累積專業，得以設計端到端的 AI 應用。",
+      en: "The Google Cloud program from Google's Digital Talent Program: 5 courses on cloud fundamentals and 7 on building with generative AI, covering Google Cloud infrastructure, Vertex AI, LLMs, and prompt design.",
+      zh: "Google 數位人才探索計畫的 Google Cloud 學程：雲端運算基礎 5 門、生成式 AI 開發入門 7 門，內容包括 Google Cloud 的基礎架構、Vertex AI、LLM 和 Prompt Design。",
     },
     description: {
-      en: `Participating in the Google Cloud Certificate Program marked a significant turning point for me, extending my AI technical skills toward practical, real-world applications. While I previously had a solid foundation in machine learning and deep learning—capable of training and fine-tuning models locally—I lacked a comprehensive understanding of how AI is deployed, maintained, and served to users in a cloud environment.
+      en: `Before this program I could train and fine-tune models on my own machine, but did not know how a model is deployed, maintained, and served to users in the cloud.
 
-Through this program, I learned the core architecture of cloud computing, including infrastructure, networking, and security design. I also mastered the integration of data analytics, machine learning, and AI services on Google Cloud. In the Generative AI courses, I gained hands-on experience with Large Language Models (LLMs), learning how to guide model behavior through Prompt Engineering and how to implement Generative AI into actual systems while strictly adhering to ethical and Responsible AI principles.
+The 5 cloud-fundamentals courses cover infrastructure, networking, and security design, and connecting data-analytics and machine-learning services on Google Cloud. The 7 generative-AI courses are hands-on with LLMs on Vertex AI: steering the model's output with prompt design, and the principles of responsible AI.`,
+      zh: `修這個學程之前，我會在自己的電腦上訓練和微調模型，但不清楚模型放上雲端之後怎麼部署、維運、提供給使用者。
 
-This experience transformed my perspective from simply "building models" to becoming an engineer capable of "designing AI applications and cloud architectures." For my future endeavors in AI application development, automated systems, and cross-disciplinary projects, this program not only strengthened my technical expertise but also equipped me with a holistic view—spanning from cloud infrastructure and model training to the final product application. It serves as a crucial cornerstone for my continued growth in the AI field.`,
-      zh: `參與 Google Cloud 學程證書是我重要的轉捩點，把我的 AI 技術能力延伸到實際、真實世界的應用。在此之前，我在機器學習與深度學習已有扎實基礎，能在本地訓練與微調模型，卻缺乏對「AI 如何在雲端環境中部署、維運並提供給使用者」的全面理解。
-
-透過這個學程，我學到雲端運算的核心架構，包括基礎設施、網路與安全設計，也掌握了在 Google Cloud 上整合資料分析、機器學習與 AI 服務的方法。在生成式 AI 課程中，我實際操作大型語言模型（LLM），學會如何透過 Prompt Engineering 引導模型行為，以及如何在嚴格遵循倫理與 Responsible AI 原則下，把生成式 AI 導入實際系統。
-
-這段經驗讓我的視角從單純「建立模型」轉變為能夠「設計 AI 應用與雲端架構」的工程師。對於我未來在 AI 應用開發、自動化系統與跨領域專案的發展，這個學程不僅強化了我的技術專業，也讓我具備從雲端基礎架構、模型訓練到最終產品應用的整體視野，成為我在 AI 領域持續成長的重要基石。`,
+雲端運算基礎的 5 門課講基礎設施、網路與安全設計，以及在 Google Cloud 上串接資料分析和機器學習服務。生成式 AI 的 7 門課實際操作 Vertex AI 上的 LLM，練習用 Prompt Design 控制模型的輸出，並講 Responsible AI 的原則。`,
     },
     tech: ["Google Cloud", "Vertex AI", "LLM", "Prompt Design"],
     links: [],
@@ -247,20 +243,24 @@ This experience transformed my perspective from simply "building models" to beco
     cover: "Project/hualien_hackathon.jpg",
     gallery: ["Project/hualien_hackathon_inner.jpg", "Project/hualien_hackathon.jpg"],
     short_description: {
-      en: "Acted as a Data Analyst to tackle uneven tourist distribution. Analyzed open data to identify spatial imbalances and translated these insights into an Alternative Reality Game (ARG) board game, 'Wandering in Yuguang.' Designed mechanics to guide players to lesser-known spots and successfully conducted field testing with local sponsors.",
-      zh: "擔任資料分析師，處理觀光人流分布不均的問題。透過分析開放資料找出空間上的失衡，並把這些洞察轉化為一款 ARG 實境遊戲桌遊〈洄遊漁光中〉。設計遊戲機制引導玩家走訪較冷門的景點，並與在地贊助商合作完成實地測試。",
+      en: "Hualien's tourists crowd into a few hotspots. I did the data analysis, using open data to find the areas that needed to draw visitors away, and with my teammates turned the results into an alternate-reality board game, “Wandering in Yuguang”, whose missions send players to lesser-known spots and local shops. We tested it on site at our sponsor's shop.",
+      zh: "花蓮的觀光人潮集中在少數熱門景點。我負責資料分析，用開放資料找出需要分流的區域；再和隊友把結果做成 ARG 實境桌遊〈洄遊漁光中〉，讓玩家解任務時走到冷門景點和在地店家，並在贊助店家實地測試。",
     },
     description: {
-      en: `In the 2025 Hualien Hackathon, our team advanced to the finals by addressing the local issue of uneven tourist distribution. As the Data Analyst, I utilized government Open Data to analyze tourist flow trends and attraction distribution. I identified the imbalance between overcrowded hotspots and underexposed areas, translating these data insights into actionable design strategies to determine which areas needed traffic redirection and how to guide user movement through game mechanics.
+      en: `Built at the 2025 Hualien HSH Hackathon, a three-day event.
 
-Moving beyond pure analysis, I collaborated with the team to turn these insights into a tangible product: an Alternative Reality Game (ARG) board game titled "Wandering in Yuguang" (〈洄遊漁光中〉). I co-designed the story scripts, mission pacing, and puzzle mechanics, ensuring each stage directly aligned with our traffic redirection goals and local consumption scenarios. This allowed players to naturally visit different attractions and local shops while completing tasks, forming a verifiable behavioral path.
+Data analysis: with government open data, pandas, and Plotly, I charted visitor and traffic numbers for Hualien's Dongdamen Night Market and for long holidays, to see where crowds pile up and which areas need to draw visitors away.
 
-Finally, we successfully executed field validation. With the support of our sponsor, Lin Ji Fishball, we conducted real-world testing. We also gathered feedback through interviews with local residents and players, validating the game's story, playability, and potential to drive local tourism. This project demonstrated my ability to transform data analysis into product strategy and execute real-world validation.`,
-      zh: `在 2025 花蓮黑客松中，我們的團隊以解決在地「觀光人流分布不均」的問題進入決賽。身為資料分析師，我運用政府開放資料分析觀光人流趨勢與景點分布，找出熱門景點過度擁擠、冷門地區曝光不足之間的失衡，並把這些資料洞察轉化為可執行的設計策略——決定哪些地區需要分流，以及如何透過遊戲機制引導人流。
+The game: an ARG (alternate reality game) uses real places and objects as part of the game. I helped design the story script, mission pacing, and puzzles, and every mission requires players to go to a particular spot or shop.
 
-除了純粹的分析，我也與團隊合作把洞察化為實際產品：一款名為〈洄遊漁光中〉的 ARG 實境遊戲桌遊。我共同設計故事腳本、任務節奏與解謎機制，確保每個關卡都直接對應我們的人流分流目標與在地消費情境，讓玩家在完成任務的同時自然走訪不同景點與在地店家，形成可驗證的行為路徑。
+We tested the game on site at our sponsor, Lin Ji Fishball, and interviewed local residents and players.`,
+      zh: `2025 花蓮 HSH 黑客松（三天兩夜）的作品。
 
-最後，我們成功完成實地驗證。在贊助店家 Lin Ji Fishball 的支持下，我們進行了真實場域測試，並透過訪談在地居民與玩家蒐集回饋，驗證遊戲的故事性、可玩性以及帶動在地觀光的潛力。這個專案展現了我把資料分析轉化為產品策略、並落地驗證的能力。`,
+資料分析：用政府開放資料和 pandas、Plotly，整理花蓮東大門夜市和連假期間的人流、車流，找出人潮集中的地方和需要分流的區域。
+
+桌遊：ARG（Alternate Reality Game）是把真實的地點和物件當成遊戲的一部分。我參與故事腳本、任務節奏和解謎機制的設計，每一關的任務都要求玩家走到特定的景點或店家。
+
+最後在贊助店家 Lin Ji Fishball 實地測試，並訪談在地居民和玩家。`,
     },
     tech: ["pandas", "Plotly", "Open Data", "Vue 3"],
     links: [
@@ -290,9 +290,7 @@ Using PyTorch's WeightNormSparsifier, we applied 2:4 and 4:8 sparsity to the lin
 Key findings:
 - The larger the model, the less pruning hurts: under 2:4, Tiny drops from 72% to 23.5% while Base drops from 82% to 66.2%.
 - Fine-tuning recovers most of the loss: Base (2:4) 66.2% → 74.4%, Tiny (2:4) 23.5% → 66.7%.
-- Right after pruning 4:8 is far ahead of 2:4, but after fine-tuning the two are within 0.1–0.6 points. Since hardware only accelerates 2:4, choosing 2:4 costs less than the post-pruning numbers suggest.
-
-This project lays the foundation for further work in model compression pipelines and deployable vision transformer optimization.`,
+- Right after pruning 4:8 is far ahead of 2:4, but after fine-tuning the two are within 0.1–0.6 points. Since hardware only accelerates 2:4, choosing 2:4 costs less than the post-pruning numbers suggest.`,
       zh: `本專案研究六種 DeiT 變體（Tiny / Small / Base × 蒸餾 / 非蒸餾）的結構化 N:M 剪枝。
 
 我們使用 PyTorch 的 WeightNormSparsifier，對線性層套用 2:4 與 4:8 稀疏度，量測剪枝後的精度下降，再做 5 個 epoch 的完整微調（所有參數都更新）。選 2:4 是因為 NVIDIA 從 Ampere 架構開始的 GPU 有稀疏運算核心，每 4 個權重有 2 個是 0 時可以跳過一半的乘法；這個專案做到權重符合 2:4 格式，沒有量測實際加速。
@@ -300,9 +298,7 @@ This project lays the foundation for further work in model compression pipelines
 主要發現：
 - 模型越大，剪枝掉得越少：2:4 下 Tiny 從 72% 掉到 23.5%，Base 從 82% 掉到 66.2%。
 - 微調補回大部分精度：Base（2:4）66.2% → 74.4%，Tiny（2:4）23.5% → 66.7%。
-- 剪完時 4:8 比 2:4 高很多，微調後兩者只差 0.1～0.6 個百分點；硬體只加速 2:4，所以選 2:4 的代價比剪完當下看起來的小。
-
-本專案為後續模型壓縮流程與可部署的視覺 Transformer 最佳化奠定了基礎。`,
+- 剪完時 4:8 比 2:4 高很多，微調後兩者只差 0.1～0.6 個百分點；硬體只加速 2:4，所以選 2:4 的代價比剪完當下看起來的小。`,
     },
     tech: ["PyTorch", "timm", "N:M Sparsity", "WeightNormSparsifier"],
     links: [{ type: "writeup", url: "https://hackmd.io/@Z1Pajuk0RT2TQl-NwDQzDw/rk7yFLlWlg" }],
@@ -321,18 +317,20 @@ This project lays the foundation for further work in model compression pipelines
     cover: "Project/sparkful_banner.jpg",
     gallery: ["Project/sparkful_stage.jpg", "Project/sparkful_banner.jpg", "Project/sparkful_certificate.png"],
     short_description: {
-      en: "I built the frontend with Vue.js and implemented the backend using Django. We retrained YOLO11n on the UECFOOD256 dataset for food recognition, integrating AI, health scoring, and financial incentives into a full-stack web platform.",
-      zh: "我以 Vue.js 建構前端、以 Django 實作後端，並在 UECFOOD256 資料集上重新訓練 YOLO11n 進行食物辨識，將 AI、健康評分與理財誘因整合成一個全端網頁平台。",
+      en: "Take a photo of a meal, and the app recognizes the food, gives it a health score, and links eating to saving through a gamified “health fund”. I did all of the technical work: the Vue front end, the Django back end, and a YOLO11n model retrained on UECFOOD256.",
+      zh: "拍下食物照片，AI 辨識食物、給健康分數，再用遊戲化的「健康基金」把飲食和理財連起來。我負責全部技術：Vue 前端、Django 後端，以及在 UECFOOD256 上重新訓練的 YOLO11n。",
     },
     description: {
-      en: `In 2025, our team was selected as a finalist from over 200 teams to compete in the Sparkful Hackathon. Although we did not place in the final rankings, the experience was immensely rewarding—we gained hands-on experience with new technologies and had the opportunity to connect with other talented participants from diverse backgrounds.
-In this project, my teammate led the financial mechanism and UI design, while I was responsible for the technical implementation. I built the frontend using Vue.js, and for the backend, I took on the challenge of learning Django, becoming familiar with its MVT architecture and successfully completing full-stack integration.
-For the AI component, we used YOLO11n as our core food recognition model. Recognizing the limitations of standard pre-trained models, we retrained it using the UECFOOD256 dataset to improve food classification performance. The final product was a web platform built with Django + Vue + YOLO11n + UECFOOD256, integrating food recognition, health analysis, and financial incentives via RESTful APIs.
-This project provided a valuable opportunity to explore full-stack development and real-world AI deployment in a collaborative, interdisciplinary setting.`,
-      zh: `2025 年，我們的團隊從 200 多隊中獲選為決賽隊伍，參加 Sparkful 黑客松。雖然最終未進入名次，但這段經驗收穫極為豐富——我們不僅實際操作了新技術，也有機會結識來自不同背景的優秀夥伴。
-在這個專案中，隊友主導理財機制與 UI 設計，我則負責技術實作。我以 Vue.js 建構前端，後端則挑戰學習 Django，熟悉其 MVT 架構並成功完成全端整合。
-在 AI 部分，我們以 YOLO11n 作為核心食物辨識模型。考量到一般預訓練模型的限制，我們以 UECFOOD256 資料集重新訓練，提升食物分類的表現。最終成品是一個以 Django + Vue + YOLO11n + UECFOOD256 打造的網頁平台，透過 RESTful API 整合食物辨識、健康分析與理財誘因。
-這個專案是一次寶貴的機會，讓我在跨領域協作的情境中探索全端開發與真實世界的 AI 部署。`,
+      en: `Built at the Sparkful “Hack to the Top” AI hackathon. My teammate designed the finance mechanics and the interface; I did the technical implementation.
+
+The front end is Vue 3, with pages for customers, shops, challenges, and a personal profile, plus photo upload, expense tracking, a calendar, and dietitian booking. The back end uses Django REST framework; I learned Django during the hackathon.
+
+After a photo is uploaded, the back end runs YOLO11n to find each food in it, then looks up a health score from 1 to 10 and the protein, starch, and fibre ratios for each one. A COCO-pretrained model only knows a handful of foods, so I retrained it on UECFOOD256 (256 food classes).`,
+      zh: `Sparkful「Hack to the Top」AI 黑客松的作品。隊友負責理財機制和介面設計，我負責技術實作。
+
+前端用 Vue 3，分成消費者、店家、挑戰、個人頁，有上傳照片、記帳、日曆和預約營養師等功能。後端用 Django REST framework，Django 是比賽期間現學的。
+
+上傳照片後，後端用 YOLO11n 找出照片裡的每一種食物，再查表得到 1–10 分的健康分數，以及蛋白質、澱粉、纖維的比例。用 COCO 預訓練的模型只認得少數幾種食物，所以在 UECFOOD256（256 類食物）上重新訓練。`,
     },
     tech: ["Vue.js", "Django", "YOLO11n", "REST API"],
     links: [
@@ -363,20 +361,20 @@ This project provided a valuable opportunity to explore full-stack development a
     cover: "Project/IMG_0959.jpg",
     gallery: ["Project/IMG_5126.jpg", "Project/IMG_0959.jpg"],
     short_description: {
-      en: "Developed a web-based platform to replace the Excel-based workflow of the Tainan Health Bureau. Led frontend development with Vue.js and integrated a Flask backend, with login, case management, case tasks, and validation of 13 required fields.",
-      zh: "為台南市衛生局開發網頁平台，取代原本仰賴共用 Excel 的流程。主導以 Vue.js 進行前端開發並串接 Flask 後端，實作登入、個案管理、個案任務，以及 13 個必填欄位的驗證。",
+      en: "The Tainan Health Bureau passed data between units through one shared Excel file, and people editing at the same time overwrote each other. We replaced it with a web platform; I built the Vue front end and connected it to the Flask back end: login, case management, case tasks, and a check of 13 required fields whenever a record is saved.",
+      zh: "台南市衛生局跨單位的資料靠一份共用 Excel 傳遞，多人同時編輯會互相覆蓋。我們改成網頁平台，我負責 Vue 前端並串接 Flask 後端：登入、個案管理、個案任務，存檔時檢查 13 個必填欄位。",
     },
     description: {
-      en: `In 2024, we participated in the AI Tainan Digital City Governance Hackathon and developed a platform to help the Health Bureau improve the efficiency of information dissemination. Through interviews with staff and volunteers, we discovered that their original communication workflow heavily relied on Excel files. This often led to errors, accidental data overwrites, and difficulty tracking changes—especially when multiple people edited the same sheet.
+      en: `The problem came from the Tainan Health Bureau. Interviewing staff and volunteers, we found that data moved between units through one shared Excel file: people editing at the same time overwrote each other, nobody could tell who had made a wrong change, and the discussion was scattered across emails.
 
-Instead of editing a shared Excel file, users log in and add or edit case records and case tasks through forms. Creating or updating a record checks 13 required fields, and every update refreshes the record's timestamp.
+On the web platform, users log in and add or edit case records and case tasks through forms. Saving a new or edited record checks 13 required fields and is refused if any is missing, and every edit updates the record's timestamp.
 
-I was responsible for building the frontend using Vue.js, while also integrating it with a Flask backend. I chose Vue because the forms needed instant validation, and Flask because a hackathon leaves little time and Flask gets an API running in a few lines. This was my first full-stack web development project, and it taught me how to apply technology to streamline real-world government workflows. Our project was well-received by public sector stakeholders and earned us the Best Popularity Award in the competition.`,
-      zh: `2024 年，我們參加台南數位城市治理黑客松，開發了一個平台協助衛生局提升資訊傳遞的效率。透過訪談承辦人員與志工，我們發現他們原本的溝通流程高度仰賴 Excel 檔案，常導致錯誤、資料被誤覆寫，以及難以追蹤異動——尤其是多人同時編輯同一張表時。
+We were a team of six; I built the Vue front end and connected it to the Flask back end. I chose Vue because the forms needed instant validation, and Flask because a hackathon leaves little time and Flask gets an API running in a few lines. It was my first project with both a front end and a back end.`,
+      zh: `題目來自台南市衛生局。訪談承辦人員和志工後，發現跨單位的資料靠一份共用 Excel 傳遞：多人同時編輯會互相覆蓋，改錯了查不到是誰改的，討論也散在 email 裡。
 
-使用者不再編輯共用的 Excel，而是登入後透過表單新增、編輯個案紀錄與個案任務；新增和修改都會檢查 13 個必填欄位，每次修改都會更新該筆紀錄的時間戳記。
+改成網頁平台後，使用者登入，用表單新增、編輯個案紀錄和個案任務；存檔時檢查 13 個必填欄位，缺了就不能存，每次修改會更新該筆紀錄的時間戳記。
 
-我負責以 Vue.js 建構前端，並與 Flask 後端整合。前端選 Vue 是因為表單要即時驗證；後端選 Flask 是因為黑客松時間短，幾行就能開出 API。這是我第一個全端網頁開發專案，讓我學會如何運用技術簡化真實世界的政府作業流程。我們的作品深獲公部門利害關係人好評，並在競賽中拿下最佳人氣獎。`,
+六人團隊，我負責 Vue 前端並串接 Flask 後端。前端選 Vue，是因為表單要即時驗證；後端選 Flask，是因為黑客松時間短，幾行就能開出 API。這是我第一個前後端都有寫的專案。`,
     },
     tech: ["Vue.js", "Flask", "SQLite"],
     links: [{ type: "code", url: "https://github.com/d-ben-b/2024-AI-Tainan-Digital-Governance-Hackathon" }],
@@ -399,20 +397,16 @@ I was responsible for building the frontend using Vue.js, while also integrating
       zh: "第三屆向未來孵育計畫，我和電機系同學做「電子溝通欄」：以日曆當入口，讓公告從單向通知變成雙向互動，成果放進元太 13.3 吋 eNote 電子紙筆記本展示。",
     },
     description: {
-      en: `The problem: when a teacher announced a day off on Moodle, the notification reached phones two hours later, and the daily emails were mostly unrelated to what students needed that day. The board uses a calendar as the entry point and lets users respond to the items they care about that day. We built the prototype as a web page, industry engineers rewrote it for the eNote, and it was shown at the program's showcase on Nov 27, 2024.
+      en: `The problem: when a teacher announced a day off on Moodle, the notification reached phones two hours later, and the daily emails were mostly unrelated to what students needed that day. The board uses a calendar as the entry point and lets users respond to the items they care about that day.
 
-This project marked my first step into web development. Built solely with HTML, CSS, and JavaScript, it may not be the most advanced among my works, but it played a significant role in paving the way for my growth and success.
+We built the prototype as a web page in HTML, CSS, and JavaScript, and industry engineers rewrote it for the eNote; at the program's showcase on Nov 27, 2024, students and teachers tried it on the device. It was my first web project.
 
-I deeply resonate with the United Nations Sustainable Development Goals (SDGs), especially in promoting environmentally friendly technologies. Among them, electronic paper stands out for its reusability and low energy consumption—qualities that make it both innovative and sustainable. Inspired by the animated newspapers in Harry Potter, I envision its potential to revolutionize how we interact with digital content.
+The program started in February 2024: the first half was training in finding a problem and in UI / UX design, and the prototype came after that.`,
+      zh: `要解決的問題：老師在 Moodle 公告當天放假，手機兩小時後才收到通知；每天的 e-mail 也常是和學生當下需求不相關的訊息。電子溝通欄以日曆當入口，讓使用者對當天感興趣的內容回饋。
 
-At National Cheng Kung University (NCKU), I have had the opportunity to apply my skills in app design and web development to explore this technology further. This hands-on experience has enriched my understanding of both system-level design and user experience challenges. While current limitations—such as slow refresh rates and screen ghosting—still hinder widespread adoption, I remain optimistic about the future of e-paper and its potential to contribute meaningfully to sustainable innovation.`,
-      zh: `要解決的問題：老師在 Moodle 公告當天放假，手機兩小時後才收到通知；每天的 e-mail 也常是和學生當下需求不相關的訊息。電子溝通欄以日曆當入口，讓使用者對當天感興趣的內容回饋。我們先用網頁做出 prototype，再由業界工程師改寫成 eNote 專用的程式，在 2024 年 11 月 27 日的成果分享會展示。
+我們先用 HTML、CSS、JavaScript 做出網頁 prototype，再由業界工程師改寫成 eNote 專用的程式；2024 年 11 月 27 日的成果分享會上，讓與會的師生在 eNote 上操作。這是我第一個網頁專案。
 
-這個專案是我踏入網頁開發的第一步。它僅以 HTML、CSS 與 JavaScript 打造，或許不是我作品中最進階的，但對於鋪平我後續的成長與成就扮演了重要角色。
-
-我深深認同聯合國永續發展目標（SDGs），尤其是推廣對環境友善的技術。其中，電子紙以其可重複使用與低耗能的特性脫穎而出——這讓它兼具創新與永續。受《哈利波特》中會動的報紙啟發，我看見它徹底改變我們與數位內容互動方式的潛力。
-
-在國立成功大學（NCKU），我有機會運用 App 設計與網頁開發的能力，更深入地探索這項技術。這段實作經驗豐富了我對系統層級設計與使用者體驗挑戰的理解。雖然目前的限制——例如更新速度慢與殘影——仍阻礙普及，但我對電子紙的未來，以及它為永續創新做出實質貢獻的潛力，始終樂觀。`,
+計畫從 2024 年 2 月開始，前半年是議題發想和 UI／UX 設計的培訓，之後才做 prototype。`,
     },
     tech: ["HTML", "CSS", "JavaScript"],
     links: [{ type: "article", url: "https://sdg.ncku.edu.tw/product-792.html" }],
@@ -428,12 +422,16 @@ At National Cheng Kung University (NCKU), I have had the opportunity to apply my
     cover: "Project/YJS.png",
     gallery: ["Project/YJS2.png", "Project/YJS.png"],
     short_description: {
-      en: "Contributed to a collaborative backend development project using Flask at NCKU, focusing on Modules 2 and 6. Although the project was not fully completed due to academic schedules, it provided hands-on experience in coordinating frontend-backend integration and communicating effectively with teammates and the project manager to ensure technical and design alignment.",
-      zh: "於成大參與一項以 Flask 進行的協作後端開發專案，主要負責第 2 與第 6 模組。雖然因課業時程未能全程參與，但這段經驗讓我實際練習了前後端整合的協調，以及與隊友、專案經理有效溝通，確保技術與設計方向一致。",
+      en: "An employee training platform built with Yu Jan Shin. The Flask back end is split into modules with Blueprints; I owned modules 2 and 6 and left in the later stage because of coursework.",
+      zh: "和裕珍馨合作的員工教育訓練平台。後端用 Flask Blueprint 拆成多個模組，我負責第 2 和第 6 個模組，後期因為課業退出。",
     },
     description: {
-      en: "This was my first experience participating in a real-world backend system development in collaboration with a company (Yu Jan Shin). I was responsible for two key modules—Module 2 and Module 6—within a Flask-based microservice architecture using Blueprints. Although I stepped away from the later stages due to academic responsibilities, I contributed significantly in the early design and implementation phases. I worked with Amazon RDS (MySQL) and dealt with schema planning, foreign key constraint handling, and naming consistency across multiple modules. The experience also introduced me to basic web security practices such as token management, access control, and role-based permissions. Most importantly, I learned how to communicate effectively with enterprise stakeholders, synchronize with other developers through Git, and align backend logic with frontend requirements.",
-      zh: "這是我第一次與企業（裕珍馨）合作、參與真實世界的後端系統開發。我在以 Flask Blueprint 建構的微服務架構中負責兩個關鍵模組——第 2 與第 6 模組。雖然後期因課業而退出，但我在早期的設計與實作階段貢獻良多。我使用 Amazon RDS（MySQL），處理資料表設計、外鍵約束，以及跨多個模組的命名一致性。這段經驗也讓我接觸到基本的網站安全實務，如 token 管理、存取控管與角色權限。最重要的是，我學會如何與企業利害關係人有效溝通、透過 Git 與其他開發者協作，並讓後端邏輯對齊前端需求。",
+      en: `My first back-end project with a company. The Flask back end is split into modules with Blueprints, and the database is MySQL on Amazon RDS.
+
+I owned modules 2 and 6: designing the tables and foreign keys, keeping column names consistent across modules, and handling token authentication and role-based access control. I agreed on the API with the project manager and the front-end developers and worked with the team through Git. I left in the later stage because of coursework, so I did not see it through to the end.`,
+      zh: `第一次和企業合作做後端。後端用 Flask Blueprint 拆成多個模組，資料庫是 Amazon RDS 上的 MySQL。
+
+我負責第 2 和第 6 個模組：設計資料表和外鍵，統一跨模組的欄位命名，也處理 token 驗證和依角色的存取控管。前後端的介面和專案經理、前端組員一起訂，程式用 Git 協作。後期因為課業退出，沒有做到最後。`,
     },
     tech: ["Flask", "Amazon RDS", "MySQL"],
     links: [],

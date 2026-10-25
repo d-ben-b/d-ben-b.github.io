@@ -28,15 +28,15 @@ export function imageSrcset(src, meta, maxWidth = Infinity) {
   return widths.map((w) => `${encodeURI(`${BASE}_img/${stem}-${w}.webp`)} ${w}w`).join(", ");
 }
 
-// 詳細視窗、相簿檢視器裡的大圖：圖框照圖片自己的長寬比，寬度不超過 maxWidth、高度不超過半個螢幕，
+// 詳細視窗、相簿檢視器裡的大圖：圖框照圖片自己的長寬比，寬度不超過 maxWidth、高度不超過螢幕高度的 vh%，
 // 直式、橫式都不會被裁掉。同時算出實際顯示的寬度給 sizes，直式照片才不會照整個視窗寬去挑大檔。
 // gutter：視窗左右留白加起來的寬度
-export function viewerFrame(src, maxWidth, gutter) {
+export function viewerFrame(src, maxWidth, gutter, vh = 50) {
   const meta = imageMeta(src);
   const ratio = meta ? meta.w / meta.h : 4 / 3;
-  const shown = Math.min(maxWidth, window.innerWidth - gutter, (window.innerHeight / 2) * ratio);
+  const shown = Math.min(maxWidth, window.innerWidth - gutter, ((window.innerHeight * vh) / 100) * ratio);
   return {
-    style: { aspectRatio: String(ratio), width: `min(100%, calc(50vh * ${ratio.toFixed(4)}))` },
+    style: { aspectRatio: String(ratio), width: `min(100%, calc(${vh}vh * ${ratio.toFixed(4)}))` },
     sizes: `${Math.round(shown)}px`,
   };
 }

@@ -145,8 +145,8 @@
       "zh": "成功大學 — 強化學習課程論文"
     },
     "summary": {
-      "en": "From-scratch PPO + Double DQN with a parameter-matched Self-Attention vs. MLP ablation (n=5); episodic returns tie within 5.7% while deployed crash rates differ ~7× (DQN 11.3% vs. PPO 60–80%) — return alone is misleading for safety-critical control.",
-      "zh": "從零實作 PPO 與 Double DQN，並做參數對齊的 Self-Attention vs. MLP 消融（n=5）；episodic return 差距 ≤5.7%，但碰撞率相差約 7×（DQN 11.3% vs. PPO 60–80%），證明單看 return 對安全關鍵控制具誤導性。"
+      "en": "Implemented PPO and Double DQN from scratch and ran a parameter-matched Self-Attention vs. MLP ablation (5 seeds). Episodic returns were within 5.7% of each other, yet crash rates were 11.3% for DQN and 60–80% for PPO.",
+      "zh": "從零實作 PPO 與 Double DQN，並在參數量相近的 Self-Attention 和 MLP 之間做消融（5 個 seed）。三者的回合獎勵差距在 5.7% 以內，碰撞率卻是 DQN 11.3%、PPO 60–80%。"
     },
     "tech": [
       "PyTorch",
@@ -271,8 +271,8 @@
       "zh": "玉山銀行 · AI CUP"
     },
     "summary": {
-      "en": "Ranked 261 / 790 using PU Learning (Elkanoto) + LightGBM over bidirectional transaction features on highly imbalanced data.",
-      "zh": "以 PU Learning（Elkanoto）+ LightGBM 處理高度不平衡資料的雙向交易特徵，名次 261 / 790。"
+      "en": "Only flagged accounts had labels, and the rest could still hide undiscovered ones, so they could not be treated as normal; I used PU learning with LightGBM and built transaction features in both directions (outgoing and incoming). Ranked 261 / 790.",
+      "zh": "只有警示帳戶有標籤，其他帳戶裡可能還有沒被發現的警示帳戶，不能直接當成正常帳戶，所以用 PU Learning 搭配 LightGBM，並建立轉出、轉入兩個方向的交易特徵；名次 261 / 790。"
     },
     "tech": [
       "Python",
@@ -324,8 +324,8 @@
       "zh": "成功大學 — 高效率 AI 課程"
     },
     "summary": {
-      "en": "ResNet-50 channel pruning −84% params (91.8% acc), INT8 PTQ/QAT 3.06× faster inference (95.38% acc), knowledge distillation, and EViT token pruning.",
-      "zh": "ResNet-50 通道剪枝 −84% 參數（精度 91.8%）、INT8 PTQ/QAT 推論 3.06× 加速（精度 95.38%）、知識蒸餾與 EViT token 剪枝。"
+      "en": "Channel pruning cut ResNet-50's parameters by 84% at 91.8% accuracy; INT8 quantization (PTQ / QAT) made inference 3.06× faster at 95.38% accuracy; also knowledge distillation and EViT token pruning.",
+      "zh": "ResNet-50 通道剪枝，參數減少 84%，準確率 91.8%；INT8 量化（PTQ / QAT）推論快 3.06 倍，準確率 95.38%；另做知識蒸餾與 EViT token 剪枝。"
     },
     "tech": [
       "PyTorch",
@@ -379,8 +379,8 @@
       "zh": "成功大學機器學習課程 — Kaggle 競賽"
     },
     "summary": {
-      "en": "16-class pipeline comparing DeepLabV3 vs. UNet++; DeepLabV3-ResNet101 reached public mIoU 0.58 with a CE + Dice hybrid loss (fixed pipeline bug: 0.26 → 0.58).",
-      "zh": "16 類分割 pipeline，比較 DeepLabV3 與 UNet++；DeepLabV3-ResNet101 以 CE + Dice 混合損失取得 public mIoU 0.58（修正 pipeline 問題：0.26 → 0.58）。"
+      "en": "16-class aerial segmentation comparing DeepLabV3 and UNet++; DeepLabV3-ResNet101 with CE + Dice loss reached 0.58 public mIoU. The score once fell to 0.26 because training and inference used different normalization and image sizes; fixing that brought it back to 0.58.",
+      "zh": "16 類空拍影像分割，比較 DeepLabV3 與 UNet++；DeepLabV3-ResNet101 加 CE + Dice 損失，public mIoU 0.58。分數一度掉到 0.26，原因是訓練和推論的正規化參數與影像尺寸沒有對齊，修正後回到 0.58。"
     },
     "tech": [
       "PyTorch",
@@ -459,8 +459,8 @@
       "zh": "國立成功大學（NCKU）"
     },
     "summary": {
-      "en": "Research focus: efficient AI — model compression and edge deployment.",
-      "zh": "研究方向：高效率 AI——模型壓縮與邊緣部署。"
+      "en": "Information Engineering group, graduating in June 2027.",
+      "zh": "成大電機所資訊工程組，2027 年 6 月畢業。"
     }
   },
   {
@@ -479,8 +479,8 @@
       "zh": "Google Cloud"
     },
     "summary": {
-      "en": "Vertex AI, LLMs, Prompt Design, Responsible AI, and Google Cloud infrastructure.",
-      "zh": "Vertex AI、LLM、Prompt Design、Responsible AI 與 Google Cloud 基礎架構。"
+      "en": "5 courses on cloud fundamentals and 7 on building with generative AI: Google Cloud infrastructure, Vertex AI, LLMs, prompt design, and responsible AI.",
+      "zh": "雲端運算基礎 5 門、生成式 AI 開發入門 7 門：Google Cloud 基礎架構、Vertex AI、LLM、Prompt Design、Responsible AI。"
     },
     "tech": [
       "Vertex AI",
@@ -504,8 +504,8 @@
       "zh": "花蓮縣政府"
     },
     "summary": {
-      "en": "As Data Analyst, mined government open data to find tourist-flow imbalances and turned them into a field-tested ARG board game.",
-      "zh": "擔任資料分析師，從政府開放資料找出觀光人流失衡，並轉化為實地驗證的 ARG 桌遊。"
+      "en": "Did the data analysis, using open data to find areas that needed to draw visitors away; with my teammates turned it into an alternate-reality board game and tested it at our sponsor's shop.",
+      "zh": "負責資料分析：用開放資料找出需要分流的區域，和隊友做成 ARG 實境桌遊〈洄遊漁光中〉，在贊助店家實地測試。"
     },
     "tech": [
       "pandas",
@@ -763,8 +763,8 @@
       "zh": "ETS"
     },
     "summary": {
-      "en": "English proficiency — tested 2024/02/25.",
-      "zh": "英語能力——測驗日 2024/02/25。"
+      "en": "Taken on Feb 25, 2024.",
+      "zh": "2024 年 2 月 25 日測驗。"
     }
   },
   {
@@ -776,7 +776,7 @@
     "approx": true,
     "type": "award",
     "title": {
-      "en": "Academic Excellence Award (書卷獎)",
+      "en": "Academic Excellence Award",
       "zh": "書卷獎（學業優異）"
     },
     "org": {
@@ -784,8 +784,8 @@
       "zh": "成功大學電機資訊學院"
     },
     "summary": {
-      "en": "Top of class for the semester (semester GPA up to 4.24 / 4.3, Top 10%).",
-      "zh": "學期班排前段（學期 GPA 達 4.24 / 4.3，前 10%）。"
+      "en": "Semester GPA 4.24 / 4.3, top 10% of the class.",
+      "zh": "學期 GPA 4.24 / 4.3，班排前 10%。"
     }
   },
   {

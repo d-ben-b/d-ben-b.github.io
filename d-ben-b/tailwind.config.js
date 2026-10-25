@@ -6,7 +6,10 @@ export const theme = {
       navBg: "#1B3409",
       text: "#C9C926",
       white: "#FFFFFF",
-      content: "#F7F7D4",
+      // 頁面底色。原本的 #F7F7D4（淡黃）整頁太亮，改成暗一點、不偏黃的沙色
+      content: "#E6E3D4",
+      // 卡片、視窗的底色：比頁面亮一階，但不用純白
+      paper: "#F2EFE6",
       theme: "#66B032",
     },
     fontFamily: {

@@ -3,39 +3,59 @@ export default {
     home: "Home",
     about: "About",
     projects: "Projects",
-    journey: "Journey",
+    journey: "Timeline",
     anniversary: "Anniversary",
     switchTo: "切換中文",
   },
 
   home: {
     greeting: "Hi, I'm ",
-    greetingEnd: ".",
-    name: "RUAN, SHAO-MING",
-    tagline: "M.S. student at NCKU working on model compression and edge deployment, and building full-stack web apps.",
-    explore: "Explore My Work",
+    greetingEnd: "",
+    name: "Shao-Ming Ruan",
+    tagline:
+      "I'm a master's student in Electrical Engineering at National Cheng Kung University. I love coffee and anything to do with software, especially AI and full-stack web development.",
+    explore: "See Projects",
     contact: "Contact",
     cards: {
       projects: {
         title: "Projects",
-        subtitle: "Explore my latest works and applications.",
+        subtitle:
+          "A pitching robot, street-scene detection, Jetson deployment, and hackathon builds, each with the method and the measured results.",
       },
       journey: {
-        title: "Journey",
-        subtitle: "A timeline of growth, learning, and coding adventures.",
+        title: "Timeline",
+        subtitle:
+          "Courses, research, competitions, and certificates since I started at NCKU in 2021, in date order.",
       },
       about: {
-        title: "About",
-        subtitle: "Learn who I am and what drives my passion.",
+        title: "About Me",
+        subtitle:
+          "Who I am, my clubs, volunteering, and activities, plus education and skills.",
       },
     },
   },
 
   about: {
-    heading: "About Myself",
-    p1: "I'm Shao-Ming Ruan. I graduated in Electrical Engineering from National Cheng Kung University (NCKU) in 2025 and am now an M.S. student in NCKU's EE institute, Information Engineering group (2025–2027). My focus is efficient AI: shrinking deep-learning models to a deployable size with pruning, INT8 quantization, and knowledge distillation, then deploying them on edge devices such as Jetson. I also work on computer vision, RAG / LLMs, and full-stack web apps with Vue and Django, mostly in Python, JavaScript, SQL, and C/C++.",
-    p2: "Beyond academics, I actively engage in cross-disciplinary practices and community services, such as promoting STEM education in rural schools by teaching programming courses. I have also participated in cultural exchange programs that helped me develop a global perspective. These experiences have honed my teamwork, leadership, and problem-solving skills.",
-    p3: "My goal is to combine my expertise and innovative thinking to contribute to developments in AI and IoT. Additionally, I aspire to pursue entrepreneurship, leveraging AI to design games that are both educational and entertaining.",
+    heading: "About Me",
+    intro: {
+      alt: "Shao-Ming Ruan",
+      text: "I'm Shao-Ming Ruan, a master's student in the Information Engineering group of NCKU's Electrical Engineering institute, graduating in 2027; I also did my bachelor's in EE at NCKU. I love coffee and anything to do with software. Most of my projects are in AI: finding out why a model underperforms, or shrinking a model so it runs on a Jetson or in a browser. On the web side, I have built systems for hackathons and courses with Vue, Django, and Flask.",
+    },
+    clubs: {
+      title: "Clubs",
+      alt: "Practising latte art",
+      text: "In the coffee club I learned pour-over brewing, roasting, and cupping, plus latte art, which I love, and later served as the club's teaching officer. In the orchestra I play the violin, and I like practising on my own in a quiet corner of the campus. In the sailing club I started out not knowing how to handle a boat, learned from the coach and other members, and my team took third place in an inter-university race. In the information security club I took classes and played CTFs.",
+    },
+    volunteer: {
+      title: "Volunteering",
+      alt: "Teaching a class",
+      text: "In the summer after my second year I joined an AIESEC volunteer project, teaching English and the UN Sustainable Development Goals at a junior high school in Tainan. In the second semester of my third year, through a service-learning course, I joined a children's service club in helping elementary school students build a reading habit.",
+    },
+    activities: {
+      title: "Activities",
+      alt: "Diving",
+      text: "I earned my Open Water diving certification in September 2025. My longest bike ride was from NCKU to Guoshenggang Lighthouse, the westernmost point of Taiwan's main island, and back, about 60 km, and I was one of the speakers at the campus forum of the 2024 NCKU Bike Festival. I have run the half marathon at the Ancient Capital Marathon in Tainan three times.",
+    },
     stats: {
       gpa: "Undergrad GPA",
       toeic: "TOEIC",
@@ -46,11 +66,13 @@ export default {
     edu: {
       org: "National Cheng Kung University (NCKU)",
       msDegree: "M.S. Electrical Engineering (Information Eng.)",
-      msDate: "2025 – Present",
-      msNote: "Research focus: efficient AI — model compression & edge deployment.",
+      msDate: "2025 – 2027",
+      msNote:
+        "Semester GPA rose from 4.03 to 4.30 / 4.3, with A+ in several core AI courses.",
       bsDegree: "B.S. Electrical Engineering",
       bsDate: "2021 – 2025",
-      bsNote: "GPA 4.04 / 4.3 · Graduated Top 20% · Semiconductor Micro-Program.",
+      bsNote:
+        "GPA 4.04 / 4.3, top 20% of the graduating class; completed the semiconductor micro-program.",
     },
     skills: "Skills",
     skillGroups: {
@@ -60,14 +82,11 @@ export default {
       vision: "Vision · LLM · RL",
       web: "Web & Tools",
     },
-    hobbies: "Hobbies",
-    hobbiesText:
-      "In my free time, I enjoy cycling, playing the violin, and exploring new technologies. One of my most memorable achievements was cycling from National Cheng Kung University to Guoshenggang Lighthouse—the westernmost point of Taiwan—and back, totaling around 60 kilometers. It remains my longest and most rewarding ride to date. As for music, I often practice the violin. I've performed classical pieces such as Zigeunerweisen (Sarasate's Gypsy Airs) and also enjoy playing popular songs like Red Scarf. I'm particularly drawn to pop music because it allows me to express my emotions more freely and release stress. On weekends, I like to visit a cozy bookstore near NCKU where I can immerse myself in the world of books. Recently, I read Peak: Secrets from the New Science of Expertise, a thought-provoking book about how deliberate practice drives mastery. It offered me a fresh perspective and reshaped how I think about learning and self-improvement. In September 2025 I also earned my Open Water diving certification.",
   },
 
   projects: {
-    heading: "Innovation in Action",
-    discoverMore: "Discover More",
+    heading: "Projects",
+    discoverMore: "Details",
     close: "Close",
     links: {
       demo: "Live demo",
@@ -79,9 +98,8 @@ export default {
   },
 
   contact: {
-    heading: "Contact Me",
-    intro:
-      "If you would like to get in touch, feel free to reach out via the following methods:",
+    heading: "Contact",
+    intro: "Email me, send a message on LinkedIn, or use the form below.",
     email: "Email",
     linkedin: "LinkedIn",
     github: "GitHub",
@@ -95,38 +113,37 @@ export default {
   },
 
   contactModal: {
-    title: "Let's Build Something!",
+    title: "Contact",
     subtitle:
-      "I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.",
+      "For jobs, internships, or project work, email me or send a message on LinkedIn.",
     email: "Email",
     linkedin: "LinkedIn",
-    linkedinText: "Connect with me",
+    linkedinText: "Experience",
     github: "GitHub",
-    githubText: "Explore my code",
+    githubText: "Source code",
     downloadCv: "Download CV",
     copyEmail: "Copy Email",
     copied: "Copied!",
   },
 
   footer: {
-    rights: "© {year} Shao-Ming Ruan. All rights reserved.",
-    contact: "Contact me at:",
-    follow: "Follow my social media:",
+    rights: "© {year} Shao-Ming Ruan",
+    contact: "Email:",
+    follow: "Writing:",
   },
 
   notFound: {
-    title: "Under Construction",
-    comingSoon: "Coming Soon",
-    underDev:
-      "This section is currently under development and will be available soon.",
-    details: "We're working hard to bring you this content. Check back soon!",
-    returnHome: "Return to Homepage",
+    title: "Page Not Found",
+    comingSoon: "404",
+    underDev: "There is no page at this address.",
+    details: "The link may be mistyped, or the page has been removed.",
+    returnHome: "Back to Home",
   },
 
   timeline: {
-    heading: "My Journey",
+    heading: "Timeline",
     intro:
-      "Scroll down for the milestones along the way — studies, research, competitions, and the projects that shaped me.",
+      "Courses, research, projects, competitions, and certificates since I started EE at NCKU in 2021.",
     viewLink: "View",
     types: {
       education: "Education",

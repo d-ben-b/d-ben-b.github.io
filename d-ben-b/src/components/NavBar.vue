@@ -12,15 +12,15 @@
         </div>
       </button>
       <ul class="hidden md:flex md:space-x-4 md:items-center">
-        <li><router-link to="/" class="mx-2 text-2xl text-text hover-effect">{{ t("nav.home") }}</router-link></li>
-        <li><router-link to="/about" class="mx-2 text-2xl text-text hover-effect">{{ t("nav.about") }}</router-link></li>
-        <li><router-link to="/projects" class="mx-2 text-2xl text-text hover-effect">{{ t("nav.projects") }}</router-link>
+        <li><router-link to="/" class="mx-2 text-xl font-bold tracking-wide text-text hover-effect">{{ t("nav.home") }}</router-link></li>
+        <li><router-link to="/about" class="mx-2 text-xl font-bold tracking-wide text-text hover-effect">{{ t("nav.about") }}</router-link></li>
+        <li><router-link to="/projects" class="mx-2 text-xl font-bold tracking-wide text-text hover-effect">{{ t("nav.projects") }}</router-link>
         </li>
         <li :class="{ grow: !growFlex }"><router-link to="/journey"
-            class="mx-2 text-2xl text-text hover-effect">{{ t("nav.journey") }}</router-link></li>
+            class="mx-2 text-xl font-bold tracking-wide text-text hover-effect">{{ t("nav.journey") }}</router-link></li>
         <transition>
           <li v-show="showSecretPage" :class="{ grow: growFlex }">
-            <router-link to="/anniversary" class="mx-2 text-2xl text-text hover-effect">{{ t("nav.anniversary")
+            <router-link to="/anniversary" class="mx-2 text-xl font-bold tracking-wide text-text hover-effect">{{ t("nav.anniversary")
             }}</router-link>
           </li>
         </transition>
@@ -41,16 +41,16 @@
     <transition name="menu-fade">
       <div v-if="isMenuOpen"
         class="fixed inset-0 z-40 flex flex-col items-center justify-center space-y-8 bg-navBg md:hidden">
-        <router-link @click="isMenuOpen = false" to="/" class="text-3xl text-text hover-effect">{{ t("nav.home")
+        <router-link @click="isMenuOpen = false" to="/" class="text-3xl font-bold text-text hover-effect">{{ t("nav.home")
         }}</router-link>
-        <router-link @click="isMenuOpen = false" to="/about" class="text-3xl text-text hover-effect">{{ t("nav.about")
+        <router-link @click="isMenuOpen = false" to="/about" class="text-3xl font-bold text-text hover-effect">{{ t("nav.about")
         }}</router-link>
         <router-link @click="isMenuOpen = false" to="/projects"
-          class="text-3xl text-text hover-effect">{{ t("nav.projects") }}</router-link>
+          class="text-3xl font-bold text-text hover-effect">{{ t("nav.projects") }}</router-link>
         <router-link @click="isMenuOpen = false" to="/journey"
-          class="text-3xl text-text hover-effect">{{ t("nav.journey") }}</router-link>
+          class="text-3xl font-bold text-text hover-effect">{{ t("nav.journey") }}</router-link>
         <router-link v-if="showSecretPage" @click="isMenuOpen = false" to="/anniversary"
-          class="text-3xl text-text hover-effect">{{ t("nav.anniversary") }}</router-link>
+          class="text-3xl font-bold text-text hover-effect">{{ t("nav.anniversary") }}</router-link>
       </div>
     </transition>
   </nav>

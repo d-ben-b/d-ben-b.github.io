@@ -2,7 +2,7 @@
   <section class="min-h-[90vh] p-10 rounded-lg shadow-md about bg-content overflow-hidden">
     <div class="w-full max-w-3xl">
       <h1 class="mb-10 text-4xl font-bold text-gray-800">{{ t("contact.heading") }}</h1>
-      <p class="mb-4 text-center">
+      <p class="mb-4 text-center phrase-wrap">
         {{ t("contact.intro") }}
       </p>
 

@@ -21,6 +21,13 @@
   @apply w-10 h-10;
 }
 
+/* 標題、標語這類短句只在標點和空格處換行，避免「表現」被拆成「表／現」；
+   一段沒有標點的字放不下一行時，overflow-wrap 才在字中間斷開 */
+.phrase-wrap {
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
 /* v-reveal（src/directives/reveal.js）：捲進畫面時淡入上移 */
 .reveal {
   opacity: 0;
